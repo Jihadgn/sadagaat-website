@@ -5,7 +5,6 @@ import Slider from "react-slick";
 import { useState, useEffect } from 'react';
 import address from '../../services';
 
-// import parse from "html-react-parser";
 
 function MainSlider() {
     const [slides, setSlides] = useState([]);

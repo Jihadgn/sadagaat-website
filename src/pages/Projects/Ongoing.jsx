@@ -5,8 +5,6 @@ import Volunteering from '../Home/Volunteering';
 import Footer from '../Home/Footer';
 import address from "../../services";
 import { React, useEffect, useState } from "react";
-import { Tabs } from 'flowbite-react';
-import parse from 'html-react-parser';
 import Project from './View'
 import { useTranslation } from "react-i18next";
 import i18n from "i18next";

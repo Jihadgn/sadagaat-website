@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import address from '../../services';
 import CountUp from "react-countup";
-// import parse from "html-react-parser";
 import i18n from "i18next";
 import {useTranslation} from "react-i18next";
 

@@ -168,7 +168,7 @@ function Footer() {
                     </div>
                     <div className=" px-7 pt-7 text-center ">
                         {footer.length !== 0 ?
-                            parse(`${footer.text}`) :
+                          <p> {footer.text} </p>:
                             t("All Rights Reserved © Sadagaat Community of Charity - 2020")}
                     </div>
 
