@@ -60,7 +60,7 @@ function NavBar() {
                             <span className="px-4"> {t("Donate")}</span>
                         </button>
                         <Navbar.Toggle className="bg-white" />
-                    </div>0
+                    </div>
                     <Navbar.Collapse className="text-gray-800 gap-4 flex-wrap">
                         <Navbar.Link href="/" >
                             <img src={logo} className="h-16 w-24" 
