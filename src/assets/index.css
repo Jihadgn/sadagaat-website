@@ -26,54 +26,258 @@
 .fixedBackGround {
   background-image: url("https://sadagaat-uk.org/images/header-mask.svg");
   background-size: 400%;
-  opacity: 0.9; 
+  opacity: 0.9;
   background-blend-mode: overlay;
 }
 
 .fixedBackGround2 {
-  background-color: #f9f500;
+  background-color: rgb(252, 212, 13);
   background-size: cover;
-  opacity: 0.9; 
+  opacity: 0.9;
   background-blend-mode: overlay;
 }
 
 .hrNew {
   border-top: 1px dashed black;
 }
+
+.pagination li.active a {
+  background: #bf9e58;
+  color: #fff;
+  border: 1px solid black;
+}
+
+.pagination li a {
+  padding: 7px;
+  color: #333;
+  border: 1px solid rgb(137, 136, 136);
+  background-color: #fff;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  box-sizing: border-box
+}
+
+.pagination li.active a {
+  background: #73ade2;
+  color: #fff;
+  border: 1px solid rgb(112, 110, 110);
+}
+
+.pagination {
+  border-radius: 4px;
+}
+
+.hub-section {
+  background-color: rgb(53, 52, 52);
+  opacity: 1;
+  background-blend-mode: overlay;
+}
+
+.Our {
+  background-color: rgba(6, 105, 147, 0.8) !important;
+  z-index: 10;
+  opacity: 1;
+  height: auto;
+}
+
+.pragraphe {
+  font-size: 15px;
+
+}
+
 .footer {
   background-image: url("https://sadagaat-uk.org/images/footer-mask.svg");
   background-size: cover;
-  opacity: 1; 
+  opacity: 1;
   background-blend-mode: overlay
 }
 
 
 .top {
   background-image: url("https://sadagaat-uk.org/images/header-mask.svg");
-} 
-
-.nav::before{
-  z-index: auto;
-  position: static;
-  top: auto;
+  background-size: 800%;
+  background-position: center;
+  overflow: hidden;
 }
 
-.nav::after{
-  z-index: 1000;
-  position: fixed;
-  top: 0px;
-  margin-left: 0px;
-    left: 0px;
-
+.nav {
+  background-color: #f7f8fa !important;
+  height: inherit !important;
 }
 
+.slider {
+  height: 450px;
+}
+
+.eventsHr {
+  border: 1.4px solid black;
+  margin-right: 200px;
+}
+.contact-hr-1 {
+  border: 1.4px solid black;
+  margin-right: 400px;  
+}
+.contact-hr-2 {
+  border: 1.4px solid black;
+  margin-right: 600px;  
+}
+
+.img-fullwidth {
+  width: 100% !important;
+  height: 250px !important;
+}
+
+.sectors {
+  border: 1.6px solid black;
+  height: 2px;
+  left: opx;
+  position: absolute;
+  width: 100px;
+}
+
+.eventsHr-1 {
+  border: 1.4px solid black;
+  margin-right: 500px;
+  margin-left: 10px;
+}
+
+.eventsHr-2 {
+  border: 1.4px solid black;
+  margin-right: 360px;
+}
 
 .btn {
-  background-color: #154060;
+  background-color: #125e98;
+  color: white;
+  font-weight: 500;
+  font-size: medium;
 }
 
 .btn:hover {
   background-color: #256da4;
+  color: white;
+  font-weight: 500;
+  font-size: medium;
+}
+
+
+.project-discription {
+  white-space: wrap;
+  height: 6em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.causes .thumb {
+  position: relative;
+  overflow: hidden;
+  max-height: 270px !important;
+}
+
+.causes .thumb img {
+  transition: all 500ms ease 0s;
+  position: relative;
+}
+
+.causes:hover .thumb img {
+  transform: scale(1.2);
+}
+
+.gallery-item .thumb {
+  position: relative;
+  overflow: hidden;
+  max-height: 370px !important;
+}
+
+.gallery-item .thumb img {
+  transition: all 500ms ease 0s;
+  position: relative;
+}
+
+.gallery-item:hover .thumb img {
+  transform: scale(1.2);
+}
+
+.causes .progress-item .progress-bar .percent {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 2px solid;
+  color: #333333;
+  font-size: 10px;
+  line-height: 8px;
+  padding: 8px 5px;
+  position: absolute;
+  right: -10px;
+  text-align: center;
+  top: -7px;
+}
+
+.causes .progress-item .progress {
+  background-color: #efefef;
+  border-bottom: 1px solid #d3d3d3;
+  box-shadow: none;
+  height: 15px;
+}
+
+.progress-item .progress {
+  background-color: #f8f8f8;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.4) inset;
+  border-radius: 0;
+  overflow: visible;
+}
+
+.progress-item .progress-bar {
+  font-size: 11px;
+  padding-left: 10px;
+  position: relative;
+  text-align: left;
+  width: 0;
+  line-height: 14px;
+  -webkit-transition: all 1s ease 0s;
+  -o-transition: all 1s ease 0s;
+  transition: all 1s ease 0s;
+}
+
+.progress-item .progress-bar .percent {
+  background-color: #ff5722;
+  border-radius: 0 7px 7px 0;
+  padding: 0 8px;
+  position: absolute;
+  right: -10px;
+  top: 0px;
+}
+
+.progress-item.progress-white .progress {
+  padding: 2px;
+}
+
+.progress-item.style2 .progress {
+  height: 25px;
+}
+
+.progress-item.style2 .progress-bar span {
+  color: #fff !important;
+  right: 0;
+  top: 6px;
+}
+
+.progress-item.style2 .progress-bar .percent {
+  background: none;
+  color: #555555;
+  font-size: 14px;
+}
+
+.slide-container {
+  direction: ltr;
+  width: 80% !important;
+  margin-bottom: -140px;
+  overflow: hidden !important;
+  position: relative;
+}
+
+.slider {
+  height: 440px;
 }
 
 a {
@@ -106,12 +310,21 @@ a {
   box-sizing: border-box;
 }
 
-.fixed {
-  align-items: left !important;
-  background-color: rgb(251, 251, 251);
-  width: full !important;
+.fixed-btn {
+  top: 30%;
+  left: -44px;
+  transform: rotate(-90deg);
+  border-radius: 0px 0px 20px 20px;
 }
 
+.primary {
+  background-color: rgb(0, 169, 88);
+  font-weight: bold;
+}
+
+.table-row-1 {
+  background-color: #edecec !important;
+}
 
 .transparent {
   background: transparent !important;
