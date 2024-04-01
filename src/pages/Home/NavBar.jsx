@@ -37,7 +37,7 @@ function NavBar() {
         fetchFeaturedOnGoingProjects();
     }, []);
 
-    return (
+    return (  
         <>
             <main>
                 {/* navbar */}
