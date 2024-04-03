@@ -9,6 +9,38 @@ import { Link } from "react-router-dom";
 
 function NewsAndEvents() {
 
+    var settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        initialSlide: 0,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    }
+
     const [news, setNews] = useState([]);
     const [events, setEvent] = useState([]);
 
@@ -60,12 +92,7 @@ function NewsAndEvents() {
                             <span className="text-left text-2xl font-bold pb-4 sm:pl-0 lg:pl-8 md:pl-0 text-gray-900 ">Latest </span>
                             <span className="text-left text-2xl font-bold pb-4 text-blue-700 "> News and Impact stories</span>
                             <hr className="eventsHr-1" />
-                            <Slider
-                                autoPlay={5000}
-                                stopAutoPlayOnHover
-                                dots
-                                rtl={true}
-                            >
+                            <Slider {...settings} >
                                 {news.map((news_) => (
                                     <div className="causes" key={news_.id}>
                                         <div className="pt-5 grid lg:grid-cols-2 md:grid-cols-2 sm:col-span-1 gap-5">
@@ -77,7 +104,7 @@ function NewsAndEvents() {
                                                 />
                                             </div>
                                             <div className="text-gray-800">
-                                                <div class="event-content pb-6  ">
+                                                <div className="event-content pb-6  ">
                                                     <h2 className="font-bold text-xl pt-10 pb-3">
                                                         {news_.name}
                                                     </h2>

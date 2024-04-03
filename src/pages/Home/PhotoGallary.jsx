@@ -27,10 +27,9 @@ function PhotoGalary() {
                 <section className="pt-10 pb-10 grid grid-cols-12 text-center bg-white  ">
                     <div></div>
                     <div className="col-span-10">
-
                         <span className="text-3xl font-bold tracking-tight text-gray-900 px-2">PHOTO </span>
                         <span className="text-3xl font-bold tracking-tight text-blue-800 "> GALLARY </span>
-                        <div className="grid grid-cols-3 px-10 pt-9 ">
+                        <div className="grid md:grid-cols-3 sm:grid-cols-1 px-10 pt-9 ">
                             {image.slice(Math.max(image.length - 3, 1)).map((image, index) => (
                                 <div className="gallery-item breakfast px-3" style={{ float: "left" }}>
                                     <div className="thumb ">
