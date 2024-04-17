@@ -57,12 +57,12 @@ function Footer() {
                 <section className="pt-10 pb-10 footer">
                     <div className="grid grid-cols-12">
                         <div></div>
-                        <div className="col-span-10 grid xl:grid-cols-4 md:grid-cols-4 xs:grid-cols-2 pt-8 pb-8 px-10   gap-9">
+                        <div className="col-span-10 grid lg:grid-cols-4 md:grid-cols-4 grid-cols-2 pt-8 pb-8 px-10   gap-9">
                             <div>
                                 <h1 className="text-2xl font-bold text-white">SADAGAAT</h1>
                                 <h2 className="text-md pt-5 font-bold text-white" >مجتمع_فكرة #</h2>
                                 <div className="grid lg:grid-cols-2 md:grid-cols-1">
-                                    <div className="grid lg:grid-cols-4 md:grid-cols-2">
+                                    <div className="grid lg:grid-cols-4 grid-cols-4 md:grid-cols-2">
                                         <a className="text-md pt-5 font-bold text-white hover:text-gray-500" href="#">
                                             <svg className="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                                                 <path fillRule="evenodd" d="M13.135 6H15V3h-1.865a4.147 4.147 0 0 0-4.142 4.142V9H7v3h2v9.938h3V12h2.021l.592-3H12V6.591A.6.6 0 0 1 12.592 6h.543Z" clipRule="evenodd" />

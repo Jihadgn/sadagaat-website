@@ -10,7 +10,7 @@ function Hubs() {
                 {/* Hubs cards */}
                 <section className=" pb-10 grid grid-cols-12 bg-white">
                     <div></div>
-                    <div className="pt-9 col-span-10 grid lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-2 gap-0">
+                    <div className="pt-9 col-span-10 grid lg:grid-cols-4 md:grid-cols-4 grid-cols-2 gap-0">
                         <LazyLoad once={true}>
                             <Link to="/wash" className="curser-pointer">
                                 <img className="h-full w-full" src="src/assets/11.png" alt="" />

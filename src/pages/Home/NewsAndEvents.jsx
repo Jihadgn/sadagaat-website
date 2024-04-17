@@ -9,6 +9,28 @@ import { Link } from "react-router-dom";
 
 function NewsAndEvents() {
 
+    function SampleNextArrow(props) {
+        const { className, style, onClick } = props;
+        return (
+            <div
+                className={className}
+                style={{ ...style, display: "none", background: "gray" }}
+                onClick={onClick}
+            />
+        );
+    }
+
+    function SamplePrevArrow(props) {
+        const { className, style, onClick } = props;
+        return (
+            <div
+                className={className}
+                style={{ ...style, display: "none", background: "gray" }}
+                onClick={onClick}
+            />
+        );
+    }
+
     var settings = {
         dots: true,
         infinite: true,
@@ -16,7 +38,9 @@ function NewsAndEvents() {
         slidesToShow: 1,
         slidesToScroll: 1,
         initialSlide: 0,
-        responsive: [
+        nextArrow: <SampleNextArrow />,
+        prevArrow: <SamplePrevArrow />,
+         responsive: [
             {
                 breakpoint: 1024,
                 settings: {
@@ -50,8 +74,7 @@ function NewsAndEvents() {
             headers: { "accept-language": `en` },
         });
         const response = await fetcher.json();
-        console.log(response);
-        setNews(response.slice(0, 5));
+        setNews(response.slice(0, 3));
     }
 
 
@@ -60,7 +83,6 @@ function NewsAndEvents() {
     //       headers: { "accept-language": `en` },
     //     });
     //     const response = await fetcher.json();
-    //     console.log(response);
     //     setEvent(response.slice(0, 3));
     //   }
 
@@ -92,15 +114,16 @@ function NewsAndEvents() {
                             <span className="text-left text-2xl font-bold pb-4 sm:pl-0 lg:pl-8 md:pl-0 text-gray-900 ">Latest </span>
                             <span className="text-left text-2xl font-bold pb-4 text-blue-700 "> News and Impact stories</span>
                             <hr className="eventsHr-1" />
-                            <Slider {...settings} >
+                            <div className="pt-1 ">
+                            <Slider {...settings} className="flex">
                                 {news.map((news_) => (
-                                    <div className="causes" key={news_.id}>
-                                        <div className="pt-5 grid lg:grid-cols-2 md:grid-cols-2 sm:col-span-1 gap-5">
-                                            <div className="">
+                                    <div className="causes flex" >
+                                        <div key={news_.id} className="pt-5 grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-5">
+                                            <div className="thumb">
                                                 <img
                                                     src={`${address()}news/${news_.id}/image`}
                                                     alt="News"
-                                                    height="250px"
+                                                    className="h-auto w-auto"
                                                 />
                                             </div>
                                             <div className="text-gray-800">
@@ -122,6 +145,7 @@ function NewsAndEvents() {
                                     </div>
                                 ))}
                             </Slider>
+                            </div>
                         </div>
                     </div>
                 </section>

@@ -25,7 +25,9 @@ background-size: auto;
 
 .fixedBackGround {
   background-image: url("https://sadagaat-uk.org/images/header-mask.svg");
-  background-size: 400%;
+  background-size: 1000%;
+  background-position: center;
+  background-repeat: no-repeat;
   opacity: 0.9;
   background-blend-mode: overlay;
 }
@@ -140,7 +142,6 @@ background-size: auto;
 .eventsHr-1 {
   border: 1.4px solid black;
   margin-right: 500px;
-  margin-left: 10px;
 }
 
 .eventsHr-2 {
@@ -178,11 +179,12 @@ background-size: auto;
 
 .causes .thumb img {
   transition: all 500ms ease 0s;
+  overflow: hidden;
   position: relative;
 }
 
 .causes:hover .thumb img {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 .gallery-item .thumb {
