@@ -45,7 +45,6 @@ function Partners() {
         fetchData();
     }, []);
 
-
     var secSettings = {
         dots: false,
         arrows: false,

@@ -1,73 +1,12 @@
 import React from "react";
 import { useState, useEffect } from 'react';
 import address from '../../services';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
 import { Link } from "react-router-dom";
-
+import { Card } from "flowbite-react";
 
 function NewsAndEvents() {
 
-    function SampleNextArrow(props) {
-        const { className, style, onClick } = props;
-        return (
-            <div
-                className={className}
-                style={{ ...style, display: "none", background: "gray" }}
-                onClick={onClick}
-            />
-        );
-    }
-
-    function SamplePrevArrow(props) {
-        const { className, style, onClick } = props;
-        return (
-            <div
-                className={className}
-                style={{ ...style, display: "none", background: "gray" }}
-                onClick={onClick}
-            />
-        );
-    }
-
-    var settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        initialSlide: 0,
-        nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />,
-         responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    }
-
     const [news, setNews] = useState([]);
-    const [events, setEvent] = useState([]);
-
 
     async function fetchNews() {
         const fetcher = await window.fetch(`${address()}news`, {
@@ -77,7 +16,6 @@ function NewsAndEvents() {
         setNews(response.slice(0, 3));
     }
 
-
     //   async function fetchEvents() {
     //     const fetcher = await window.fetch(`${address()}events`, {
     //       headers: { "accept-language": `en` },
@@ -86,13 +24,10 @@ function NewsAndEvents() {
     //     setEvent(response.slice(0, 3));
     //   }
 
-
     useEffect(() => {
         // fetchEvents();
         fetchNews();
     }, [`en`]);
-
-
 
     return (
         <>
@@ -100,25 +35,15 @@ function NewsAndEvents() {
                 {/* Events and News */}
                 <section className="pt-10 pb-10 grid grid-cols-12 bg-white">
                     <div></div>
-                    <div className="col-span-10 grid xl:grid-cols-3 lg:grid-cols-3 sm:grid-cols-1 pt-8">
-                        <div>
-                            <h2 className="text-left text-2xl font-bold pb-4 text-blue-700 ">EVENTS</h2>
-                            <hr className="eventsHr-2" />
-                            {events.map((event) => (
-                            <div className="">
-                               
+                    <div className="col-span-10 pt-8">
+                            <div>
+                                <span className="text-left text-2xl font-bold pb-4 sm:pl-0 lg:pl-8 md:pl-0 text-gray-900 ">Latest </span>
+                                <span className="text-left text-2xl font-bold pb-4 text-blue-700 "> News and Impact stories</span>
+                                <hr className="eventsHr-1" />
                             </div>
-                             ))}
-                        </div>
-                        <div className="xl:col-span-2 lg:col-span-2 col-span-1">
-                            <span className="text-left text-2xl font-bold pb-4 sm:pl-0 lg:pl-8 md:pl-0 text-gray-900 ">Latest </span>
-                            <span className="text-left text-2xl font-bold pb-4 text-blue-700 "> News and Impact stories</span>
-                            <hr className="eventsHr-1" />
-                            <div className="pt-1 ">
-                            <Slider {...settings} className="flex">
-                                {news.map((news_) => (
-                                    <div className="causes flex" >
-                                        <div key={news_.id} className="pt-5 grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-5">
+                            <div className="pt-9 grid lg:grid-cols-3 md:grid-cols-2 grid:cols-1 gap-6">
+                                    {news.map((news_) => (
+                                        <Card className="max-w-md text-gray-900 causes" key={news_.id}>
                                             <div className="thumb">
                                                 <img
                                                     src={`${address()}news/${news_.id}/image`}
@@ -141,13 +66,11 @@ function NewsAndEvents() {
                                                     Read More
                                                 </Link>
                                             </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </Slider>
+                                        </Card>
+                                    ))
+                                    }
                             </div>
                         </div>
-                    </div>
                 </section>
             </main>
         </>

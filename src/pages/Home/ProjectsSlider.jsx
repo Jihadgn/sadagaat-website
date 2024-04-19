@@ -133,7 +133,7 @@ const ProjectsSlider = (props) => {
                             <Slider {...settings}>
                                 {data !== undefined && data.length > 0 ? (
                                     data.map((project, index) => (
-                                        <Card className="max-w-md text-gray-900 causes px-3  " key={index}>
+                                        <Card className="max-w-md text-gray-900 causes px-3" key={index}>
                                             <div className="thumb" >
                                                 <img
                                                     src={`${address()}projects/${project.id}/image`}
@@ -142,8 +142,8 @@ const ProjectsSlider = (props) => {
                                                 />
                                             </div>
                                             <div className="grid grid-cols-2 pt-1">
-                                                <h3 className="text-left text-lg font-bold">Raised :  {getNumber(project.raised)}   </h3>
-                                                <h3 className="text-right text-lg font-bold">Target :  {getNumber(project.goal)} </h3>
+                                                <h3 className="text-left flex text-lg font-bold">Raised :  {getNumber(project.raised)}   </h3>
+                                                <h3 className="text-right flex text-lg font-bold">Target :  {getNumber(project.goal)} </h3>
                                             </div>
                                             <div className="progress-item mt-0">
                                                 <div className="progress">
@@ -171,12 +171,15 @@ const ProjectsSlider = (props) => {
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div className="project-discription">
+
                                             <h2 className="text-left text-xl font-bold pt-1">
                                                 {project.name}
                                             </h2>
-                                            <h2 className="project-discription text-left text-md font-normal">
+                                            <h2 className="text-left text-md font-normal">
                                                 {parse(project.description)}
                                             </h2>
+                                            </div>
                                             <div className="items-center px-4 pt-1">
                                                 <button className="bg-white border-2 border-gray-900 rounded-0">Donate
                                                 </button>

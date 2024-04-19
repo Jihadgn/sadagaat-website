@@ -20,6 +20,16 @@ function More() {
         setImage(response);
 
     }
+    function smallStyle() {
+        return ({
+            display: "grid",
+            background: "white",
+            gridGap: "10px 20px",
+            border: '1px  ',
+            padding: "10px 20px 0 0"
+        });
+    }
+
     useEffect(() => {
         fetchData();
     }, []);
@@ -44,13 +54,13 @@ function More() {
               
                 <section className="py-10 bg-white grid grid-cols-12">
                     <div></div>
-                    <div className="col-span-10 grid grid-cols-4">
+                    <div className="col-span-10">
                         {Object.keys(image).length != 0
                             ?
                             <div className="container" style={{ marginTop: "50px", marginBottom: "90px" }} >
                                 <Gallery
                                     images={data}
-                                    // thumbnailStyle={smallStyle}
+                                    thumbnailStyle={smallStyle}
                                     imageCountSeparator={"of"}
                                 />
                             </div>

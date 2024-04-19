@@ -42,7 +42,7 @@ function ProjectsStatistics() {
                 {/* projects fixed background */}
                 <section className="fixedBackGround pt-6 pb-6 pb-10 grid grid-cols-12 text-center ">
                     <div></div>
-                    <div className="col-span-10 text-gray-900 grid grid-cols-5 pt-5 pb-5 text-center">
+                    <div className="col-span-10 text-gray-900 grid lg:grid-cols-5 grid-cols-2 pt-5 pb-5 text-center">
                         <div className="pt-5">
                             <h2 className="grid grid-cols-9 justify-content-center">
                                 <div className="col-span-4"></div>

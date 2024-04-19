@@ -40,9 +40,9 @@ function Home() {
         <>
             <main >
                 {/* about Sadagaat */}
-                <section className="pt-10 pb-10 grid grid-cols-12 bg-white">
+                <section className="pt-1 pb-10 grid grid-cols-12 bg-white">
                     <div></div>
-                    <div className="col-span-10 grid xl:grid-cols-2 md:grid-cols-1 pt-8">
+                    <div className="col-span-10 grid xl:grid-cols-2 md:grid-cols-1 pt-2">
                         <div className="grid lg:grid-cols-2 md:grid-cols-2 gap-3">
                             <div>
                                 <div className="img-hover-border">
@@ -138,9 +138,9 @@ function Home() {
                                 executive body that implements the projects depends on: Administrative
                                 competence in coordination and scientific methodology.
                             </p>
-                            <div className="grid grid-cols-4 gap-2 pt-6">
-                                <button className="bg-white border-black text-blue-900 py-3">Read More</button>
-                                <button className="btn border-black text-white px-7 py-3">Donate</button>
+                            <div className="grid lg:grid-cols-4 md:grid-cols-4 grid-cols-2   gap-2 pt-6">
+                                <button className="text-center   bg-white border-black text-blue-900 py-3">Read More</button>
+                                <button className="text-center   btn border-black text-white px-7 py-3">Donate</button>
                             </div>
                         </div>
                     </div>

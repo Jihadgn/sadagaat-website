@@ -1,7 +1,7 @@
 import axios from "axios";
 // api 
 export function address() {
-  return "https://sadagaat.com:9090/api/v1/";
+  return "https://sadagaat.com:4959/api/v1/";
 }
 
 export default address;
@@ -39,4 +39,10 @@ export  function submit_volunteer_data(data) {
     .post(`${address()}cisco-subscriber/submit`, data)
     // .then(res => res.json())
 
+}
+
+export function routeToUrl(url) {
+  setTimeout(function () {
+    window.location.replace(url);
+  }, 3000);
 }

@@ -25,20 +25,23 @@ background-size: auto;
 
 .fixedBackGround {
   background-image: url("https://sadagaat-uk.org/images/header-mask.svg");
-  background-size: 1000%;
+  background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   opacity: 0.9;
   background-blend-mode: overlay;
 }
 
 .fixedBackGround2 {
-  background-color: rgb(252, 212, 13);
+  background-color: rgb(234, 196, 3);
   background-size: cover;
-  opacity: 0.9;
+  opacity: 1.5;
   background-blend-mode: overlay;
 }
 
+.course-card {
+  background-color: #0c79a0 !important ;
+}
 .hrNew {
   border-top: 1px dashed black;
 }
@@ -110,7 +113,8 @@ background-size: auto;
 }
 
 .slider {
-  height: 450px;
+  height: fit-content;
+  overflow: hidden;
 }
 
 .eventsHr {
@@ -175,7 +179,7 @@ background-size: auto;
   position: relative;
   overflow: hidden;
   max-height: 270px !important;
-}
+} 
 
 .causes .thumb img {
   transition: all 500ms ease 0s;
@@ -276,10 +280,6 @@ background-size: auto;
   margin-bottom: -140px;
   overflow: hidden !important;
   position: relative;
-}
-
-.slider {
-  height: 440px;
 }
 
 a {

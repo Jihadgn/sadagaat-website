@@ -19,7 +19,8 @@ import SingleNews from "./pages/SubPages/SingleNews";
 import Gallery from "./pages/SubPages/Gallery";
 import Contact from "./pages/SubPages/Contact";
 import VolunteersPrograms from "./pages/SubPages/VolunteersPrograms";
-
+import Learning from "./pages/SubPages/Learning"
+import CourseForm from "./pages/SubPages/CourseForm";
 
 const router = createBrowserRouter([
   
@@ -46,6 +47,14 @@ const router = createBrowserRouter([
   {
     path: "/volunteers-programs",
     element: <VolunteersPrograms />
+  },
+  {
+    path: "/sudanese-learning-hub",
+    element: <Learning />
+  },
+  {
+    path: "/course-form",
+    element: <CourseForm />
   },
   {
     path: "/careers",
