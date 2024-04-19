@@ -57,33 +57,25 @@ class ModalVedioComponent extends Component {
 
     return (
       <main>
-      {this.state.isOpen && 
+        {this.state.isOpen && (
           <>
-
-        {id != "" ? (
-          <div 
-          className="fixed z-[9999999999999] h-screen inset-0 bg-black">
-            <ModalVideo
-              channel="youtube"
-              isOpen={this.state.isOpen}
-              videoId={id}
-              onClose={() => this.setState({ isOpen: false })}
-            />
-          </div>
-        ) : (
-          <div 
-          className="fixed z-[9999999999999] h-screen inset-0 bg-black">
-            <ModalVideo
-              channel="youtube"
-              isOpen={this.state.isOpen}
-              videoId="JI-1UEwo-tg"
-              onClose={() => this.setState({ isOpen: false })}
-            />
-          </div>
-        )}
-            
+            {id != "" ? (
+              <ModalVideo
+                channel="youtube"
+                isOpen={this.state.isOpen}
+                videoId={id}
+                onClose={() => this.setState({ isOpen: false })}
+              />
+            ) : (
+              <ModalVideo
+                channel="youtube"
+                isOpen={this.state.isOpen}
+                videoId="JI-1UEwo-tg"
+                onClose={() => this.setState({ isOpen: false })}
+              />
+            )}
           </>
-          }
+        )}
 
         <a onClick={this.openModal} className="modal-btn">
           <div className="pt-10 pb-10 grid grid-cols-9 justify-content-center ">
