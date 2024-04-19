@@ -12,7 +12,6 @@ function PhotoGalary() {
         setImage(res8);
     }
 
-
     // get sliders on page load
     useEffect(() => {
         fetchData();
@@ -31,7 +30,7 @@ function PhotoGalary() {
                         <span className="text-3xl font-bold tracking-tight text-blue-800 "> GALLARY </span>
                         <div className="grid md:grid-cols-3 sm:grid-cols-1 px-10 pt-9 ">
                             {image.slice(Math.max(image.length - 3, 1)).map((image, index) => (
-                                <div className="gallery-item breakfast px-3" style={{ float: "left" }}>
+                                <div className="gallery-item px-3" style={{ float: "left" }}>
                                     <div className="thumb ">
                                         <img
                                             // width="470px"

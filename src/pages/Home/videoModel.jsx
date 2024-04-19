@@ -52,9 +52,7 @@ class ModalVedioComponent extends Component {
   render() {
     let link = this.state.link;
     const { id } = getVideoId(link);
-    //console.log("here we go this is the youtube testttttttted link ********",link)
-    //console.log("here we go this is the youtube id ********",id)
-
+    
     return (
       <main>
         {this.state.isOpen && (
@@ -79,7 +77,7 @@ class ModalVedioComponent extends Component {
 
         <a onClick={this.openModal} className="modal-btn">
           <div className="pt-10 pb-10 grid grid-cols-9 justify-content-center ">
-            <div className="col-span-4 cursor-pointer"></div>
+            <div className="col-span-4"></div>
             <svg
               className="cursor-pointer w-24 h-24 p-3 col-span-1 rounded-full border-2 text-white"
               aria-hidden="true"
