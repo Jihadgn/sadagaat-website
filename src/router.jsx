@@ -69,7 +69,7 @@ const router = createBrowserRouter([
     element: <News />,
   },
   {
-    path: "/news/:id",
+    path: "/news/:news_id",
     element: <SingleNews />,
   },
   {
@@ -89,7 +89,7 @@ const router = createBrowserRouter([
     element: <Planned />,
   },
   {
-    path: "/single-project/:id",
+    path: "/single-project/:project_id",
     element: <SingleProject />
   },
   {

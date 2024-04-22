@@ -39,7 +39,7 @@ function NewsAndEvents() {
                             <div>
                                 <span className="text-left text-2xl font-bold pb-4 sm:pl-0 lg:pl-8 md:pl-0 text-gray-900 ">Latest </span>
                                 <span className="text-left text-2xl font-bold pb-4 text-blue-700 "> News and Impact stories</span>
-                                <hr className="eventsHr-1" />
+                                <hr className="eventsHr-1 w-10" />
                             </div>
                             <div className="pt-9 grid lg:grid-cols-3 md:grid-cols-2 grid:cols-1 gap-6">
                                     {news.map((news_) => (
@@ -48,7 +48,7 @@ function NewsAndEvents() {
                                                 <img
                                                     src={`${address()}news/${news_.id}/image`}
                                                     alt="News"
-                                                    className="h-auto w-auto"
+                                                    className="overflow-hidden h-auto w-auto"
                                                 />
                                             </div>
                                             <div className="text-gray-800">
@@ -56,13 +56,13 @@ function NewsAndEvents() {
                                                     <h2 className="font-bold text-xl pt-10 pb-3">
                                                         {news_.name}
                                                     </h2>
-                                                    <hr className="eventsHr" />
+                                                    <hr className=" w-10" />
                                                     <p className="project-discription text-lg pt-7">
                                                         {news_.description}
                                                     </p>
                                                 </div>
-                                                <Link className="btn p-3 rounded-lg "
-                                                    to={"/news/" + news_.id}>
+                                                <Link  to={"/news/" + news_.id} 
+                                                className="btn p-3 rounded-lg "  >
                                                     Read More
                                                 </Link>
                                             </div>

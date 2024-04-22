@@ -37,8 +37,17 @@ function News() {
     //   }
 
 
+    const [cover, setCover] = useState();
+
+    async function fetchCover() {
+        const fetch = await window.fetch(`${address()}cover-image/EVENT1`, {
+            headers: { "accept-language": `en` },
+        });
+        setCover(fetch);
+    }
+
     useEffect(() => {
-        // fetchEvents();
+        fetchCover();
         fetchNews();
     }, [`en`]);
 
@@ -50,32 +59,43 @@ function News() {
                 <TopBar />
                 <NavBar />
                 {/* title section */}
-                <section className="py-10 bg-gray-500 ">
-                    <div className="py-10 text-center">
-                        <h3 className="text-3xl font-bold text-white">  News and Impact Stories   </h3>
-                    </div>
-                </section>
+                {
+                    (cover !== undefined) ?
+                        <section className="hub-section py-10 "
+                            style={{
+                                backgroundImage: 'url(' + `${address()}cover-image/EVENT1` + ')'                            }} >
+                            <div className="py-10 text-center">
+                                <h3 className="text-3xl font-bold text-white uppercase">News and Impact Stories </h3>
+                            </div>
+                        </section>
+                        :
+                        <section className="py-10 bg-gray-500 ">
+                            <div className="py-10 text-center">
+                                <h3 className="text-3xl font-bold text-white uppercase">News and Impact Stories </h3>
+                            </div>
+                        </section>
+                }
                 <section className="py-10 bg-white grid grid-cols-12">
                     <div></div>
-                    <div className="col-span-10 grid grid-cols-3 gap-4">
-                        {news.map((news_) => (
-                            <Link to={"/news/" + news_.id}>
-                                <Card key={news_.id}>
+                    <div className="col-span-10 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4">
+                        {news.map((newsData) => (
+                            <Link to={"/news/" + newsData.id}>
+                                <Card key={newsData.id}>   
                                     <img
-                                        src={`${address()}news/${news_.id}/image`}
+                                        src={`${address()}news/${newsData.id}/image`}
                                         alt="News"
                                         height="350px"
-                                        width="650px"
+                                        width="350px"
                                         className="m-0"
                                     />
                                     <div className="text-gray-800">
                                         <div class="event-content pb-6  ">
                                             <h2 className="font-bold text-xl pt-10 pb-3">
-                                                {news_.name}
+                                                {newsData.name}
                                             </h2>
-                                            <hr className="eventsHr" />
+                                            <hr className="eventsHr w-10" />
                                             <p className="project-discription text-lg pt-7">
-                                                {news_.description}
+                                                {newsData.description}
                                             </p>
                                         </div>
                                     </div>

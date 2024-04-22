@@ -57,11 +57,11 @@ function Learning() {
                                                 </div>
                                                 {course.link ? (
                                                     <div className="py-4 px-10 text-center w-full bg-gray-200">
-                                                        <Link className="hover:bg-blue-700  flex hover:text-white course-card text-white px-4 py-3 w-full text-center" to={course.link}>Get Started</Link>
+                                                        <Link className="hover:bg-blue-700 flex-wrap hover:text-white course-card text-white px-4 py-3 w-full text-center" to={course.link}>Get Started</Link>
                                                     </div>
                                                 ) : (
                                                     <div className="py-4 px-10 text-center w-full bg-gray-200">
-                                                        <Link className="hover:bg-blue-700  flex hover:text-white course-card text-white px-4 py-3 w-full text-center" to="/course-form">Register</Link>
+                                                        <Link className="hover:bg-blue-700 flex-wrap hover:text-white course-card text-white px-4 py-3 w-full text-center" to="/course-form">Register</Link>
                                                     </div>
                                                 )}
                                             </div>

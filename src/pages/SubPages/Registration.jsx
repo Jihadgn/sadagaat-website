@@ -39,19 +39,20 @@ function Registration() {
     });
 
 
-
-    const { cover, setCover } = useState()
-
-    async function componentDidMount() {
+    const [cover, setCover] = useState();
+    async function fetchCover() {
         const fetch = await window.fetch(`${address()}cover-image/VOLUNTEER2`, {
             headers: { "accept-language": `en` },
         });
-        if (fetch.status == 500) {
-            setCover({ cover: undefined });
-        } else {
-            setCover({ cover: fetch });
-        }
+        setCover(fetch);
     }
+
+
+    // get sliders on page load
+    useEffect(() => {
+        fetchCover();
+    }, []);
+
 
     const states = ["khartoum", "north_kordofan", "northern", "kassala",
         "blue_nile", "north_darfur", "south_darfur", "south_kordofan",
@@ -109,11 +110,22 @@ function Registration() {
                 <TopBar />
                 <NavBar />
                 {/* title section */}
-                <section className="py-10 bg-gray-500 ">
-                    <div className="py-10 text-center">
-                        <h3 className="text-3xl font-bold text-white"> Registration Form  </h3>
-                    </div>
-                </section>
+                {
+                    (cover !== undefined) ?
+                        <section className="hub-section py-10 "
+                            style={{
+                                backgroundImage: 'url(' + `${address()}cover-image/VOLUNTEER2` + ')'                            }} >
+                            <div className="py-10 text-center">
+                                <h3 className="text-3xl font-bold text-white uppercase">Registration Form </h3>
+                            </div>
+                        </section>
+                        :
+                        <section className="py-10 bg-gray-500 ">
+                            <div className="py-10 text-center">
+                                <h3 className="text-3xl font-bold text-white uppercase">Registration Form </h3>
+                            </div>
+                        </section>
+                }
                 <section className="py-10 bg-white grid grid-cols-12 lg:px-16 px-1">
                     <div></div> 
                     <div className="col-span-10 lg:px-16 px-1 overflow-hidden">

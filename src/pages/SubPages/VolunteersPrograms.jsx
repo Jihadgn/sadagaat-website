@@ -103,8 +103,19 @@ const VolunteerPrograms = (props) => {
         if (type === "completed") projectsType = 1;
         if (type === "planned") projectsType = 3;
     }
+    const [cover, setCover] = useState();
+
+    async function fetchCover() {
+        const fetch = await window.fetch(`${address()}cover-image/VOLUNTEER3`, {
+            headers: { "accept-language": `en` },
+        });
+        setCover(fetch);
+    }
+
+
     useEffect(() => {
         fetchData();
+        fetchCover();
     }, [props]);
 
     // Change page
@@ -127,11 +138,22 @@ const VolunteerPrograms = (props) => {
                 <TopBar />
                 <NavBar />
                 {/* title section */}
-                <section className="py-10 bg-gray-500 ">
-                    <div className="py-10 text-center">
-                        <h3 className="text-3xl font-bold text-white"> Volunteers Programs  </h3>
-                    </div>
-                </section>
+               {
+                    (cover !== undefined) ?
+                        <section className="hub-section py-10 "
+                            style={{
+                                backgroundImage: 'url(' + `${address()}cover-image/VOLUNTEER3` + ')'                            }} >
+                            <div className="py-10 text-center">
+                                <h3 className="text-3xl font-bold text-white uppercase">Volunteers Programs </h3>
+                            </div>
+                        </section>
+                        :
+                        <section className="py-10 bg-gray-500 ">
+                            <div className="py-10 text-center">
+                                <h3 className="text-3xl font-bold text-white uppercase">Volunteers Programs </h3>
+                            </div>
+                        </section>
+                }
                 <section className="py-10 bg-white grid grid-cols-12">
                     <div></div>
                     <div className="col-span-10">

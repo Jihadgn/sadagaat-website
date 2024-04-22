@@ -21,8 +21,12 @@ function Home() {
         const response = await fetcher.json();
         setAbout(response.text);
     }
-
+    const [cover, setCover] = useState();
     async function fetchAboutImages() {
+        const fetch = await window.fetch(`${address()}cover-image/ABOUT1`, {
+            headers: { "accept-language": `en` },
+        });
+        setCover(fetch);
         const img1 = await window.fetch(`${address()}about-us/ABOUTUS1/image`);
         const res1 = await img1.json();
         setAbout1(img1);
@@ -49,11 +53,22 @@ function Home() {
                 <TopBar />
                 <NavBar />
                 {/* about Sadagaat */}
-                <section className="py-10 bg-gray-500 ">
-                    <div className="py-10 text-center">
-                        <h3 className="text-3xl font-bold text-white">About Sadagaat </h3>
-                    </div>
-                </section>
+                {
+                    (cover !== undefined) ?
+                        <section className="hub-section py-10 "
+                            style={{
+                                backgroundImage: 'url(' + `${address()}cover-image/ABOUT1` + ')'                            }} >
+                            <div className="py-10 text-center">
+                                <h3 className="text-3xl font-bold text-white uppercase">About Sadagaat </h3>
+                            </div>
+                        </section>
+                        :
+                        <section className="py-10 bg-gray-500 ">
+                            <div className="py-10 text-center">
+                                <h3 className="text-3xl font-bold text-white uppercase">About Sadagaat </h3>
+                            </div>
+                        </section>
+                }
                 <section className="pt-10 pb-10 grid grid-cols-12 bg-white">
                     <div></div>
                     <div className="col-span-10 grid xl:grid-cols-2 md:grid-cols-1 pt-8">
@@ -154,7 +169,7 @@ function Home() {
                             </p>
                             <div className="grid grid-cols-4 gap-2 pt-6">
                                 <button onClick={() => { window.location.href = '/donate' }}
-                                 className="bg-white border-black rounded-0 rounded text-blue-900 py-2">Donate</button>
+                                    className="bg-white border-black rounded-0 rounded text-blue-900 py-2">Donate</button>
                             </div>
                         </div>
                     </div>

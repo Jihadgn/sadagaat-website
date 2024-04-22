@@ -8,6 +8,21 @@ import { React, useEffect, useState } from "react";
 import { Table } from 'flowbite-react';
 function Ongoing() {
 
+    const [cover, setCover] = useState();
+
+    async function fetchCover() {
+        const fetch = await window.fetch(`${address()}cover-image/DONATION`, {
+            headers: { "accept-language": `en` },
+        });
+        setCover(fetch);
+    }
+
+
+    // get sliders on page load
+    useEffect(() => {
+        fetchCover();
+    }, []);
+
     return (
         <>
             <main >
@@ -15,11 +30,22 @@ function Ongoing() {
                 <TopBar />
                 <NavBar />
                 {/* title section */}
-                <section className="py-10 bg-gray-500 ">
-                    <div className="py-10 text-center">
-                        <h3 className="text-3xl font-bold text-white"> Donate </h3>
-                    </div>
-                </section>
+                {
+                    (cover !== undefined) ?
+                        <section className="hub-section py-10 "
+                            style={{
+                                backgroundImage: 'url(' + `${address()}cover-image/DONATION` + ')'                            }} >
+                            <div className="py-10 text-center">
+                                <h3 className="text-3xl font-bold text-white uppercase">Donate </h3>
+                            </div>
+                        </section>
+                        :
+                        <section className="py-10 bg-gray-500 ">
+                            <div className="py-10 text-center">
+                                <h3 className="text-3xl font-bold text-white uppercase">Donate </h3>
+                            </div>
+                        </section>
+                }
                 <section className="py-10 bg-white grid grid-cols-12">
                     <div></div>
                     <div className="col-span-10">

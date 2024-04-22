@@ -21,6 +21,8 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
 background-size: auto;
+background-color: #fff;
+
 }
 
 .fixedBackGround {
@@ -113,7 +115,13 @@ background-size: auto;
 }
 
 .slider {
+  height: 500px;
+  overflow: hidden;
+  background-color: #fff;
+}
+.slider img{
   height: fit-content;
+  width: fit-content;
   overflow: hidden;
 }
 
@@ -178,13 +186,15 @@ background-size: auto;
 .causes .thumb {
   position: relative;
   overflow: hidden;
-  max-height: 270px !important;
+  max-height: 270px !important; 
 } 
+
 
 .causes .thumb img {
   transition: all 500ms ease 0s;
-  overflow: hidden;
-  position: relative;
+  position: relative; 
+  width:400px;
+  height:360px;
 }
 
 .causes:hover .thumb img {
@@ -200,10 +210,12 @@ background-size: auto;
 .gallery-item .thumb img {
   transition: all 500ms ease 0s;
   position: relative;
+  width:400px;
+  height:360px;
 }
 
 .gallery-item:hover .thumb img {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 .causes .progress-item .progress-bar .percent {

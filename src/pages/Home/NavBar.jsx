@@ -1,4 +1,3 @@
-import { Link, NavLink } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import address from '../../services';
 import axios from 'axios';
@@ -91,7 +90,7 @@ function NavBar() {
                                 {featuredOnGoingProjects.map((project, index) => {
                                     return (
                                         <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3"
-                                            href={`/single-projects/${project.id}`}> {project.name}</Dropdown.Item>
+                                            href={`/single-project/${project.id}`}> {project.name}</Dropdown.Item>
                                     )
                                 })}
                             </Dropdown>

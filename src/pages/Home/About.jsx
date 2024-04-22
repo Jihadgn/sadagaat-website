@@ -139,8 +139,10 @@ function Home() {
                                 competence in coordination and scientific methodology.
                             </p>
                             <div className="grid lg:grid-cols-4 md:grid-cols-4 grid-cols-2   gap-2 pt-6">
-                                <button className="text-center   bg-white border-black text-blue-900 py-3">Read More</button>
-                                <button className="text-center   btn border-black text-white px-7 py-3">Donate</button>
+                                <Link to="/about" 
+                                className="text-center bg-white border rounded border-black text-blue-900 py-3">Read More</Link>
+                                <button onClick={() => { window.location.href = '/donate' }} 
+                                className="text-center btn border-black text-white px-7 py-3">Donate</button>
                             </div>
                         </div>
                     </div>

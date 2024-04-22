@@ -33,9 +33,7 @@ function PhotoGalary() {
                                 <div className="gallery-item px-3" style={{ float: "left" }}>
                                     <div className="thumb ">
                                         <img
-                                            // width="470px"
-                                            // height="370px"
-                                            className="overflow-heddin h-full w-full"
+                                            className="overflow-hidden h-full w-full"
                                             src={`${address()}gallary/${image.imageName}/image`} key={index} />
                                     </div>
                                 </div>

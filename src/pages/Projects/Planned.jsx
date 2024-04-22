@@ -17,7 +17,7 @@ function Planned() {
     const cover = data.cover;
 
     async function fetchData() {
-        const fetch = await window.fetch(`${address()}cover-image/PROJECT2`, {
+        const fetch = await window.fetch(`${address()}cover-image/PROJECT3`, {
             headers: { "accept-language": `en` },
         });
         setData({ cover: fetch });
@@ -40,7 +40,7 @@ function Planned() {
                     (cover !== undefined) ?
                         <section className="hub-section py-10 "
                             style={{
-                                backgroundImage: 'url(' + `${address()}cover-image/PROJECT2` + ')'
+                                backgroundImage: 'url(' + `${address()}cover-image/PROJECT3` + ')'
                             }} >
                             <div className="py-10 text-center">
                                 <h3 className="text-3xl font-bold text-white">Planned Projects </h3>

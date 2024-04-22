@@ -40,11 +40,11 @@ function MainSlider() {
         <>
             <main >
                 {/* Carousel */}
-                <section className="bg-white slider">
+                <section className="bg-white  mb-10">
                     <Slider {...sliderSetting}>
                         {slides.map((slide) => (
                             <div>
-                                <img src={`${address()}slider/${slide.imageName}/image`} />
+                                <img src={`${address()}slider/${slide.imageName}/image`} className="slider w-full"/>
                             </div>
                         ))}
                     </Slider>

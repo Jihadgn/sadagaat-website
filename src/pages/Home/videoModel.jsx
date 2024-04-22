@@ -58,19 +58,23 @@ class ModalVedioComponent extends Component {
         {this.state.isOpen && (
           <>
             {id != "" ? (
+              <div className="z-999 overflow-hidden">
               <ModalVideo
                 channel="youtube"
                 isOpen={this.state.isOpen}
                 videoId={id}
                 onClose={() => this.setState({ isOpen: false })}
-              />
+                />
+                </div>
             ) : (
+              <div className="z-999 overflow-hidden">
               <ModalVideo
                 channel="youtube"
                 isOpen={this.state.isOpen}
                 videoId="JI-1UEwo-tg"
                 onClose={() => this.setState({ isOpen: false })}
               />
+              </div>
             )}
           </>
         )}
