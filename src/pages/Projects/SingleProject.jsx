@@ -57,7 +57,7 @@ function SingleProject() {
                     <div></div>
                     <div className="px-10  py-10 col-span-10 gap-4">
                         <div className="text-gray-800">
-                            <div class="event-content pb-6">
+                            <div className="event-content pb-6">
                                 <h2 className="font-bold text-3xl pb-3">
                                     {project.name}
                                 </h2>

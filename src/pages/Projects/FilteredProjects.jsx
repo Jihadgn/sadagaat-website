@@ -15,88 +15,121 @@ import DatePicker from "react-datepicker";
 // import Filters from './ProjectFilter';
 
 
-const SingleSubHubProject = (props) => {
-
-    const [data, setData] = useState([]);
+const FilteredProjects = (props, searchData) => {
+    let [data, setData] = useState([]);
     let [currentPage, setCurrentPage] = useState(0);
-    let [projectsType, setProjectsType] = useState(0);
+    let [projectsType, setProjectsType] = useState("");
     const [postsPerPage] = useState(6);
     const [totalPages, setTotalPages] = useState(0);
     let [Dates, GetDates] = useState({
-        startDate: "01/01/2001",
-        endDate: "01/01/2025",
+      startDate: "1/1/2001",
+      endDate: "1/1/2025",
     });
-    let [orderOn, setOrderOn] = useState(false);
     let [filterOn, setFilterOn] = useState(false);
+    let [orderOn, setOrderOn] = useState(false);
     const [loading, setLoading] = useState(true);
-    //@example projectType = 'onging'
-   
-    //   Get all projects from API
-     
-    async function fetchData() {
-        let isSorting;
-        if (document.getElementsByClassName("flip-v") === undefined) {
-          isSorting = false;
-        } else isSorting = true;
-        const projectType = props.type;
-        let prefix = address();
-        let FilterUrl =
-          prefix +
-          "projects/search-order?" +
-          "startDate=" +
-          Dates.startDate +
-          "&endDate=" +
-          Dates.endDate +
-          "&location" +
-          location +
-          "&status=" +
-          projectType +
-          "&inASEOrder=" +
-          isSorting +
-          "&page=" +
-          currentPage +
-          "&size=" +
-          postsPerPage;
-        console.log(FilterUrl);
-        const fetcher = await window.fetch(
-          FilterUrl,
-          {
-            headers: { "accept-language": `en` },
-          },
-          {
-            items: (page) => page.results,
-            params: true,
-          }
-        );
-        const response = await fetcher.json();
-        console.log(response);
-        setData(response.data);
-        setTotalPages(response.totalPages);
-        setLoading(false);
-        console.log(Dates.endDate);
-      }
-   
     
-
+     const searchQuery = searchData;
+    
+  
     useEffect(() => {
-        fetchData();
+      fetchData();
     }, [props]);
+  
+    /**
+     * Get all projects from API
+     */
+    async function fetchData() {
+        console.log(searchQuery);
 
+      let prefix = address();
+      let FilterUrl =
+        prefix +
+        "projects/search-order?" +
+        "name=" +
+        searchQuery +
+        "&inASEOrder=" +
+        false +
+        "&page=" +
+        currentPage +
+        "&size=" +
+        postsPerPage;
+      const fetcher = await window.fetch(
+        FilterUrl,
+        {
+          headers: { "accept-language": `en` },
+        },
+        {
+          items: (page) => page.results,
+          params: true,
+        }
+      );
+      const response = await fetcher.json();
+      setData(response.data);
+      // data = response.data;
+      setTotalPages(response.totalPages);
+      setLoading(false);
+    }
+    async function fetchDataFiltered() {
+      let sorting;
+      if (document.getElementsByClassName("flip-v") === undefined) {
+        sorting = false;
+      } else sorting = true;
+      let prefix = address();
+      let FilterUrl =
+        prefix +
+        "projects/search-order?" +
+        "name=" +
+        searchQuery +
+        "&startDate=" +
+        Dates.startDate +
+        "&endDate=" +
+        Dates.endDate +
+        "&status=" +
+        projectsType +
+        "&inASEOrder=" +
+        false +
+        "&page=" +
+        currentPage +
+        "&size=" +
+        postsPerPage;
+      const fetcher = await window.fetch(
+        FilterUrl,
+        {
+          headers: { "accept-language": `en` },
+        },
+        {
+          items: (page) => page.results,
+          params: true,
+        }
+      );
+      const response = await fetcher.json();
+      setData(response.data);
+      setTotalPages(response.totalPages);
+      setLoading(false);
+    }
+  
+  
+    function filterProjectsType(type) {
+      if (type === "ongoing") projectsType = 2;
+      if (type === "completed") projectsType = 1;
+      if (type === "planned") projectsType = 3;
+    }
+  
     // Change page
     function paginate(pageNumber) {
-        console.log(pageNumber);
-        currentPage = pageNumber.selected;
-        console.log(currentPage);
-        if (filterOn === false) fetchData();
-        else fetchDataFiltered();
+      currentPage = pageNumber.selected;
+      if (filterOn === false) fetchData();
+      else fetchDataFiltered();
     }
-
+  
     function pageProjects() {
-        let x = document.getElementsByClassName("flip-v");
-        if (x === undefined && filterOn === false) {
-            return data;
-        } else return data.reverse();
+      let x = document.getElementsByClassName("flip-v");
+      if (x === undefined && filterOn === false) {
+        return data;
+      } else return data.reverse();
     }
+  
 
     return (
         <>
@@ -200,4 +233,4 @@ const SingleSubHubProject = (props) => {
     )
 }
 
-export default SingleSubHubProject
+export default FilteredProjects

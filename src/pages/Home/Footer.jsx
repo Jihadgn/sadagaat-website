@@ -41,7 +41,6 @@ function Footer() {
             const res = await axios.get(url);
             setMagazineLinks(res.data);
         } catch (ex) {
-            console.log("Unable to fetch magazine links!");
         }
     }
     useEffect(() => {

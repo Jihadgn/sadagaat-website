@@ -12,7 +12,7 @@ import {
   useParams,
 } from "react-router-dom";
 
-function SingleSNews() {
+function SingleNews() {
 
   const [news, setNews] = useState([]);
   const [images, setImages] = useState([]);
@@ -76,7 +76,7 @@ function SingleSNews() {
                 />  
                 </div>
               <div className="text-gray-800">
-                <div class="event-content pb-6">
+                <div className="event-content pb-6">
                   <h2 className="font-bold text-xl pb-3">
                     {news.name}
                   </h2>
@@ -97,4 +97,4 @@ function SingleSNews() {
   )
 }
 
-export default SingleSNews
+export default SingleNews

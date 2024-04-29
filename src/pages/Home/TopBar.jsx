@@ -1,6 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function TopBar() {
+
+  const [searchData, setSearchData] = useState();
+
+  function setSearchQuery(e) {
+    // setSearch();
+    window.location.pathname = "/Search-Results";
+    console.log(searchData);
+  }
+
+  function redirectSearchPage() {
+    window.location.pathname = "/Search-Results";
+  }
+
+  function enterPressListener() {
+    let searchInput = document.getElementById("searchQuery");
+    console.log(searchInput);
+    searchInput.addEventListener("keypress", function (e) {
+      console.log(e);
+      if (searchInput.value !== "" && e.code === "Enter") {
+        e.preventDefault();
+        redirectSearchPage();
+      }
+    });
+  }
 
   return (
     <>
@@ -39,27 +64,34 @@ function TopBar() {
 
               </a>
             </div>
-              <div className="flex justify-center sm:pt-4 gap-4">
-                <h6 className="text-md text-white flex gap-2 text-center">
-                  <svg className="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18.427 14.768 17.2 13.542a1.733 1.733 0 0 0-2.45 0l-.613.613a1.732 1.732 0 0 1-2.45 0l-1.838-1.84a1.735 1.735 0 0 1 0-2.452l.612-.613a1.735 1.735 0 0 0 0-2.452L9.237 5.572a1.6 1.6 0 0 0-2.45 0c-3.223 3.2-1.702 6.896 1.519 10.117 3.22 3.221 6.914 4.745 10.12 1.535a1.601 1.601 0 0 0 0-2.456Z" />
-                  </svg>
-                  +447884060063  </h6>
-                <h6 className="text-md text-white flex gap-2 text-center  ">
-                  <svg className="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="m3.5 5.5 7.893 6.036a1 1 0 0 0 1.214 0L20.5 5.5M4 19h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z" />
-                  </svg>
-                  info@sadagaat-uk.org</h6>
-              </div>
+            <div className="flex justify-center sm:pt-4 gap-4">
+              <h6 className="text-md text-white flex gap-2 text-center">
+                <svg className="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18.427 14.768 17.2 13.542a1.733 1.733 0 0 0-2.45 0l-.613.613a1.732 1.732 0 0 1-2.45 0l-1.838-1.84a1.735 1.735 0 0 1 0-2.452l.612-.613a1.735 1.735 0 0 0 0-2.452L9.237 5.572a1.6 1.6 0 0 0-2.45 0c-3.223 3.2-1.702 6.896 1.519 10.117 3.22 3.221 6.914 4.745 10.12 1.535a1.601 1.601 0 0 0 0-2.456Z" />
+                </svg>
+                +447884060063  </h6>
+              <h6 className="text-md text-white flex gap-2 text-center  ">
+                <svg className="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="m3.5 5.5 7.893 6.036a1 1 0 0 0 1.214 0L20.5 5.5M4 19h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z" />
+                </svg>
+                info@sadagaat-uk.org</h6>
+            </div>
             <div className="grid grid-cols-2 py-2 justify-center">
               <div className="flex lg:py-2 sm:pt-4">
                 <div className="relative w-full justify-center">
-                  <input type="search" id="search-dropdown" className="block p-2 w-full text-sm text-gray-900 bg-gray-50 rounded-full  border border-gray-300 " placeholder="Search in projects" />
-                  <button className="absolute rounded-full top-0 end-0 px-2 text-sm font-medium h-auto bg-white text-gray-900">
-                    <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                    </svg>
-                  </button>
+                  <form action="" onSubmit={redirectSearchPage}>
+                    <input type="text" name="search" id="searchQuery"
+                      className="block p-2 w-full text-sm text-gray-900 bg-gray-50 rounded-full  border border-gray-300 "
+                      placeholder="Search in projects"
+                      onChange={(e) => { setSearchData(e.target.value) }} />
+                    <Link
+                      to="/Search-Results" onClick={setSearchQuery}
+                      className="absolute rounded-full top-0 end-0 px-2 text-sm font-medium h-auto bg-white text-gray-900">
+                      <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                      </svg>
+                    </Link>
+                  </form>
                 </div>
               </div>
             </div>

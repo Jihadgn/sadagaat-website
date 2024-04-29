@@ -14,6 +14,7 @@ import Rrgisteration from "./pages/SubPages/Registration";
 import Volunteers from "./pages/SubPages/AboutVolunteers";
 import Careers from "./pages/SubPages/Careers";
 import Events from "./pages/SubPages/Events";
+import SingleEvent from "./pages/SubPages/SingleEvent";
 import News from "./pages/SubPages/News";
 import SingleNews from "./pages/SubPages/SingleNews";
 import Gallery from "./pages/SubPages/Gallery";
@@ -21,7 +22,7 @@ import Contact from "./pages/SubPages/Contact";
 import VolunteersPrograms from "./pages/SubPages/VolunteersPrograms";
 import Learning from "./pages/SubPages/Learning"
 import CourseForm from "./pages/SubPages/CourseForm";
-
+import SearchResults from "./pages/Projects/SearchResults"
 const router = createBrowserRouter([
   
   {
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
     element: <Events />,
   },
   {
+    path: "/events/:event_id",
+    element: <SingleEvent />,
+  },
+  {
     path: "/news",
     element: <News />,
   },
@@ -91,6 +96,10 @@ const router = createBrowserRouter([
   {
     path: "/single-project/:project_id",
     element: <SingleProject />
+  },
+  {
+    path: "/Search-Results",
+    element: <SearchResults />
   },
   {
     path: "/wash",

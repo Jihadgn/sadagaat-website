@@ -17,7 +17,10 @@ function Home() {
     const [about3, setAbout3] = useState("")
 
     async function fetchAbout() {
-        const fetcher = await window.fetch(`${address()}about-us`);
+        const fetcher = await window.fetch(`${address()}about-us`,
+        {
+            headers: { 'accept-language': `en` }
+        });
         const response = await fetcher.json();
         setAbout(response.text);
     }
@@ -57,7 +60,8 @@ function Home() {
                     (cover !== undefined) ?
                         <section className="hub-section py-10 "
                             style={{
-                                backgroundImage: 'url(' + `${address()}cover-image/ABOUT1` + ')'                            }} >
+                                backgroundImage: 'url(' + `${address()}cover-image/ABOUT1` + ')'
+                            }} >
                             <div className="py-10 text-center">
                                 <h3 className="text-3xl font-bold text-white uppercase">About Sadagaat </h3>
                             </div>
@@ -155,18 +159,23 @@ function Home() {
                         </div>
                         <div className="text-black px-4 xl:pt-0 md:pt-6 sm:pt-6">
                             <h1 className="text-2xl font-bold tracking-tight text-gray-900">ABOUT SADAGAAT</h1>
-                            <p className="pt-7 font-normal text-gray-700">
-                                Sadagaat Charity organazation is a registered charity of the Voluntary and
-                                Humanitarian Action Commission, which has been active in assisting vulnerable
-                                groups for more than 15 years, during which many successful projects, whether
-                                seasonal or ongoing, have been implemented through the support of
-                                philanthropists from within and outside Sudan, Under 4 Divisions: Feeding, Health,
-                                Wash, and Education. The implementation of these projects is by an integrated
-                                administrative body, starting with membership in the Sadagaat community and ending
-                                with an executive unit that directly supervises daily activities. The small
-                                executive body that implements the projects depends on: Administrative
-                                competence in coordination and scientific methodology.
-                            </p>
+                            {about != null ?
+                                <p className="pt-7 font-normal text-gray-700">
+                                    {about} <br />
+                                </p> :
+                                <p className="pt-7 font-normal text-gray-700">
+                                    Sadagaat Charity organazation is a registered charity of the Voluntary and
+                                    Humanitarian Action Commission, which has been active in assisting vulnerable
+                                    groups for more than 15 years, during which many successful projects, whether
+                                    seasonal or ongoing, have been implemented through the support of
+                                    philanthropists from within and outside Sudan, Under 4 Divisions: Feeding, Health,
+                                    Wash, and Education. The implementation of these projects is by an integrated
+                                    administrative body, starting with membership in the Sadagaat community and ending
+                                    with an executive unit that directly supervises daily activities. The small
+                                    executive body that implements the projects depends on: Administrative
+                                    competence in coordination and scientific methodology.
+                                </p>
+                            }
                             <div className="grid grid-cols-4 gap-2 pt-6">
                                 <button onClick={() => { window.location.href = '/donate' }}
                                     className="bg-white border-black rounded-0 rounded text-blue-900 py-2">Donate</button>

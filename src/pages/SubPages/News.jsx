@@ -85,11 +85,11 @@ function News() {
                                         src={`${address()}news/${newsData.id}/image`}
                                         alt="News"
                                         height="350px"
-                                        width="350px"
+                                        width="650px"
                                         className="m-0"
                                     />
                                     <div className="text-gray-800">
-                                        <div class="event-content pb-6  ">
+                                        <div className="event-content pb-6  ">
                                             <h2 className="font-bold text-xl pt-10 pb-3">
                                                 {newsData.name}
                                             </h2>

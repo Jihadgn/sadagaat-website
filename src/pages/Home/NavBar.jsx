@@ -12,7 +12,6 @@ function NavBar() {
             headers: { "accept-language": `en` },
         });
         setFeaturedOnGoingProjects(response.data);
-        console.log(response.data);
     }
 
     const [magazineLinks, setMagazineLinks] = useState({
@@ -27,7 +26,6 @@ function NavBar() {
             const res = await axios.get(url);
             setMagazineLinks(res.data);
         } catch (ex) {
-            console.log("Unable to fetch magazine links!");
         }
     }
 
@@ -43,7 +41,7 @@ function NavBar() {
                 <Navbar fluid rounded>
                     <Navbar.Brand>
                     </Navbar.Brand>
-                    <div className="flex md:order-1">
+                    <div className="flex md:order-1 ml-auto ">
                         <button className="flex primary font-medium rounded-lg text-md pt-3  px-4 text-center text-white hove:text-white"
                             onClick={() => { window.location.href = '/donate' }}>
                             <svg className="w-6 h-6 text-red-600 " xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="red" viewBox="0 0 24 24">
@@ -53,14 +51,14 @@ function NavBar() {
                         </button>
                         <Navbar.Toggle className="bg-white" />
                     </div>
-                    <Navbar.Collapse className="text-gray-800 gap-4 ">
+                    <Navbar.Collapse className="text-gray-800 gap-4 flex-wrap">
                             <Navbar.Link href="#" >
-                                <img src={logo} className="h-18 w-40 sm:h-10" />
+                                <img src={logo} className="h-10 w-30 sm:h-8" />
                             </Navbar.Link>
                             <Navbar.Link href="/" className="text-gray-700 flex font-bold text-md mt-3 px-3">Home</Navbar.Link>
-                            <Dropdown label="About_Us" inline className="text-gray-800 text-md font-bold">
+                            <Dropdown label="About Us" inline className="text-gray-800 text-md font-bold">
                                 <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/about">
-                                    About_Us</Dropdown.Item>
+                                    About Us</Dropdown.Item>
                                 <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/contact-us">
                                     Contact</Dropdown.Item>
                             </Dropdown>
@@ -86,7 +84,7 @@ function NavBar() {
                             </Dropdown>
 
                             <Dropdown
-                                label="Ongoing_Featured_Projects" inline className="text-gray-800 text-md font-bold">
+                                label="Ongoing Featured Projects" inline className="text-gray-800 text-md font-bold">
                                 {featuredOnGoingProjects.map((project, index) => {
                                     return (
                                         <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3"
@@ -106,16 +104,16 @@ function NavBar() {
                             </Dropdown>
 
                             <Dropdown
-                                label="Join_Us" inline className="text-gray-800 text-md font-bold">
-                                <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/ongoin-projects">
+                                label="Join Us" inline className="text-gray-800 text-md font-bold">
+                                <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3 " href="/ongoin-projects">
                                     Donate to a project</Dropdown.Item>
                                 <Dropdown
-                                    label="Become a volunteer" inline className="text-gray-800 text-md font-bold">
+                                    label="Become a volunteer" inline className="text-gray-800 ml-16 w-full text-md font-bold">
                                     <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/Volunteers">
                                         About Volunteers</Dropdown.Item>
                                     <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/volunteerForm">
                                         volunteers form</Dropdown.Item>
-                                    <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/volunteers-programs">
+                                    <Dropdown.Item className="text-gray-700 font-bold text-md mt-3" href="/volunteers-programs">
                                         Volunteers programs</Dropdown.Item>
                                 </Dropdown>
                                 <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/events">
@@ -124,7 +122,7 @@ function NavBar() {
                                     Careers</Dropdown.Item>
                             </Dropdown>
 
-                            <Navbar.Link href="/sudanese-learning-hub" className="text-gray-700 flex text-md mt-3">Sudanese_Learning_Hub</Navbar.Link>
+                            <Navbar.Link href="/sudanese-learning-hub" className="text-gray-700 flex text-md mt-3">Sudanese Learning Hub</Navbar.Link>
                         
                     </Navbar.Collapse>
                 </Navbar>
