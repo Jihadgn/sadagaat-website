@@ -9,8 +9,7 @@ import { Tabs } from 'flowbite-react';
 import parse from 'html-react-parser';
 import FilteredProjects from './FilteredProjects'
 
-function SearchResult({searchData, setSearchData}) {
-
+function SearchResult() {
 
     return (
         <>
@@ -26,7 +25,7 @@ function SearchResult({searchData, setSearchData}) {
                 </section>
                 {/* tabs section */}
                 <section className="bg-white p-10 ">
-                <FilteredProjects search={true} setSearchData={searchData} />
+                <FilteredProjects search={true}  />
                 </section>
                 <Volunteering />
                 <Footer />

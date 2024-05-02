@@ -15,121 +15,72 @@ import DatePicker from "react-datepicker";
 // import Filters from './ProjectFilter';
 
 
-const FilteredProjects = (props, searchData) => {
+const FilteredProjects = (props) => {
+
     let [data, setData] = useState([]);
-    let [currentPage, setCurrentPage] = useState(0);
+    let [currentPage, setCurrentPage] = useState(1);
     let [projectsType, setProjectsType] = useState("");
     const [postsPerPage] = useState(6);
     const [totalPages, setTotalPages] = useState(0);
     let [Dates, GetDates] = useState({
-      startDate: "1/1/2001",
-      endDate: "1/1/2025",
+        startDate: "1/1/2001",
+        endDate: "1/1/2025",
     });
     let [filterOn, setFilterOn] = useState(false);
     let [orderOn, setOrderOn] = useState(false);
     const [loading, setLoading] = useState(true);
-    
-     const searchQuery = searchData;
-    
-  
+    let searchQuery = "";
+    if (props.search === true) {
+        searchQuery = localStorage.getItem("searchQuery");
+        console.log(searchQuery);
+    }
     useEffect(() => {
-      fetchData();
+        fetchData();
     }, [props]);
-  
-    /**
-     * Get all projects from API
-     */
+
+
     async function fetchData() {
         console.log(searchQuery);
 
-      let prefix = address();
-      let FilterUrl =
-        prefix +
-        "projects/search-order?" +
-        "name=" +
-        searchQuery +
-        "&inASEOrder=" +
-        false +
-        "&page=" +
-        currentPage +
-        "&size=" +
-        postsPerPage;
-      const fetcher = await window.fetch(
-        FilterUrl,
-        {
-          headers: { "accept-language": `en` },
-        },
-        {
-          items: (page) => page.results,
-          params: true,
-        }
-      );
-      const response = await fetcher.json();
-      setData(response.data);
-      // data = response.data;
-      setTotalPages(response.totalPages);
-      setLoading(false);
+        let prefix = address();
+        let FilterUrl =
+            prefix +
+            "projects/search-order?" +
+            "name=" +
+            searchQuery +
+            "&startDate=" +
+            Dates.startDate +
+            "&endDate=" +
+            Dates.endDate +
+            "&status=" +
+            projectsType +
+            "&inASEOrder=" +
+            false +
+            "&page=" +
+            currentPage +
+            "&size=" +
+            postsPerPage;
+        console.log(FilterUrl);
+        const fetcher = await window.fetch(
+            FilterUrl,
+            {
+                headers: { "accept-language": `en` },
+            },
+        );
+        const response = await fetcher.json();
+        setData(response.data);
+        // data = response.data;
+        setTotalPages(response.totalPages);
+        setLoading(false);
     }
-    async function fetchDataFiltered() {
-      let sorting;
-      if (document.getElementsByClassName("flip-v") === undefined) {
-        sorting = false;
-      } else sorting = true;
-      let prefix = address();
-      let FilterUrl =
-        prefix +
-        "projects/search-order?" +
-        "name=" +
-        searchQuery +
-        "&startDate=" +
-        Dates.startDate +
-        "&endDate=" +
-        Dates.endDate +
-        "&status=" +
-        projectsType +
-        "&inASEOrder=" +
-        false +
-        "&page=" +
-        currentPage +
-        "&size=" +
-        postsPerPage;
-      const fetcher = await window.fetch(
-        FilterUrl,
-        {
-          headers: { "accept-language": `en` },
-        },
-        {
-          items: (page) => page.results,
-          params: true,
-        }
-      );
-      const response = await fetcher.json();
-      setData(response.data);
-      setTotalPages(response.totalPages);
-      setLoading(false);
-    }
-  
-  
-    function filterProjectsType(type) {
-      if (type === "ongoing") projectsType = 2;
-      if (type === "completed") projectsType = 1;
-      if (type === "planned") projectsType = 3;
-    }
-  
-    // Change page
-    function paginate(pageNumber) {
-      currentPage = pageNumber.selected;
-      if (filterOn === false) fetchData();
-      else fetchDataFiltered();
-    }
-  
+
     function pageProjects() {
-      let x = document.getElementsByClassName("flip-v");
-      if (x === undefined && filterOn === false) {
-        return data;
-      } else return data.reverse();
+        let x = document.getElementsByClassName("flip-v");
+        if (x === undefined && filterOn === false) {
+            return data;
+        } else return data.reverse();
     }
-  
+
 
     return (
         <>
@@ -138,6 +89,7 @@ const FilteredProjects = (props, searchData) => {
                 <section className="pt-10 pb-10 grid grid-cols-12 text-center">
                     <div></div>
                     <div className="col-span-10">
+                        <div className="text-gray-900">{searchQuery}</div>
                         {/* filter projects */}
                         {/* {(data !== undefined && data.length > 0) || filterOn === true ? (
                             <div className="flex">
@@ -156,51 +108,51 @@ const FilteredProjects = (props, searchData) => {
                             {data !== undefined && data.length > 0 ? (
                                 pageProjects().map((project, index) => (
                                     <Link to={"/single-project/" + project.id}>
-                                    <Card className="max-w-md text-gray-900 causes px-3  " key={index}>
-                                        <div className="thumb" >
-                                            <img
-                                                src={`${address()}projects/${project.id}/image`}
-                                                width="400"
-                                                height="360"
-                                            />
-                                        </div>
-                                        <div className="grid grid-cols-2 pt-1">
-                                            <h3 className="text-left text-lg font-bold">Raised :  {getNumber(project.raised)}   </h3>
-                                            <h3 className="text-right text-lg font-bold">Target :  {getNumber(project.goal)} </h3>
-                                        </div>
-                                        <div className="progress-item mt-0">
-                                            <div className="progress">
-                                                <div
-                                                    data-percent={Precision(project.donationProgress)}
-                                                    className="progress-bar"
-                                                >
-                                                    <span className="percent">
-                                                        {Precision(project.donationProgress)}%
-                                                    </span>
+                                        <Card className="max-w-md text-gray-900 causes px-3  " key={index}>
+                                            <div className="thumb" >
+                                                <img
+                                                    src={`${address()}projects/${project.id}/image`}
+                                                    width="400"
+                                                    height="360"
+                                                />
+                                            </div>
+                                            <div className="grid grid-cols-2 pt-1">
+                                                <h3 className="text-left text-lg font-bold">Raised :  {getNumber(project.raised)}   </h3>
+                                                <h3 className="text-right text-lg font-bold">Target :  {getNumber(project.goal)} </h3>
+                                            </div>
+                                            <div className="progress-item mt-0">
+                                                <div className="progress">
+                                                    <div
+                                                        data-percent={Precision(project.donationProgress)}
+                                                        className="progress-bar"
+                                                    >
+                                                        <span className="percent">
+                                                            {Precision(project.donationProgress)}%
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <h2 className="text-left text-lg font-bold pt-1">Project Progress</h2>
-                                        <div className="progress-item mt-0">
+                                            <h2 className="text-left text-lg font-bold pt-1">Project Progress</h2>
+                                            <div className="progress-item mt-0">
 
-                                            <div className="progress">
-                                                <div
-                                                    data-percent={Precision(project.projectProgress)}
-                                                    className="progress-bar"
-                                                >
-                                                    <span className="percent">
-                                                        {Precision(project.projectProgress)}%
-                                                    </span>
+                                                <div className="progress">
+                                                    <div
+                                                        data-percent={Precision(project.projectProgress)}
+                                                        className="progress-bar"
+                                                    >
+                                                        <span className="percent">
+                                                            {Precision(project.projectProgress)}%
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <h2 className="text-left text-xl font-bold pt-1">
-                                            {project.name}
-                                        </h2>
-                                        <h2 className="project-discription text-left text-md font-normal">
-                                            {parse(project.description)}
-                                        </h2>
-                                    </Card>
+                                            <h2 className="text-left text-xl font-bold pt-1">
+                                                {project.name}
+                                            </h2>
+                                            <h2 className="project-discription text-left text-md font-normal">
+                                                {parse(project.description)}
+                                            </h2>
+                                        </Card>
                                     </Link>
                                 ))
                             ) : (

@@ -5,9 +5,9 @@ function TopBar() {
 
   const [searchData, setSearchData] = useState();
 
-  function setSearchQuery(e) {
-    // setSearch();
-    window.location.pathname = "/Search-Results";
+  function setSearchQuery() {
+    localStorage.setItem("searchQuery", document.getElementById("searchQuery").value);
+    console.log(localStorage.getItem("searchQuery"));
     console.log(searchData);
   }
 
