@@ -18,7 +18,7 @@ import DatePicker from "react-datepicker";
 const FilteredProjects = (props) => {
 
     let [data, setData] = useState([]);
-    let [currentPage, setCurrentPage] = useState(1);
+    let [currentPage, setCurrentPage] = useState(0);
     let [projectsType, setProjectsType] = useState("");
     const [postsPerPage] = useState(6);
     const [totalPages, setTotalPages] = useState(0);
@@ -48,12 +48,6 @@ const FilteredProjects = (props) => {
             "projects/search-order?" +
             "name=" +
             searchQuery +
-            "&startDate=" +
-            Dates.startDate +
-            "&endDate=" +
-            Dates.endDate +
-            "&status=" +
-            projectsType +
             "&inASEOrder=" +
             false +
             "&page=" +
@@ -81,7 +75,13 @@ const FilteredProjects = (props) => {
         } else return data.reverse();
     }
 
-
+    // Change page
+    function paginate(pageNumber) { 
+        console.log(pageNumber);
+        currentPage = pageNumber.selected;
+        console.log(currentPage);
+        fetchData();
+    }
     return (
         <>
             <main >
@@ -89,7 +89,6 @@ const FilteredProjects = (props) => {
                 <section className="pt-10 pb-10 grid grid-cols-12 text-center">
                     <div></div>
                     <div className="col-span-10">
-                        <div className="text-gray-900">{searchQuery}</div>
                         {/* filter projects */}
                         {/* {(data !== undefined && data.length > 0) || filterOn === true ? (
                             <div className="flex">
