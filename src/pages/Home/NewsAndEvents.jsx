@@ -3,14 +3,18 @@ import { useState, useEffect } from 'react';
 import address from '../../services';
 import { Link } from "react-router-dom";
 import { Card } from "flowbite-react";
+import i18n from "i18next";
+import { useTranslation } from "react-i18next";
 
 function NewsAndEvents() {
 
     const [news, setNews] = useState([]);
+    const { t } = useTranslation();
+    const style = i18n.dir() === "rtl" ? "pull-right ml-20" : "pull-left mr-20";
 
     async function fetchNews() {
         const fetcher = await window.fetch(`${address()}news`, {
-            headers: { "accept-language": `en` },
+            headers: { "accept-language": `${i18n.language}` },
         });
         const response = await fetcher.json();
         setNews(response.slice(0, 3));
@@ -18,7 +22,7 @@ function NewsAndEvents() {
 
     //   async function fetchEvents() {
     //     const fetcher = await window.fetch(`${address()}events`, {
-    //       headers: { "accept-language": `en` },
+    //       headers: { "accept-language": `${i18n.language}` },
     //     });
     //     const response = await fetcher.json();
     //     setEvent(response.slice(0, 3));
@@ -27,7 +31,7 @@ function NewsAndEvents() {
     useEffect(() => {
         // fetchEvents();
         fetchNews();
-    }, [`en`]);
+    }, [i18n.language]);
 
     return (
         <>
@@ -38,7 +42,7 @@ function NewsAndEvents() {
                     <div className="col-span-10 pt-8">
                             <div>
                                 <span className="text-left text-2xl font-bold pb-4 sm:pl-0 lg:pl-8 md:pl-0 text-gray-900 ">Latest </span>
-                                <span className="text-left text-2xl font-bold pb-4 text-blue-700 "> News and Impact stories</span>
+                                <span className="text-left text-2xl font-bold pb-4 text-blue-700 "> {t("News")}</span>
                                 <hr className="eventsHr-1 w-10" />
                             </div>
                             <div className="pt-9 grid lg:grid-cols-3 md:grid-cols-2 grid:cols-1 gap-6">
@@ -63,7 +67,7 @@ function NewsAndEvents() {
                                                 </div>
                                                 <Link  to={"/news/" + news_.id} 
                                                 className="btn p-3 rounded-lg "  >
-                                                    Read More
+                                                    {t("Read More")}
                                                 </Link>
                                             </div>
                                         </Card>

@@ -2,9 +2,11 @@ import React from "react";
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import address from '../../services';
+import { useTranslation } from "react-i18next";
 
 function Home() {
 
+    const { t, i18n } = useTranslation();
     const [about, setAbout] = useState([]);
     const [about1, setAbout1] = useState("")
     const [about2, setAbout2] = useState("")
@@ -12,9 +14,9 @@ function Home() {
 
     async function fetchAbout() {
         const fetcher = await window.fetch(`${address()}about-us`,
-        {
-            headers: { 'accept-language': `en` }
-        });
+            {
+                headers: { 'accept-language': `${i18n.language}` }
+            });
         const response = await fetcher.json();
         setAbout(response.text);
     }
@@ -30,13 +32,16 @@ function Home() {
         const res3 = await img3.json();
         setAbout3(img3);
     }
-
+    // const classParameter  set class name value  = pe-0 or pl-0 after Check page direction
+    const classParameter = i18n.dir() === "rtl" ? "pr-0" : "pl-0";
+    // const buttonClass  =  set class name value after Check page direction
+    const buttonClass = i18n.dir() === "rtl" ? "mr-5" : "ml-5";
 
     // get sliders on page load
     useEffect(() => {
         fetchAboutImages();
         fetchAbout();
-    }, []);
+    }, [i18n.language]);
 
 
     return (
@@ -47,7 +52,7 @@ function Home() {
                     <div></div>
                     <div className="col-span-10 grid xl:grid-cols-2 md:grid-cols-1 pt-2">
                         <div className="grid lg:grid-cols-2 md:grid-cols-2 gap-3">
-                            <div>
+                            <div className={`${classParameter}`}>
                                 <div className="img-hover-border">
 
                                     {
@@ -135,24 +140,16 @@ function Home() {
                                         {about} <br />
                                     </p> :
                                     <p>
-                                        Sadagaat Charity organazation is a registered charity of the Voluntary and
-                                        Humanitarian Action Commission, which has been active in assisting vulnerable
-                                        groups for more than 15 years, during which many successful projects, whether
-                                        seasonal or ongoing, have been implemented through the support of
-                                        philanthropists from within and outside Sudan, Under 4 Divisions: Feeding, Health,
-                                        Wash, and Education. The implementation of these projects is by an integrated
-                                        administrative body, starting with membership in the Sadagaat community and ending
-                                        with an executive unit that directly supervises daily activities. The small
-                                        executive body that implements the projects depends on: Administrative
-                                        competence in coordination and scientific methodology.
+                                        {t("about_message_1")} <br />
+                                                {t("about_message_2")}
                                     </p>
                                 }
                             </p>
                             <div className="grid lg:grid-cols-4 md:grid-cols-4 grid-cols-2   gap-2 pt-6">
                                 <Link to="/about"
-                                    className="text-center bg-white border rounded border-black text-blue-900 py-3">Read More</Link>
+                                    className={`text-center bg-white border rounded border-black text-blue-900 py-3 ${buttonClass}`}>{t("Read More")}</Link>
                                 <button onClick={() => { window.location.href = '/donate' }}
-                                    className="text-center btn border-black text-white px-7 py-3">Donate</button>
+                                    className={`text-center btn border-black text-white px-7 py-3  ${buttonClass}`}>{t("Donate")}</button>
                             </div>
                         </div>
                     </div>

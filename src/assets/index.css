@@ -201,6 +201,14 @@ background-color: #fff;
   transform: scale(1.1);
 }
 
+.coursesPage {
+  background-image: url("1234.png") ;
+  background-size: contain;
+  background-position: center;
+  opacity: 0.7;
+  background-blend-mode: overlay
+}
+
 .gallery-item .thumb {
   position: relative;
   overflow: hidden;

@@ -15,12 +15,14 @@ import {
   useParams,
 } from "react-router-dom";
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 
 function SingleEvent() {
 
   const [event, setEvent] = useState([]);
   const [images, setImages] = useState([]);
   const [cover, setCover] = useState({})
+  const { t, i18n } = useTranslation();
 
   const params = useParams();
   const id = params.event_id;
@@ -29,7 +31,7 @@ function SingleEvent() {
     //  Get id of event from url
     const response = await axios
       .get(`${address()}events/${id}`, {
-        headers: { "accept-language": `en` },
+        headers: { "accept-language": `${i18n.language}` },
       })
     setEvent(response.data);
     setImages(event.images);
@@ -37,7 +39,7 @@ function SingleEvent() {
 
   async function fetchCover() {
     const fetcher = await window.fetch(`${address()}cover-image/EVENT2`,
-      { headers: { 'accept-language': `en` } })
+      { headers: { 'accept-language': `${i18n.language}` } })
       .then((fetcher) => {
         if (fetcher.status == 500) {
           setCover(undefined)
@@ -51,7 +53,7 @@ function SingleEvent() {
   useEffect(() => {
     fetchData()
     fetchCover()
-  }, [])
+  }, [i18n.language])
 
   function SampleNextArrow(props) {
     const { className, style, onClick } = props;
@@ -98,13 +100,13 @@ function SingleEvent() {
             }}
           >
             <div className="py-10 text-center">
-              <h3 className="text-3xl font-bold text-white"> Events  </h3>
+              <h3 className="text-3xl font-bold text-white"> {t("Events")}  </h3>
             </div>
           </section> 
           :
           <section className="py-10 bg-gray-500 ">
             <div className="py-10 text-center">
-              <h3 className="text-3xl font-bold text-white"> Events  </h3>
+              <h3 className="text-3xl font-bold text-white"> {t("Events")}  </h3>
             </div>
           </section>
         }

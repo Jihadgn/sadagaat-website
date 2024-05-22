@@ -1,14 +1,17 @@
 import address from "../../services";
 import { React, useEffect, useState } from "react";
 import ModalVedioComponent from "./videoModel";
+import i18n from "i18next";
+import {useTranslation} from "react-i18next";
 
 function Video() {
 
+    const {t} = useTranslation();
     const [link, setLink] = useState({})
     async function fetchTable() {
         const fetcher = await window.fetch(`${address()}video-config`,
             {
-                headers: { 'accept-language': `en` }
+                headers: { 'accept-language': `${i18n.language}` }
             });
         const response = await fetcher.json();
         setLink(response);
@@ -17,7 +20,7 @@ function Video() {
 
     useEffect(() => {
         fetchTable();
-    }, [])
+    }, [i18n.language])
 
     return (
         <>
@@ -27,9 +30,7 @@ function Video() {
                     {
                         <h2 className="text-xl font-bold pb-4 text-white  ">
                             <ModalVedioComponent />
-                            {link.text ?? <span>
-                                We always provide our best solutions for our community and achieve our society's trust and satisfaction.
-                            </span>}
+                            {link.text ?? <span>{t("video text")}</span>}
                         </h2>}
                 </section>
             </main>

@@ -4,8 +4,12 @@ import { Link } from "react-router-dom";
 import address from '../../services';
 import CountUp from "react-countup";
 // import parse from "html-react-parser";
+import i18n from "i18next";
+import {useTranslation} from "react-i18next";
 
 function ProjectsStatistics() {
+
+    const {t} = useTranslation();
     const [doneProjects, setDoneProjects] = useState([]);
     const [notDoneProjects, setNotDoneProjects] = useState([]);
     const [dooners, setDooners] = useState([]);
@@ -34,7 +38,7 @@ function ProjectsStatistics() {
     // get sliders on page load
     useEffect(() => {
         fetchData();
-    }, [])
+    }, [i18n.language])
 
     return (
        <>
@@ -53,7 +57,7 @@ function ProjectsStatistics() {
                             <h2 className="text-left text-md text-center font-bold pb-6 pt-8 text-white">
                                 <CountUp end={doneProjects} duration={5} />
                             </h2>
-                            <h2 className="text-left text-md font-bold text-center pb-4 pt-5 text-white"> COMPLETED PROJECTS </h2>
+                            <h2 className="text-left text-md font-bold text-center pb-4 pt-5 text-white"> {t("Completed Projects")} </h2>
                         </div>
                         <div className="pt-5 pb-6">
                             <h2 className="grid grid-cols-9 justify-content-center">
@@ -65,7 +69,7 @@ function ProjectsStatistics() {
                             <h2 className="text-left text-md text-center font-bold pb-6 pt-8 text-white">
                                 <CountUp end={notDoneProjects} duration={5} />
                             </h2>
-                            <h2 className="text-left text-md font-bold text-center pb-4 pt-5 text-white">ONGOING PROJECTS </h2>
+                            <h2 className="text-left text-md font-bold text-center pb-4 pt-5 text-white">{t("Ongoing Projects")} </h2>
                         </div>
                         <div className="pt-5 pb-6">
                             <h2 className="grid grid-cols-9 justify-content-center">
@@ -77,7 +81,7 @@ function ProjectsStatistics() {
                             <h2 className="text-left text-md text-center font-bold pb-6 pt-8 text-white">
                                 <CountUp end={planedProjects} duration={5} />
                             </h2>
-                            <h2 className="text-left text-md font-bold text-center pb-4 pt-5 text-white">PLANNED PROJECTS </h2>
+                            <h2 className="text-left text-md font-bold text-center pb-4 pt-5 text-white">{t("Planned Projects")} </h2>
                         </div>
                         <div className="pt-5 pb-6">
                             <h2 className="grid grid-cols-9 justify-content-center">
@@ -89,7 +93,7 @@ function ProjectsStatistics() {
                             <h2 className="text-left text-md text-center font-bold pb-6 pt-8 text-white">
                                 <CountUp end={dooners} duration={5} />
                             </h2>
-                            <h2 className="text-left text-md font-bold text-center pb-4 pt-5 text-white">DONERS </h2>
+                            <h2 className="text-left text-md font-bold text-center pb-4 pt-5 text-white">{t("Donors")} </h2>
                         </div>
                         <div className="pt-5 pb-6">
                             <h2 className="grid grid-cols-9 justify-content-center">
@@ -100,7 +104,7 @@ function ProjectsStatistics() {
                             </h2>
                             <h2 className="text-left text-md text-center font-bold pb-6 pt-8 text-white">
                                 <CountUp end={volunteer} duration={5} /> </h2>
-                            <h2 className="text-left text-md font-bold text-center pb-4 pt-5 text-white">VOLUNTEERS </h2>
+                            <h2 className="text-left text-md font-bold text-center pb-4 pt-5 text-white">{t("Volunteer")} </h2>
                         </div>
 
                     </div>

@@ -8,8 +8,12 @@ import { React, useEffect, useState } from "react";
 import { Tabs } from 'flowbite-react';
 import parse from 'html-react-parser';
 import Project from './View'
+import { useTranslation } from "react-i18next";
+import i18n from "i18next";
 
 function Ongoing() {
+
+  const { t, i18n } = useTranslation();
 
     const [data, setData] = useState({
         cover: {},
@@ -43,13 +47,13 @@ function Ongoing() {
                                 backgroundImage: 'url(' + `${address()}cover-image/PROJECT2` + ')'
                             }} >
                             <div className="py-10 text-center">
-                                <h3 className="text-3xl font-bold text-white">Ongoing Projects </h3>
+                                <h3 className="text-3xl font-bold text-white">{t("Ongoing Projects")}</h3>
                             </div>
                         </section>
                         :
                         <section className="py-10 bg-gray-500 ">
                             <div className="py-10 text-center">
-                                <h3 className="text-3xl font-bold text-white">Ongoing Projects </h3>
+                                <h3 className="text-3xl font-bold text-white">{t("Ongoing Projects")}</h3>
                             </div>
                         </section>
                 }

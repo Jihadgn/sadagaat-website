@@ -7,9 +7,12 @@ import address from "../../services";
 import { React, useEffect, useState } from "react";
 import axios from 'axios';
 import feedback from "../../feedback"
+import { useTranslation } from 'react-i18next';
 
 
 function Contact() {
+
+  const { t, i18n } = useTranslation();
 
     const [data, setData] = useState({
         email: "",
@@ -49,7 +52,7 @@ function Contact() {
     async function componentDidMount() {
         try {
             const { data: Contact } = await axios.get(`${address()}contact-info/UK`, {
-                headers: { "accept-language": `en` },
+                headers: { "accept-language": `${i18n.language}` },
             });
             setState({ Contact });
             setState({ location: Contact.location })
@@ -65,7 +68,7 @@ function Contact() {
 
     async function fetchCover() {
         const fetcher = await window.fetch(`${address()}cover-image/ABOUT2`,
-            { headers: { 'accept-language': `en` } })
+            { headers: { 'accept-language': `${i18n.language}` } })
             .then((fetcher) => {
                 if (fetcher.status == 500) {
                     setCover(undefined)
@@ -90,7 +93,7 @@ function Contact() {
     useEffect(() => {
         componentDidMount()
         fetchCover()
-    }, [])
+    }, [i18n.language])
 
     const contacts = state.Contact;
     return (
@@ -107,13 +110,13 @@ function Contact() {
                     }}
                         className="py-10  hub-section">
                         <div className="py-10 text-center">
-                            <h3 className="text-3xl font-bold text-white"> Contact Us </h3>
+                            <h3 className="text-3xl font-bold text-white"> {t("Contact Us")} </h3>
                         </div>
                     </section>
                     :
                     <section className="py-10 bg-gray-500 ">
                         <div className="py-10 text-center">
-                            <h3 className="text-3xl font-bold text-white"> Contact Us </h3>
+                            <h3 className="text-3xl font-bold text-white"> {t("Contact Us")} </h3>
                         </div>
                     </section>
                 }
@@ -125,7 +128,7 @@ function Contact() {
                         <div className="grid grid-cols-2 gap-3 lg:col-span-3 md:col-span-5 col-span-5 mx-5 pb-16">
                             <div className="col-span-2  pb-9">
                                 <h2 className="font-bold text-xl pb-3">
-                                    Contact Us
+                                {t("Contact Us")}
                                 </h2>
                                 <hr className="contact-hr-2" />
                             </div>
@@ -136,11 +139,11 @@ function Contact() {
                                 </svg>
                                 </div>
                                 <div className="col-span-3 pt-3 ">
-                                    <h2 className="flex font-bold text-sm pb-3 text-gray-800">Our Office Location</h2>
+                                    <h2 className="flex font-bold text-sm pb-3 text-gray-800">{t("Our Office Location")}</h2>
                                     {
                                         (contacts != undefined && location != undefined) ?
                                             <p>{location.name}</p> :
-                                            <p>Address 33-39, Bowling Green Lane,London</p>
+                                            <p>{t("Address 33-39, Bowling Green Lane,London")}</p>
 
                                     }
                                 </div>
@@ -151,10 +154,12 @@ function Contact() {
                                 </svg>
                                 </div>
                                 <div className="col-span-3 pt-3">
-                                    <div className="flex font-bold text-sm pb-3 text-gray-800">Contact Number</div>
+                                    <div className="flex font-bold text-sm pb-3 text-gray-800">{t("Contact Number")}</div>
                                     {(contacts != undefined && contacts.length != 0) ?
                                         <p> {contacts.phone}</p> :
-                                        <p>447884060063+ </p>
+                                        <p>{i18n.dir() === "rtl"
+                                        ? "447884060063+"
+                                        : "+447884060063"}</p>
                                     }
                                 </div>
                             </div>
@@ -164,7 +169,7 @@ function Contact() {
                                 </svg>
                                 </div>
                                 <div className="col-span-3 pt-3">
-                                    <div className="flex font-bold text-sm pb-3 text-gray-800">Email Address</div>
+                                    <div className="flex font-bold text-sm pb-3 text-gray-800">{t("Email Address")}</div>
                                     {
                                         contacts != undefined && contacts.length != 0 ?
                                             <p>
@@ -180,7 +185,7 @@ function Contact() {
                                 </svg>
                                 </div>
                                 <div className="col-span-3 pt-3">
-                                    <div className="flex font-bold text-sm pb-3 text-gray-800">Website</div>
+                                    <div className="flex font-bold text-sm pb-3 text-gray-800">{t("Website")}</div>
                                     {
                                         contacts != undefined && contacts.length != 0 ?
                                             <p>
@@ -196,49 +201,53 @@ function Contact() {
                         <div className="grid grid-cols-2 gap-3 lg:col-span-2 md:col-span-5 col-span-5">
                             <div className="col-span-2 pb-9 text-gray-700">
                                 <h2 className="font-bold text-xl pb-3">
-                                    Get in Touch
+                                {t("Get in Touch")}
                                 </h2>
                                 <hr className="contact-hr-1" />
                             </div>
                             <form className="grid grid-cols-2  gap-3 col-span-2">
                                 <div className="pt-2 col-span-2 md:col-span-1">
                                     <div className="flex">
-                                        <label className="mb-2 font-bold text-gray-600">Name</label>
+                                        <label className="mb-2 font-bold text-gray-600">{t("name")}</label>
                                     </div>
-                                    <input placeholder="Full Name" value={data.fullName} onChange={(e) => { setData({ ...data, fullName: e.target.value }) }}
+                                    <input placeholder={t("full_name")} value={data.fullName} onChange={(e) => { setData({ ...data, fullName: e.target.value }) }}
                                         type="text" className="bg-gray-50 border border-gray-300 text-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 d" />
                                 </div>
                                 <div className="pt-2 col-span-2 md:col-span-1">
                                     <div className="flex">
-                                        <label className="mb-2 font-bold text-gray-600">Email</label>
+                                        <label className="mb-2 font-bold text-gray-600">{t("E-Mail")}</label>
                                         <span className="text-red-500 px-2">*</span>
                                     </div>
-                                    <input placeholder="Enter Email" required value={data.email} onChange={(e) => { setData({ ...data, email: e.target.value }) }}
+                                    <input placeholder={t("Enter Email")} title={t("that email address is invalid")} pattern="^([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-z]{2,8})(\.[a-z]{2,8})?$"
+                                     required value={data.email} onChange={(e) => { setData({ ...data, email: e.target.value }) }}
                                         type="email" className="bg-gray-50 border border-gray-300 text-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 d" />
                                 </div>
                                 <div className="pt-2 col-span-2 md:col-span-1">
                                     <div className="flex">
-                                        <label className="mb-2 font-bold text-gray-600">Subject</label>
+                                        <label className="mb-2 font-bold text-gray-600">{t("Subject")}</label>
                                     </div>
-                                    <input placeholder="Enter Subject" value={data.subject} onChange={(e) => { setData({ ...data, subject: e.target.value }) }}
+                                    <input placeholder={t("Enter Subject")} pattern="^[^\s].+[^\s]$" title={t("Enter a valid Subject")}
+                                     value={data.subject} onChange={(e) => { setData({ ...data, subject: e.target.value }) }}
                                         type="text" className="bg-gray-50 border border-gray-300 text-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 d" />
                                 </div>
                                 <div className="pt-2 col-span-2 md:col-span-1">
                                     <div className="flex">
-                                        <label className="mb-2 font-bold text-gray-600">Phone number:</label>
+                                        <label className="mb-2 font-bold text-gray-600">{t("Phone")} :</label>
                                     </div>
-                                    <input placeholder="Enter phone" value={data.phone} onChange={(e) => { setData({ ...data, phone: e.target.value }) }}
-                                        type="text" className="bg-gray-50 border border-gray-300 text-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 d" />
+                                    <input placeholder={t("Enter Phone")} pattern="^(0[0-9]{9})|(00[0-9]{12})$" 
+                                    title={t("Enter a valid phone number with 10 number or 14")}
+                                     value={data.phone} onChange={(e) => { setData({ ...data, phone: e.target.value }) }}
+                                        type="tel" className="bg-gray-50 border border-gray-300 text-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 d" />
                                 </div>
                                 <div className="pt-2 col-span-2 ">
                                     <div className="flex">
-                                        <label className="mb-2 font-bold text-gray-600">Message</label>
+                                        <label className="mb-2 font-bold text-gray-600"> {t("Message")}</label>
                                         <span className="text-red-500 px-2">*</span>
                                     </div>
-                                    <textarea placeholder="Enter your message" rows={4} required value={data.message} onChange={(e) => { setData({ ...data, message: e.target.value }) }}
+                                    <textarea placeholder={t("contact_message")} rows={4} required value={data.message} onChange={(e) => { setData({ ...data, message: e.target.value }) }}
                                         type="text" className="bg-gray-50 border border-gray-300 text-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
                                 </div>
-                                <button onClick={Submit} type="submit" className="btn text-xs">Send your message</button>
+                                <button onClick={Submit} type="submit" className="btn text-xs"> {t("Send your message")}</button>
 
                             </form>
                         </div>

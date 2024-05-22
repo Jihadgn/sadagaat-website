@@ -2,14 +2,23 @@ import React, { useState, useEffect } from "react";
 import address from '../../services';
 import axios from 'axios';
 import { Dropdown, Navbar } from "flowbite-react";
-import logo from "../../assets/images/logo.png"
+import logo from "../../assets/logo.png"
+import '../../i18next/i18n';
+import {useTranslation} from "react-i18next";
+
 function NavBar() {
+
+    const {t, i18n} = useTranslation();
+
+    const changeLanguage = (lng) => {
+        i18n.changeLanguage(lng);
+    }
 
     const [featuredOnGoingProjects, setFeaturedOnGoingProjects] = useState([]);
     async function fetchFeaturedOnGoingProjects() {
         const url = `${address()}projects/featured-ongoing`;
         const response = await axios.get(url, {
-            headers: { "accept-language": `en` },
+            headers: { "accept-language": `${i18n.language}` },
         });
         setFeaturedOnGoingProjects(response.data);
     }
@@ -32,7 +41,8 @@ function NavBar() {
     useEffect(() => {
         fetchMagazine();
         fetchFeaturedOnGoingProjects();
-    }, []);
+    }, [i18n.language]);
+
 
     return (
         <>
@@ -47,83 +57,110 @@ function NavBar() {
                             <svg className="w-6 h-6 text-red-600 " xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="red" viewBox="0 0 24 24">
                                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z" />
                             </svg>
-                            <span className="px-4">Donate</span>
+                            <span className="px-4"> {t("Donate")}</span>
                         </button>
                         <Navbar.Toggle className="bg-white" />
                     </div>
                     <Navbar.Collapse className="text-gray-800 gap-4 flex-wrap">
-                            <Navbar.Link href="#" >
-                                <img src={logo} className="h-10 w-30 sm:h-8" />
-                            </Navbar.Link>
-                            <Navbar.Link href="/" className="text-gray-700 flex font-bold text-md mt-3 px-3">Home</Navbar.Link>
-                            <Dropdown label="About Us" inline className="text-gray-800 text-md font-bold">
-                                <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/about">
-                                    About Us</Dropdown.Item>
-                                <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/contact-us">
-                                    Contact</Dropdown.Item>
-                            </Dropdown>
+                        <Navbar.Link href="/" >
+                            <img src={logo} className="h-16 w-24" 
+                            style={{
+                                [i18n.dir() === "ltr" ? "left" : "right"]: 0,
+                                top: 0
+                            }}/>
+                        </Navbar.Link>
+                        <Navbar.Link href="/" className="text-gray-700 flex font-bold text-md mt-3 px-3"> {t("Home")}</Navbar.Link>
+                        <Dropdown label= {t("About Us")} inline className="text-gray-800 text-md font-bold">
+                            <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/about">
+                            {t("About Us")}</Dropdown.Item>
+                            <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/contact-us">
+                            {t("Contact")}</Dropdown.Item>
+                        </Dropdown>
 
+                        <Dropdown
+                            label={t("Sectors")} inline className="text-gray-800 text-md font-bold">
+                            <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/wash">
+                            {t("Water Sector")}</Dropdown.Item>
+                            <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/education">
+                            {t("Education Sector")}</Dropdown.Item>
+                            <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/health">
+                            {t("Health Sector")}</Dropdown.Item>
+                            <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/feeding">
+                            {t("Feeding Sector")}</Dropdown.Item>
+                        </Dropdown>
+
+                        <Dropdown
+                            label={t("Projects")} inline className="text-gray-800 text-md font-bold">
+                            <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/ongoin-projects">
+                            {t("Ongoing")}</Dropdown.Item>
+                            <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/planned-projects">
+                            {t("Planned")}</Dropdown.Item>
+                        </Dropdown>
+
+                        <Dropdown
+                            label= {t("featured_ongoing_projects")} inline className="text-gray-800 text-md font-bold">
+                            {featuredOnGoingProjects.map((project, index) => {
+                                return (
+                                    <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3"
+                                        href={`/single-project/${project.id}`}> {project.name}</Dropdown.Item>
+                                )
+                            })}
+                        </Dropdown>
+
+                        <Dropdown
+                            label={t("Media")} inline className="text-gray-800 text-md font-bold">
+                            <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/gallery">
+                            {t("Photo")}{" "}{t("Gallery")}</Dropdown.Item>
+                            <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/news">
+                            {t("News")}</Dropdown.Item>
+                            <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href={magazineLinks.allMagazineLink}>
+                            {t("checkout_monthly_magazine")}</Dropdown.Item>
+                        </Dropdown>
+
+                        <Dropdown
+                            label={t("join_us")} inline className="text-gray-800 text-md font-bold">
+                            <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3 " href="/ongoin-projects">
+                            {t("donate_to_project")}</Dropdown.Item>
                             <Dropdown
-                                label="Sectors" inline className="text-gray-800 text-md font-bold">
-                                <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/wash">
-                                    Wash</Dropdown.Item>
-                                <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/education">
-                                    Education</Dropdown.Item>
-                                <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/health">
-                                    Health</Dropdown.Item>
-                                <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/feeding">
-                                    Feeding</Dropdown.Item>
+                                label={t("Become a Volunteer")} inline className="text-gray-800 ml-16 w-full text-md font-bold">
+                                <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/Volunteers">
+                                {t("About") + " " + t("Volunteers")}</Dropdown.Item>
+                                <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/volunteerForm">
+                                {t("Volunteers Form")}</Dropdown.Item>
+                                <Dropdown.Item className="text-gray-700 font-bold text-md mt-3" href="/volunteers-programs">
+                                {t("Volunteers Programs")}  </Dropdown.Item>
                             </Dropdown>
+                            <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/events">
+                            {t("attend_an_event")}</Dropdown.Item>
+                            <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="careers">
+                            {t("Careers")}</Dropdown.Item>
+                        </Dropdown>
 
-                            <Dropdown
-                                label="Projects" inline className="text-gray-800 text-md font-bold">
-                                <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/ongoin-projects">
-                                    Ongoing</Dropdown.Item>
-                                <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/planned-projects">
-                                    Planned</Dropdown.Item>
-                            </Dropdown>
+                        <Dropdown
+                            label={t("sudanese_learning_hub")} inline className="text-gray-800 text-md font-bold">
+                            <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3 " href="/sudanese-learning-hub">
+                                Cisco Network Academy</Dropdown.Item>
+                        </Dropdown>
+                        <Dropdown label={i18n.language === "en" ? "en" : "ar"} inline className="text-gray-800 text-md font-bold">
+                            <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3">
+                               <a
+                               className={`bg-white text-gray-700 hover:bg-white hover:border-none${i18n.language === "ar" ? "d-none" : ""}`} 
+                               
+                               onClick={(event) => changeLanguage("ar")}>العربية</a>
+                             </Dropdown.Item>
+                            <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3"
+                                >
+                                 <a className={`bg-white text-gray-700 hover:bg-white hover:border-none${i18n.language === "en" ? "d-none" : ""}`} 
+                              
+                              onClick={(event) => (
+                                
+                                changeLanguage("en")
+                       
+                                
+                                )}>English</a>
+                                </Dropdown.Item>
+                        </Dropdown>
 
-                            <Dropdown
-                                label="Ongoing Featured Projects" inline className="text-gray-800 text-md font-bold">
-                                {featuredOnGoingProjects.map((project, index) => {
-                                    return (
-                                        <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3"
-                                            href={`/single-project/${project.id}`}> {project.name}</Dropdown.Item>
-                                    )
-                                })}
-                            </Dropdown>
-
-                            <Dropdown
-                                label="Media" inline className="text-gray-800 text-md font-bold">
-                                <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/news">
-                                    News and Impact stories</Dropdown.Item>
-                                <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/gallery">
-                                    Photo Galary</Dropdown.Item>
-                                <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href={magazineLinks.allMagazineLink}>
-                                    Check out our monthly magazine</Dropdown.Item>
-                            </Dropdown>
-
-                            <Dropdown
-                                label="Join Us" inline className="text-gray-800 text-md font-bold">
-                                <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3 " href="/ongoin-projects">
-                                    Donate to a project</Dropdown.Item>
-                                <Dropdown
-                                    label="Become a volunteer" inline className="text-gray-800 ml-16 w-full text-md font-bold">
-                                    <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/Volunteers">
-                                        About Volunteers</Dropdown.Item>
-                                    <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/volunteerForm">
-                                        volunteers form</Dropdown.Item>
-                                    <Dropdown.Item className="text-gray-700 font-bold text-md mt-3" href="/volunteers-programs">
-                                        Volunteers programs</Dropdown.Item>
-                                </Dropdown>
-                                <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/events">
-                                    Attend an event</Dropdown.Item>
-                                <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="careers">
-                                    Careers</Dropdown.Item>
-                            </Dropdown>
-
-                            <Navbar.Link href="/sudanese-learning-hub" className="text-gray-700 flex text-md mt-3">Sudanese Learning Hub</Navbar.Link>
-                        
                     </Navbar.Collapse>
                 </Navbar>
             </main >

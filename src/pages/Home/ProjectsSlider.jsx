@@ -10,8 +10,14 @@ import { Link } from "react-router-dom";
 import address from '../../services';
 import { Precision, getNumber } from "../../services/getMonthName";
 import parse from 'html-react-parser';
+import i18n from "i18next";
+import { withTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 const ProjectsSlider = (props) => {
+
+ const lastLang = i18n.language;
+ const { t } = useTranslation();
 
     const [data, setData] = useState([]);
     const [startDate, setStartDate] = useState(null);
@@ -46,7 +52,7 @@ const ProjectsSlider = (props) => {
         const fetcher = await window.fetch(
             FilterUrl,
             {
-                headers: { "accept-language": `en` },
+                headers: { "accept-language": `${i18n.language}` },
             },
             {
                 items: (page) => page.results,
@@ -127,8 +133,8 @@ const ProjectsSlider = (props) => {
                 <section className="pt-10 pb-10 grid grid-cols-12 text-center bg-gray-100 ">
                     <div></div>
                     <div className="col-span-10">
-                        <span className="text-3xl font-bold tracking-tight text-gray-900 px-2">OUR </span>
-                        <span className="text-3xl font-bold tracking-tight text-blue-800 "> PROJECTS </span>
+                        <span className="text-3xl font-bold tracking-tight text-gray-900 px-2">{t("Our")}{" "} </span>
+                        <span className="text-3xl font-bold tracking-tight text-blue-800 ">  {t("Projects")} </span>
                         <div className="pt-9">
                             <Slider {...settings}>
                                 {data !== undefined && data.length > 0 ? (
@@ -142,8 +148,8 @@ const ProjectsSlider = (props) => {
                                                     />
                                                 </div>
                                                 <div className="grid grid-cols-2 pt-1">
-                                                    <h3 className="text-left flex text-lg font-bold">Raised :  {getNumber(project.raised)}   </h3>
-                                                    <h3 className="text-right flex text-lg font-bold">Target :  {getNumber(project.goal)} </h3>
+                                                    <h3 className="text-left flex text-lg font-bold">{t("Raised")}  {getNumber(project.raised)}   </h3>
+                                                    <h3 className="text-right flex text-lg font-bold"> {t("Goal")} {getNumber(project.goal)} </h3>
                                                 </div>
                                                 <div className="progress-item mt-0">
                                                     <div className="progress">
@@ -157,7 +163,7 @@ const ProjectsSlider = (props) => {
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <h2 className="text-left text-lg font-bold pt-1">Project Progress</h2>
+                                                <h2 className="text-left text-lg font-bold pt-1">{t("Project Progress")}</h2>
                                                 <div className="progress-item mt-0">
 
                                                     <div className="progress">
@@ -189,7 +195,7 @@ const ProjectsSlider = (props) => {
                                     ))
                                 ) : (
                                     <h3 className="text-center">
-                                        "No Available Results for Your Search"
+              {t("No Available Results for Your Search")}
                                     </h3>
                                 )}
                             </Slider>

@@ -10,6 +10,7 @@ import { routeToUrl } from '../../services';
 const REST_COUNTRIES_URL = "https://restcountries.com/v3.1/all?fields=name";
 const REST_NATIONALITY_URL = "https://restcountries.com/v3.1/demonym/{0}?";
 // const REST_CITIES_URL = "https://countriesnow.space/api/v0.1/countries/cities";
+import { useTranslation } from 'react-i18next';
 
 const formatString = (template, ...args) => {
     return template.replace(/{([0-9]+)}/g, function (match, index) {
@@ -17,6 +18,8 @@ const formatString = (template, ...args) => {
     });
 }
 function Course() {
+
+  const { t, i18n } = useTranslation();
 
     const interestAreas = [
         "Networking",
@@ -179,10 +182,11 @@ function Course() {
                             className="register-form"
                             onSubmit={handleSubmit}>
                             <div className="grid md:grid-cols-2 sm:grid-cols-1 border border-gray-300 p-5 overflow-hidden">
+                                <h2 className="text-red-600 text-xl text-center font-bold p-3 col-span-2">ONLY SUDANESE PEOPLE CAN APPLY</h2>
                                 <h2 className="text-gray-600 text-lg font-bold p-3 col-span-2 flex">
-                                    Thank you for your interest in our tech training courses provided by Cisco Networking Academy, available ONLY to Sudanese applicants. To apply please complete the application form below.
+                                {t("form_intro")}
                                 </h2>
-                                <h2 className="text-gray-600 text-lg font-bold p-3 col-span-2">- Candidate Information</h2>
+                                <h2 className="text-gray-600 text-lg font-bold p-3 col-span-2">{"- " + t("candidate_information")}</h2>
                                 <div className="pt-4 px-5 col-span-2">
                                     <div className="flex">
                                         <label className="mb-2 font-bold text-sm text-gray-600">Name</label>
@@ -190,6 +194,7 @@ function Course() {
                                     </div>
                                     <input required value={name}
                                         onChange={(e) => { setName(e.target.value) }}
+                                        title={t("Please enter your fullName")}
                                         type="text" className="bg-gray-50 border border-gray-300 text-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 d" />
                                 </div>
                                 <div className="pt-4 px-5 col-span-2">
@@ -199,6 +204,8 @@ function Course() {
                                     </div>
                                     <input required value={email}
                                         onChange={(e) => { setEmail(e.target.value) }}
+                                        pattern="^([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-z]{2,8})(\.[a-z]{2,8})?$"
+                                        title={t("that email address is invalid")}
                                         type="email" className="bg-gray-50 border border-gray-300 text-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 d" />
                                 </div>
                                 <div className="pt-4 px-5 md:col-span-1 col-span-2">
@@ -217,6 +224,10 @@ function Course() {
                                     </div>
                                     <input required value={phoneNumber}
                                         onChange={(e) => { setPhoneNumber(e.target.value) }}
+                                        pattern="^\+?(\d{1,3})?\s?\d{4,13}$"
+                                                        title={(
+                                                            "Enter a valid phone number ranges from 4 to 13 digits"
+                                                        )}
                                         type="text" className="bg-gray-50 border border-gray-300 text-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
                                 </div>
 
@@ -234,20 +245,19 @@ function Course() {
                                 </div>
                                 <div className="pt-4 px-5 md:col-span-1 col-span-2">
                                     <div className="flex">
-                                        <label className="mb-2 font-bold text-sm text-gray-600">Nationality</label>
+                                        <label className="mb-2 font-bold text-sm text-gray-600">Sudanese</label>
                                         <span className="text-red-500 px-2">*</span>
                                     </div>
-                                    <select required value={nationality}
-                                        onChange={(e) => { setNationality(e.target.value) }}
+                                    <select required value={nationalities}
+                                        onChange={(e) => { setNationalities(e.target.value) }}
                                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                                        {nationalities?.map((n, index) => {
-                                            return <option key={index} name="nationality">{n}</option>
-                                        })}
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
                                     </select>
                                 </div>
                                 <div className="pt-4 px-5 md:col-span-1 col-span-2">
                                     <div className="flex">
-                                        <label className="mb-2 font-bold text-sm text-gray-600">Current Location    </label>
+                                        <label className="mb-2 font-bold text-sm text-gray-600"> {t("current_location")}   </label>
                                         <span className="text-red-500 px-2">*</span>
                                     </div>
                                     <select required value={country}
@@ -272,7 +282,7 @@ function Course() {
                                 </div>
                                 <div className="pt-4 px-5 col-span-2">
                                     <div className="flex">
-                                        <label className="mb-2 font-bold text-sm text-gray-600">IT Background   </label>
+                                        <label className="mb-2 font-bold text-sm text-gray-600"> {t("it_background")}   </label>
                                         <span className="text-red-500 px-2">*</span>
                                     </div>
                                     <select required value={iTBackground}
@@ -292,7 +302,7 @@ function Course() {
                                 </div>
                                 <div className="pt-4 px-5 md:col-span-1 col-span-2">
                                     <div className="flex">
-                                        <label className="mb-2 font-bold text-sm text-gray-600">Interest Area  </label>
+                                        <label className="mb-2 font-bold text-sm text-gray-600">{t("interest_area")}  </label>
                                         <span className="text-red-500 px-2">*</span>
                                     </div>
                                     <select onChange={(e) => { setInterestArea(e.target.value) }}
@@ -319,10 +329,10 @@ function Course() {
                                             return (
                                                 <option key={index}
                                                     name="what_type_of_courses_do_you_want_to_register"
-                                                    value={cate.description}>{cate.description}</option>
+                                                    value={cate.title}>{cate.title}</option>
                                             )
                                         })}
-                                    </select>
+                                    </select>   
                                 </div>
                                 <div className="pt-4 px-5 md:col-span-1 col-span-2">
                                     <div className="flex">

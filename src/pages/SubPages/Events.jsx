@@ -7,15 +7,17 @@ import address from "../../services";
 import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Card } from 'flowbite-react'
+import { useTranslation } from 'react-i18next';
 
 function Events() {
 
     const [event, setEvent] = useState([])
     const [cover, setCover] = useState({})
+    const { t, i18n } = useTranslation();
 
     async function fetchEvents() {
         const fetcher = await window.fetch(`${address()}events`, {
-            headers: { "accept-language": `en` },
+            headers: { "accept-language": `${i18n.language}` },
         });
         const response = await fetcher.json();
         setEvent(response);
@@ -24,7 +26,7 @@ function Events() {
     }
     async function fetchCover() {
         const fetcher = await window.fetch(`${address()}cover-image/EVENT2`,
-            { headers: { 'accept-language': `en` } })
+            { headers: { 'accept-language': `${i18n.language}` } })
             .then((fetcher) => {
                 if (fetcher.status == 500) {
                     setCover(undefined)
@@ -37,7 +39,7 @@ function Events() {
     useEffect(() => {
         fetchEvents()
         fetchCover()
-    }, [])
+    }, [i18n.language])
 
     return (
         <>
@@ -53,13 +55,13 @@ function Events() {
                         }}
                     >
                         <div className="py-10 text-center">
-                            <h3 className="text-3xl font-bold text-white"> Events  </h3>
+                            <h3 className="text-3xl font-bold text-white"> {t("Events")}  </h3>
                         </div>
                     </section>
                     :
                     <section className="py-10 bg-gray-500 ">
                         <div className="py-10 text-center">
-                            <h3 className="text-3xl font-bold text-white"> Events  </h3>
+                            <h3 className="text-3xl font-bold text-white"> {t("Events")}  </h3>
                         </div>
                     </section>
                 }

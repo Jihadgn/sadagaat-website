@@ -10,16 +10,17 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import { Card } from 'flowbite-react';
+import { useTranslation } from 'react-i18next';
 
 function News() {
 
     const [news, setNews] = useState([]);
     const [events, setEvent] = useState([]);
-
+    const { t, i18n } = useTranslation();
 
     async function fetchNews() {
         const fetcher = await window.fetch(`${address()}news`, {
-            headers: { "accept-language": `en` },
+            headers: { "accept-language": `${i18n.language}` },
         });
         const response = await fetcher.json();
         console.log(response);
@@ -41,7 +42,7 @@ function News() {
 
     async function fetchCover() {
         const fetch = await window.fetch(`${address()}cover-image/EVENT1`, {
-            headers: { "accept-language": `en` },
+            headers: { "accept-language": `${i18n.language}` },
         });
         setCover(fetch);
     }
@@ -49,7 +50,7 @@ function News() {
     useEffect(() => {
         fetchCover();
         fetchNews();
-    }, [`en`]);
+    }, [i18n.language]);
 
 
     return (
@@ -65,13 +66,13 @@ function News() {
                             style={{
                                 backgroundImage: 'url(' + `${address()}cover-image/EVENT1` + ')'                            }} >
                             <div className="py-10 text-center">
-                                <h3 className="text-3xl font-bold text-white uppercase">News and Impact Stories </h3>
+                                <h3 className="text-3xl font-bold text-white uppercase">{t("News")}</h3>
                             </div>
                         </section>
                         :
                         <section className="py-10 bg-gray-500 ">
                             <div className="py-10 text-center">
-                                <h3 className="text-3xl font-bold text-white uppercase">News and Impact Stories </h3>
+                                <h3 className="text-3xl font-bold text-white uppercase">{t("News")}</h3>
                             </div>
                         </section>
                 }

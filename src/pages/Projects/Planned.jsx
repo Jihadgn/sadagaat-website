@@ -8,8 +8,12 @@ import { React, useEffect, useState } from "react";
 import { Tabs } from 'flowbite-react';
 import parse from 'html-react-parser';
 import Project from './View'
+import { useTranslation } from "react-i18next";
+import i18n from "i18next";
 
 function Planned() {
+
+  const { t, i18n } = useTranslation();
 
     const [data, setData] = useState({
         cover: {},
@@ -18,7 +22,7 @@ function Planned() {
 
     async function fetchData() {
         const fetch = await window.fetch(`${address()}cover-image/PROJECT3`, {
-            headers: { "accept-language": `en` },
+            headers: { "accept-language": `${i18n.language}` },
         });
         setData({ cover: fetch });
 
@@ -27,7 +31,7 @@ function Planned() {
     useEffect(() => {
         fetchData()
 
-    }, [])
+    }, [i18n.language])
 
     return (
         <>
@@ -43,13 +47,13 @@ function Planned() {
                                 backgroundImage: 'url(' + `${address()}cover-image/PROJECT3` + ')'
                             }} >
                             <div className="py-10 text-center">
-                                <h3 className="text-3xl font-bold text-white">Planned Projects </h3>
+                                <h3 className="text-3xl font-bold text-white">{t("Planned Projects")} </h3>
                             </div>
                         </section>
                         :
                             <section className="py-10 bg-gray-500 ">
                                 <div className="py-10 text-center">
-                                    <h3 className="text-3xl font-bold text-white">Planned Projects </h3>
+                                    <h3 className="text-3xl font-bold text-white">{t("Planned Projects")} </h3>
                                 </div>
                             </section>
                 }

@@ -8,8 +8,10 @@ import { React, useEffect, useState } from "react";
 import { Tabs } from "flowbite-react";
 import parse from "html-react-parser";
 import FilteredProjects from "./FilteredProjects";
+import { useTranslation } from "react-i18next";
 
 function SearchResult() {
+    const { t } = useTranslation();
 
     return (
         <>
@@ -20,7 +22,7 @@ function SearchResult() {
                 {/* title section */}
                 <section className="py-10 bg-gray-500 ">
                     <div className="py-10 text-center">
-                        <h3 className="text-3xl font-bold text-white">Filtered Projects </h3>
+                        <h3 className="text-3xl font-bold text-white">{t("Search Results")}</h3>
                     </div>
                 </section>
                 {/* tabs section */}

@@ -11,9 +11,11 @@ import {
   Navigate,
   useParams,
 } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 function SingleNews() {
 
+  const { t, i18n } = useTranslation();
   const [news, setNews] = useState([]);
   const [images, setImages] = useState([]);
 
@@ -23,7 +25,7 @@ function SingleNews() {
     //  Get id of news from url
     const fetcher = await window.fetch(`${address()}news/${id}`);
     const res1 = await fetcher.json();
-    const data = res1.newsTranslations.find((sub) => sub.locale === "en")
+    const data = res1.newsTranslations.find((sub) => sub.locale === i18n.language)
     const data2 = res1.images;
     setNews(data);
     setImages(data2)
@@ -35,7 +37,7 @@ function SingleNews() {
   useEffect(() => {
     fetchData()
 
-  }, [])
+  }, [i18n.language])
 
 
   return (
@@ -53,7 +55,7 @@ function SingleNews() {
 
           }}>
           <div className="py-10 text-center">
-            <h3 className="text-3xl font-bold text-white">  News and Impact Stories   </h3>
+            <h3 className="text-3xl font-bold text-white">{t("News")} </h3>
           </div>
         </section>
         {/* : */}

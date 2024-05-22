@@ -13,8 +13,11 @@ import ReactPaginate from "react-paginate";
 import {
     Card,
 } from 'flowbite-react';
+import { useTranslation } from 'react-i18next';
 
 const VolunteerPrograms = (props) => {
+
+    const { t, i18n } = useTranslation();
 
     const [data, setData] = useState([]);
     let currentPage = 0;
@@ -51,7 +54,7 @@ const VolunteerPrograms = (props) => {
         const fetcher = await window.fetch(
             FilterUrl,
             {
-                headers: { "accept-language": `en` },
+                headers: { "accept-language": `${i18n.language}` },
             },
             {
                 items: (page) => page.results,
@@ -83,7 +86,7 @@ const VolunteerPrograms = (props) => {
         const fetcher = await window.fetch(
             FilterUrl,
             {
-                headers: { "accept-language": `en` },
+                headers: { "accept-language": `${i18n.language}` },
             },
             {
                 items: (page) => page.results,
@@ -138,19 +141,20 @@ const VolunteerPrograms = (props) => {
                 <TopBar />
                 <NavBar />
                 {/* title section */}
-               {
+                {
                     (cover !== undefined) ?
                         <section className="hub-section py-10 "
                             style={{
-                                backgroundImage: 'url(' + `${address()}cover-image/VOLUNTEER3` + ')'                            }} >
+                                backgroundImage: 'url(' + `${address()}cover-image/VOLUNTEER3` + ')'
+                            }} >
                             <div className="py-10 text-center">
-                                <h3 className="text-3xl font-bold text-white uppercase">Volunteers Programs </h3>
+                                <h3 className="text-3xl font-bold text-white uppercase">{t("Volunteers Programs")}  </h3>
                             </div>
                         </section>
                         :
                         <section className="py-10 bg-gray-500 ">
                             <div className="py-10 text-center">
-                                <h3 className="text-3xl font-bold text-white uppercase">Volunteers Programs </h3>
+                                <h3 className="text-3xl font-bold text-white uppercase">{t("Volunteers Programs")}  </h3>
                             </div>
                         </section>
                 }
@@ -158,20 +162,7 @@ const VolunteerPrograms = (props) => {
                     <div></div>
                     <div className="col-span-10">
 
-                        {/* filter projects */}
-                        {/* {(data !== undefined && data.length > 0) || filterOn === true ? (
-                            <div className="flex">
-                                <div className="grid grid-cols-4">
-                                    <Filters
-                                        clicked={GetSelectedDates}
-                                        cleared={clearFilter}
-                                        ordered={getOrder}
-                                        type={getType}
-                                        filter={filterData}
-                                    ></Filters>
-                                </div>
-                            </div>
-                        ) : null} */}
+
                         <div className="pt-10 pb-10 grid xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 text-center gap-4  border-b-2">
                             {data !== undefined && data.length > 0 ? (
                                 data.map((program, index) => (
@@ -185,8 +176,8 @@ const VolunteerPrograms = (props) => {
                                                 />
                                             </div>
                                             <div className="grid grid-cols-2 pt-1">
-                                                <h3 className="text-left text-lg font-bold">Target :{program.target}</h3>
-                                                <h3 className="text-right text-lg font-bold">Target :{program.subscribed} </h3>
+                                                <h3 className="text-left text-lg font-bold"> {t("Target") + ": "} {program.target}</h3>
+                                                <h3 className="text-right text-lg font-bold">  {t("Subscribed Volunteers") + ": "}{program.subscribed} </h3>
                                             </div>
                                             <div className="progress-item mt-0">
                                                 <div className="progress">
@@ -216,7 +207,7 @@ const VolunteerPrograms = (props) => {
                                 ))
                             ) : (
                                 <h3 className="text-center">
-                                    No Available Results for Your Search"
+                                    {t("No Volunteers Programs Available Now")}
                                 </h3>
                             )}
 

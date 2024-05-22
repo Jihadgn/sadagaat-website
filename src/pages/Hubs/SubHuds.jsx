@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import address from "../../services";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import i18n from "i18next";
 
 
 /**
@@ -17,6 +19,7 @@ const Hub_Subhubs = (props) => {
   // how meny subhubs dispaly per page
   const [postsPerPage] = useState(6);
   const hubId = props.hubId;
+  const { t } = useTranslation();
 
   /**  useEffect call SubHubs() function when component mounted or  when recived props
    */
@@ -30,7 +33,7 @@ const Hub_Subhubs = (props) => {
    */
   async function SubHubs() {
     const fetcher = await window.fetch(`${address()}subHubs`, {
-      headers: { "accept-language": `en` },
+      headers: { "accept-language": `${i18n.language}` },
     });
     const response = await fetcher.json();
     /**

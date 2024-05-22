@@ -14,9 +14,11 @@ import part_10 from "../../assets/images/partener10.png"
 import part_11 from "../../assets/images/partener11.png"
 import part_12 from "../../assets/images/partener12.png"
 import LazyLoad from 'react-lazy-load'; 
+import {useTranslation} from "react-i18next";
 
 function Partners() {
 
+    const {t} = useTranslation();
     const [part, setPart] = useState([]);
     async function fetchData() {
         const fetcher = await window.fetch(`${address()}partener`);
@@ -85,8 +87,8 @@ function Partners() {
             <main >
                 {/* our Partners */}
                 <section className=" pt-10 pb-10 text-center bg-gray-100 ">
-                    <span className="text-3xl font-bold tracking-tight text-gray-900 px-2">OUR </span>
-                    <span className="text-3xl font-bold tracking-tight text-blue-800 "> PARTNERS </span>
+                    <span className="text-3xl font-bold tracking-tight text-gray-900 px-2"> {t("Our")}{" "} </span>
+                    <span className="text-3xl font-bold tracking-tight text-blue-800 "> {t("Partners")} </span>
                     <div className="slider-container pt-9 px-10">
                         <Slider {...secSettings}>
                             {

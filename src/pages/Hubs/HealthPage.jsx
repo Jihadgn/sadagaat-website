@@ -8,10 +8,11 @@ import { React, useEffect, useState } from "react";
 import { Tabs } from 'flowbite-react';
 import SubHub from './SubHuds'
 import parse from 'html-react-parser';
-
+import { useTranslation } from "react-i18next";
 
 function Health() {
 
+  const { t, i18n } = useTranslation();
   const [data, setData] = useState({
     hub: [],
     offset: 0,
@@ -29,11 +30,11 @@ function Health() {
   async function fetchData() {
     //  Get id of subhub from url
     const fetcher = await window.fetch(`${address()}hubs/1695`, {
-      headers: { "accept-language": `en` },
+      headers: { "accept-language": `${i18n.language}` },
     });
     const response = await fetcher.json();
     const fetch = await window.fetch(`${address()}cover-image/HEALTH_SECT`, {
-      headers: { "accept-language": `en` },
+      headers: { "accept-language": `${i18n.language}` },
     });
     setData({ hub: response, files: response.files, details: response.formatedDescription, cover: fetch });
     console.log("the fetched data ...", hub);
@@ -43,7 +44,7 @@ function Health() {
   useEffect(() => {
     fetchData()
 
-  }, [])
+  }, [i18n.language])
 
   return (
     <>
@@ -59,13 +60,13 @@ function Health() {
                 backgroundImage: 'url(' + `${address()}cover-image/HEALTH_SECT` + ')'
               }} >
               <div className="py-10 text-center">
-                <h3 className="text-3xl font-bold text-white uppercase">Health </h3>
+                <h3 className="text-3xl font-bold text-white uppercase">{t("Health")} </h3>
               </div>
             </section>
             :
             <section className="py-10 bg-gray-500 ">
               <div className="py-10 text-center">
-                <h3 className="text-3xl font-bold text-white uppercase">Health </h3>
+                <h3 className="text-3xl font-bold text-white uppercase">{t("Health")} </h3>
               </div>
             </section>
         }
@@ -73,11 +74,11 @@ function Health() {
           <section className="bg-white p-10 grid grid-cols-12">
             <div></div>
             <div className="col-span-10">
-              <h2 className="text-left text-2xl font-extrabold pb-4 mt-0 text-gray-900">Health Sector</h2>
+              <h2 className="text-left text-2xl font-extrabold pb-4 mt-0 text-gray-900">{hub.name}</h2>
               <hr className="sectors " />
               <div className="overflow-x-auto pt-7">
                 <Tabs aria-label="Full width tabs" >
-                  <Tabs.Item active title="Sector details">
+                  <Tabs.Item active title= {t("Sector Details")}>
                     <div className=" grid lg:grid-cols-2 md:grid-cols-2  sm:grid-cols-1 gap-4 pb-9 ">
                       <div
                         className="post-thumb thumb"
@@ -97,14 +98,14 @@ function Health() {
                     <hr />
                     <SubHub
                       hubId={hub.id}
-                      name={"Health Programs"}
+                      name={t("Health Sub Sectors")}
                     />
                   </Tabs.Item>
-                  <Tabs.Item title="More information" >
+                  <Tabs.Item title= {t("More Information")} >
                     {
                       (data.details === null || data.details === "") ? (
                         <div className={"list-formatting "}>
-                          <h4>No More Information</h4>
+                          <h4>{t("No More Information")}</h4>
                         </div>
                       ) : (
                         <div>

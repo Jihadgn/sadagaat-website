@@ -9,8 +9,12 @@ import 'froala-editor/js/froala_editor.pkgd.min.js';
 import 'froala-editor/css/froala_style.min.css';
 import 'froala-editor/css/froala_editor.pkgd.min.css';
 import FroalaEditorView from 'react-froala-wysiwyg/FroalaEditorView';
+import { useTranslation } from 'react-i18next';
+import i18n from 'i18next'
 
 function Volunteers() {
+
+  const {t} = useTranslation()
 
     const [volunteers, setVolunteers] = useState([])
     const [volunteerMedia, setVolunteerMedia] = useState([])
@@ -31,7 +35,7 @@ function Volunteers() {
     async function fetchCover() {
         const fetcher = await window.fetch(`${address()}cover-image/VOLUNTEER1`,
             {
-                headers: { 'accept-language': `en` }
+                headers: { 'accept-language': `${i18n.language}` }
             }).then((fetcher) => {
                 if (fetcher.status == 500) {
                     setCover(undefined)
@@ -45,7 +49,7 @@ function Volunteers() {
     useEffect(() => {
         fetchData()
         fetchCover()
-    }, [])
+    }, [i18n.language])
 
 
     return (
@@ -61,13 +65,13 @@ function Volunteers() {
                             backgroundImage: 'url(' + `${address()}cover-image/VOLUNTEER1` + ')'
                         }}>
                         <div className="py-10 text-center">
-                            <h3 className="text-3xl font-bold text-white"> Volunteers  </h3>
+                            <h3 className="text-3xl font-bold text-white"> {t("Volunteers")}  </h3>
                         </div>
                     </section>
                     :
                     <section className="py-10 bg-gray-500 ">
                         <div className="py-10 text-center">
-                            <h3 className="text-3xl font-bold text-white"> Volunteers  </h3>
+                            <h3 className="text-3xl font-bold text-white"> {t("Volunteers")}  </h3>
                         </div>
                     </section>
                 }
@@ -75,10 +79,16 @@ function Volunteers() {
                     <div></div>
                     <div className="text-gray-800 col-span-10 m-6 p-6">
                         {/* check language  */}
+                        {i18n.language === 'ar'?(
+                          <FroalaEditorView
+                            model={volunteers.htmlPageAr}
+                            />
+                          ):
+                          (<FroalaEditorView
 
-                        <FroalaEditorView
                             model={volunteers.htmlPageEn}
-                        />
+                            />)
+                          }
                     </div>
                 </section>
 

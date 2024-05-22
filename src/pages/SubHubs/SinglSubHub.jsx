@@ -12,8 +12,12 @@ import {
   Navigate,
   useParams,
 } from "react-router-dom";
+import i18n from "i18next";
+import { useTranslation } from "react-i18next";
 
 function SinglSubHub() {
+
+  const { t, i18n } = useTranslation();
 
   const [data, setData] = useState({
     subhub: [],
@@ -31,14 +35,14 @@ function SinglSubHub() {
   async function fetchData() {
     //  Get id of subhub from url
     const fetcher = await window.fetch(`${address()}subHubs/${id}`, {
-      headers: { "accept-language": `en` },
+      headers: { "accept-language": `${i18n.language}` },
     });
     const res1 = await fetcher.json();
     setData({ subhub: res1, description: res1.description, name: res1.name});
     console.log(res1)
     //  Get id of projects from url
     const project = await window.fetch(`${address()}subHubs/${id}/projects`, {
-      headers: { "accept-language": `en` },
+      headers: { "accept-language": `${i18n.language}` },
     });
     const res2 = await project.json();
       console.log(res2)
@@ -48,7 +52,7 @@ function SinglSubHub() {
   useEffect(() => {
     fetchData()
 
-  }, [])
+  }, [i18n.language])
 
 
   return (

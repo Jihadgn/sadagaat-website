@@ -3,9 +3,12 @@ import parse from 'html-react-parser';
 import { Link } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import address from '../../services';
+import { useTranslation } from "react-i18next";
 
 function Footer() {
-
+    const { t, i18n } = useTranslation();
+    const dir = i18n.dir();
+    const isEnglish = dir === "ltr";
     const [footer, setFooter] = useState([]);
     const [contact, setContact] = useState({})
     const [location, setLocation] = useState({})
@@ -14,7 +17,7 @@ function Footer() {
     async function fetchTable() {
         const fetcher = await window.fetch(`${address()}copy-right`,
             {
-                headers: { 'accept-language': `en` }
+                headers: { 'accept-language': `${i18n.language}` }
             });
         const response = await fetcher.json();
         setFooter(response);
@@ -23,7 +26,7 @@ function Footer() {
     async function fetchContact() {
         const fetcher = await window.fetch(`${address()}contact-info/UK`,
             {
-                headers: { 'accept-language': `en` }
+                headers: { 'accept-language': `${i18n.language}` }
             });
         const response = await fetcher.json();
         setContact(response);
@@ -48,7 +51,7 @@ function Footer() {
         fetchContact();
         fetchMagazine();
 
-    }, [])
+    }, [i18n.language])
 
     return (
         <>
@@ -58,8 +61,8 @@ function Footer() {
                         <div></div>
                         <div className="col-span-10 grid lg:grid-cols-4 md:grid-cols-4 grid-cols-2 pt-8 pb-8 px-10   gap-9">
                             <div>
-                                <h1 className="text-2xl font-bold text-white">SADAGAAT</h1>
-                                <h2 className="text-md pt-5 font-bold text-white" >مجتمع_فكرة #</h2>
+                                <h1 className="text-2xl font-bold text-white">{t("SADAGAAT")}</h1>
+                                <h2 className="text-md pt-5 font-bold text-white" >{t("hashtag")}</h2>
                                 <div className="grid lg:grid-cols-2 md:grid-cols-1">
                                 <div className="flex justify-center px-10 pl-10 pr-10 gap-4 pt-5">
               <a className="text-center hover:text-gray-500" href="https://web.facebook.com/Sadagaat" target="blank">
@@ -102,61 +105,61 @@ function Footer() {
                                 </div>
                             </div>
                             <div>
-                                <h2 className="text-md font-bold text-white">Sectors</h2>
+                                <h2 className="text-md font-bold text-white">{t("Sectors")}</h2>
                                 <div className="grid grid-cols-2  pt-3">
                                     <hr />
                                 </div>
                                 <div className="pt-5">
-                                    <Link to="/wash" className="text-md text-white hover:text-gray-400 pt-6">WASH Sector</Link>
+                                    <Link to="/wash" className="text-md text-white hover:text-gray-400 pt-6">{t("Water Sector")}</Link>
                                     <hr className="hrNew" />
                                 </div>
                                 <div className="pt-5">
-                                    <Link to="/health" className="text-md text-white hover:text-gray-400 pt-6">Health Sector</Link>
+                                    <Link to="/health" className="text-md text-white hover:text-gray-400 pt-6">{t("Health Sector")}</Link>
                                     <hr className="hrNew" />
                                 </div>
                                 <div className="pt-5">
-                                    <Link to="/feeding" className="text-md text-white hover:text-gray-400 pt-6">Feeding Sector</Link>
+                                    <Link to="/feeding" className="text-md text-white hover:text-gray-400 pt-6">{t("Feeding Sector")}</Link>
                                     <hr className="hrNew" />
                                 </div>
                                 <div className="pt-5  ">
-                                    <Link to="/education" className="text-md text-white hover:text-gray-400 pt-6">Education Sector</Link>
+                                    <Link to="/education" className="text-md text-white hover:text-gray-400 pt-6">{t("Education Sector")}</Link>
                                     <hr className="hrNew" />
                                 </div>
                             </div>
                             <div>
-                                <h2 className="text-md font-bold text-white">Quick Links</h2>
+                                <h2 className="text-md font-bold text-white"> {t("Quick Links")}</h2>
                                 <div className="grid grid-cols-2  pt-3">
                                     <hr />
                                 </div>
                                 <div className="pt-5">
-                                    <Link to="/about" className="text-md text-white hover:text-gray-400 pt-6">About Us </Link>
+                                    <Link to="/about" className="text-md text-white hover:text-gray-400 pt-6">{t("About Us")}</Link>
                                     <hr className="hrNew" />
                                 </div>
                                 <div className="pt-5">
-                                    <Link to="/ongoin-projects" className="text-md text-white hover:text-gray-400 pt-6">Projects</Link>
+                                    <Link to="/ongoin-projects" className="text-md text-white hover:text-gray-400 pt-6">{t("Projects")}</Link>
                                     <hr className="hrNew" />
                                 </div>
                                 <div className="pt-5  ">
                                     <Link to={magazineLinks.allMagazineLink}
-                                        target="_blank" className="text-md text-white hover:text-gray-400 pt-6">Our Magazine</Link>
+                                        target="_blank" className="text-md text-white hover:text-gray-400 pt-6">{t("our_magazine")}</Link>
                                     <hr className="hrNew" />
                                 </div>
                             </div>
                             <div>
-                                <h2 className="text-md font-bold text-white">Contact Us</h2>
+                                <h2 className="text-md font-bold text-white">{t("Contact Us")}</h2>
                                 <div className="grid grid-cols-2  pt-3">
                                     <hr />
                                 </div>
                                 <div>
-                                    <h6 className="text-md text-white pt-6">+447884060063  </h6>
+                                    <h6 className="text-md text-white pt-6"> {`+${contact.phone ?? "447884060063"}`}  </h6>
                                     <hr className="hrNew" />
                                 </div>
                                 <div>
-                                    <h6 className="text-md text-white pt-6">info@sadagaat-uk.org</h6>
+                                    <h6 className="text-md text-white pt-6">{contact.email ?? "info@sadagaat-uk.org"}</h6>
                                     <hr className="hrNew" />
                                 </div>
                                 <div>
-                                    <h6 className="text-md text-white pt-6">https://sadagaat-uk.org/  </h6>
+                                    <h6 className="text-md text-white pt-6">{contact.website ?? "http://sadagaat-uk.org"} </h6>
                                     <hr className="hrNew" />
                                 </div>
                             </div>
@@ -165,8 +168,8 @@ function Footer() {
                     </div>
                     <div className=" px-7 pt-7 text-center ">
                         {footer.length !== 0 ?
-                            parse(`${footer.text}`) :
-                            "All Rights Reserved © Sadagaat Community of Charity - 2020"}
+                                parse(`${footer.text}`) :
+                                t("All Rights Reserved © Sadagaat Community of Charity - 2020")}
                     </div>
 
                 </section>

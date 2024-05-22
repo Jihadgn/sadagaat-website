@@ -7,6 +7,8 @@ import address from "../../services";
 import { React, useEffect, useState } from "react";
 import { Tabs, } from 'flowbite-react';
 import { Precision, getNumber } from "../../services/getMonthName";
+import i18n from "i18next";
+import { useTranslation } from "react-i18next";
 
 import {
     Link,
@@ -16,6 +18,8 @@ import {
 } from "react-router-dom";
 
 function SingleProject() {
+
+  const { t, i18n } = useTranslation();
 
     const [project, setProject] = useState([]);
     const [data, setData] = useState([]);
@@ -28,10 +32,10 @@ function SingleProject() {
         // debugger;
         //  Get id of project from url
         const fetcher = await window.fetch(`${address()}projects/${id}`, {
-            headers: { "accept-language": `en` },
+            headers: { "accept-language": `${i18n.language}` },
         });
         const res1 = await fetcher.json();
-        const data = res1.projectTranslations.find((sub) => sub.locale === "en")
+        const data = res1.projectTranslations.find((sub) => sub.locale === i18n.language)
         const data2 = res1.images;
         setProject(data);
         setData(res1);
@@ -43,7 +47,7 @@ function SingleProject() {
     useEffect(() => {
         fetchData()
 
-    }, [])
+    }, [i18n.language])
 
 
     return (
@@ -64,7 +68,7 @@ function SingleProject() {
                                 <hr className="eventsHr w-10" />
                                 <div className="overflow-x-auto pt-7">
                                     <Tabs aria-label="Full width tabs" >
-                                        <Tabs.Item active title="Project details">
+                                        <Tabs.Item active title={t("Project Details")}>
                                             <div className=" causes grid lg:grid-cols-2 md:grid-cols-2  sm:grid-cols-1 gap-4 pb-9 ">
                                                 <div
                                                     className="post-thumb   "
@@ -81,7 +85,7 @@ function SingleProject() {
                                                     <span className="text-gray-600 text-md px-4">{project.locationName}</span>
                                                     <span className="text-gray-600 text-md px-4">{project.startAt}</span>
                                                     <p className="text-gray-900 text-md pb-10 pt-10">{project.description}</p>
-                                                    <span className="text-blue-800 text-md font-bold pt-10">Project Progress</span>
+                                                    <span className="text-blue-800 text-md font-bold pt-10">{t("Project Progress")}</span>
                                                     <div className="progress-item mt-0 pt-3">
                                                         <div className="progress">
                                                             <div
@@ -107,17 +111,17 @@ function SingleProject() {
                                                         </div>
                                                     </div>
                                                     <div className="pt-5 flex">
-                                                        <h3 className="pr-10 text-md font-bold">Raised : USD {data.raised}   </h3>
-                                                        <h3 className="pl-10 text-md font-bold">Target : USD {data.goal} </h3>
+                                                        <h3 className="pr-10 text-md font-bold">{t("Raised")}{" "} USD {data.raised}   </h3>
+                                                        <h3 className="pl-10 text-md font-bold">{t("Goal")} USD {data.goal} </h3>
                                                     </div>
                                                 </div>
                                             </div>
                                             <hr />
                                         </Tabs.Item>
-                                        <Tabs.Item title="Project Timeline" >
-                                            <h4 className="text-center font-bold text-2xl">No Project Timeline ...</h4>
+                                        <Tabs.Item title={t("Project Timeline")} >
+                                            <h4 className="text-center font-bold text-2xl">{t("No Project Timeline")}</h4>
                                         </Tabs.Item>
-                                        <Tabs.Item title="Project Map" >
+                                        <Tabs.Item title={t("Project Map")} >
 
                                             {/* <Map center={currentLocation} zoom={zoom}>
                                                 <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
@@ -133,7 +137,7 @@ function SingleProject() {
                                                     </Popup>
                                                 </Marker>
                                             </Map> */}
-                                            <h4 className="text-center font-bold text-2xl">Map not available ...</h4>
+                                            <h4 className="text-center font-bold text-2xl">{t("Map not available")}</h4>
 
                                         </Tabs.Item>
                                     </Tabs>

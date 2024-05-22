@@ -6,8 +6,12 @@ import Footer from '../Home/Footer';
 import address from "../../services";
 import { React, useEffect, useState } from "react";
 import FroalaEditorView from "react-froala-wysiwyg/FroalaEditorView";
+import i18n from "i18next";
+import { useTranslation } from 'react-i18next';
 
 function Careers() {
+
+  const { t, i18n } = useTranslation();
 
     const [data, setData] = useState([])
     const [offset, setOffset] = useState(0)
@@ -18,7 +22,7 @@ function Careers() {
 
     async function fetchData() {
         const fetcher = await window.fetch(`${address()}vacancies/to-apply`,
-            { headers: { 'accept-language': `en` } })
+            { headers: { 'accept-language': `${i18n.language}` } })
         const response = await fetcher.json()
         setData(response)
         setLoading(false)
@@ -27,7 +31,7 @@ function Careers() {
 
     async function fetchCover() {
         const fetcher = await window.fetch(`${address()}cover-image/CARRIER1`,
-            { headers: { 'accept-language': `en` } })
+            { headers: { 'accept-language': `${i18n.language}` } })
             .then((fetcher) => {
                 if (fetcher.status == 500) {
                     setCover(undefined)
@@ -40,7 +44,7 @@ function Careers() {
     useEffect(() => {
         fetchData()
         fetchCover()
-    }, [])
+    }, [i18n.language])
 
     return (
         <>
@@ -56,13 +60,13 @@ function Careers() {
                         }}
                     >
                         <div className="py-10 text-center">
-                            <h3 className="text-3xl font-bold text-white"> Careers  </h3>
+                            <h3 className="text-3xl font-bold text-white">  {t("Careers")}  </h3>
                         </div>
                     </section>
                     :
                     <section className="py-10 bg-gray-500 ">
                         <div className="py-10 text-center">
-                            <h3 className="text-3xl font-bold text-white"> Careers  </h3>
+                            <h3 className="text-3xl font-bold text-white">  {t("Careers")}  </h3>
                         </div>
                     </section>
                 }
@@ -89,7 +93,7 @@ function Careers() {
                               </h4>
                               <h6 className="text-md text-gray-800 mb-10">
                                {" "}
-                                Closing Date: {career.endDate}
+                               {t("Closing Date")}: {career.endDate}
                               </h6>
                               {/* FroalaEditorView Component: Used to render data entered by froala editor */}
                               <FroalaEditorView />
@@ -100,14 +104,14 @@ function Careers() {
                               className="btn" 
                               to={"/vacancy/" + career.id}
                             >
-                              Details
+                              {t("Details")}
                             </Link>
                           </div>
                       </div>
                     ))
                   ) : (
                     // No Vacancies Message
-                    <h3 className="text-gray-800 text-xl font-bold text-center">No Vacancies Available Now</h3>
+                    <h3 className="text-gray-800 text-xl font-bold text-center">{t("No Vacancies Available Now")}</h3>
                   )}
                     </div>
                 </section>

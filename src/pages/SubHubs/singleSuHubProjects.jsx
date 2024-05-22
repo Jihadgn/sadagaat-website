@@ -11,10 +11,12 @@ import address from '../../services';
 import { Precision, getNumber } from "../../services/getMonthName";
 import parse from 'html-react-parser';
 import ReactPaginate from "react-paginate";
-import Filters from './ProjectFilter';
-
+import i18n from "i18next";
+import { useTranslation } from "react-i18next";
 
 const SingleSubHubProject = (props) => {
+
+  const { t } = useTranslation();
 
     const [data, setData] = useState([]);
     let [currentPage, setCurrentPage] = useState(0);
@@ -79,7 +81,7 @@ const SingleSubHubProject = (props) => {
         const fetcher = await window.fetch(
             FilterUrl,
             {
-                headers: { "accept-language": `en` },
+                headers: { "accept-language": `${i18n.language}` },
             },
             {
                 items: (page) => page.results,
@@ -137,7 +139,7 @@ const SingleSubHubProject = (props) => {
         const fetcher = await window.fetch(
             FilterUrl,
             {
-                headers: { "accept-language": `en` },
+                headers: { "accept-language": `${i18n.language}` },
             },
             {
                 items: (page) => page.results,
@@ -189,20 +191,7 @@ const SingleSubHubProject = (props) => {
                 <section className="pt-10 pb-10 grid grid-cols-12 text-center bg-white ">
                     <div></div>
                     <div className="col-span-10">
-                        {/* filter projects */}
-                        {/* {(data !== undefined && data.length > 0) || filterOn === true ? (
-                            <div className="flex">
-                                <div className="grid grid-cols-4">
-                                    <Filters
-                                        clicked={GetSelectedDates}
-                                        cleared={clearFilter}
-                                        ordered={getOrder}
-                                        type={getType}
-                                        filter={filterData}
-                                    ></Filters>
-                                </div>
-                            </div>
-                        ) : null} */}
+                      
                         <div className="pt-10 pb-10 grid xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 text-center gap-4  border-b-2">
                             {data !== undefined && data.length > 0 ? (
                                 pageProjects().map((project, index) => (
@@ -216,8 +205,8 @@ const SingleSubHubProject = (props) => {
                                                 />
                                             </div>
                                             <div className="grid grid-cols-2 pt-1">
-                                                <h3 className="text-left text-lg font-bold">Raised :  {getNumber(project.raised)}   </h3>
-                                                <h3 className="text-right text-lg font-bold">Target :  {getNumber(project.goal)} </h3>
+                                                <h3 className="text-left text-lg font-bold">{t("Raised")}  {getNumber(project.raised)}   </h3>
+                                                <h3 className="text-right text-lg font-bold">{t("Goal")} {getNumber(project.goal)} </h3>
                                             </div>
                                             <div className="progress-item mt-0">
                                                 <div className="progress">
@@ -231,7 +220,7 @@ const SingleSubHubProject = (props) => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <h2 className="text-left text-lg font-bold pt-1">Project Progress</h2>
+                                            <h2 className="text-left text-lg font-bold pt-1">{t("Project Progress")}</h2>
                                             <div className="progress-item mt-0">
 
                                                 <div className="progress">
@@ -256,7 +245,7 @@ const SingleSubHubProject = (props) => {
                                 ))
                             ) : (
                                 <h3 className="text-center">
-                                    No Available Results for Your Search"
+                                     {t("No Available Results for Your Search")}
                                 </h3>
                             )}
 
