@@ -6,14 +6,20 @@ import Volunteering from '../Home/Volunteering';
 import Footer from '../Home/Footer';
 import address from "../../services";
 import cisco from "../../assets/1234.png"
-import { Card } from "flowbite-react";
 import { Link } from "react-router-dom";
-import { useTranslation } from 'react-i18next';
 
 function Learning() {
 
     const [news, setNews] = useState([]);
-    const { t, i18n } = useTranslation();
+
+    function convertDateTime(dateTime) {
+        var date = new Date(dateTime);
+        var year = date.getFullYear();
+        var month = String(date.getMonth() + 1).padStart(2, '0');
+        var day = String(date.getDay()).padStart(2, '0');
+        const formatedDate = year + "-" + month + "-" + day;
+        return formatedDate;
+    }
 
     async function fetchData() {
         const fetcher = await window.fetch(`${address()}cisco-category/`);
@@ -24,7 +30,8 @@ function Learning() {
     useEffect(() => {
         fetchData();
     }, [])
-    
+
+
 
     return (
         <>
@@ -37,8 +44,8 @@ function Learning() {
                     <div className="py-10 text-center grid grid-cols-6  gap-6">
                         <div></div>
                         <img src={cisco} className="h-24 w-24" />
-                        <h3 className="text-3xl pt-5 font-bold text-white col-span-2">{t("sudanese_learning_hub")}</h3>
-                    <div></div>
+                        <h3 className="text-3xl pt-5 font-bold text-white col-span-2">Cisco Networking Academy</h3>
+                        <div></div>
                     </div>
                 </section>
                 <section className="py-10 bg-white grid grid-cols-12">
@@ -47,6 +54,7 @@ function Learning() {
                         <h2 className="text-gray-500 font-bold pt-6">In response to the recent conflict in Sudan, numerous Sudanese individuals, particularly the youth, have been displaced, leading to interruptions in their education and careers. Many are seeking avenues to acquire new skills or pursue different career paths.</h2>
                         <h2 className="text-gray-500 font-bold pt-6">To address this, Sadagaat is proud to collaborate with Cisco Networking Academy in launching the Sudanese Learning Hub. This initiative aims to provide top-tier practical education from Cisco, a global technology leader powering the Internet. The courses offered are strategically designed to equip learners with the skills necessary for success in various job roles. Cisco Networking Academy has a longstanding reputation for its IT skills-to-jobs programs. Through robust public-private partnerships and high-quality curriculum, they've been instrumental in inclusive workforce development since 1997.</h2>
                         <h2 className="text-gray-500 font-bold pt-6 ">The Sudanese Learning Hub is committed to providing a range of Cisco Network Academy courses focusing on high-demand IT subjects like Cybersecurity, Networking, Data Science, Programming, and Operating Systems. These courses aim to pave the way for employment opportunities in the IT sector. The Learning Hub will offer three types of courses under the 'Skills for All' platform, all of which are free of charge.</h2>
+                        <h2 className="text-red-600 text-xl text-center font-bold p-6 ">ONLY SUDANESE PEOPLE CAN APPLY</h2>
 
                         <div className="pt-9">
                             {news.map((cate, index) => (
@@ -65,7 +73,8 @@ function Learning() {
 
                                                 {course.startDate ? (
                                                     <div className="pt-4 pb-5 flex">
-                                                        <h2 className="text-gray-800 text-left px-3 text-sm">From: {course.startDate} -  to : {course.endDate} </h2>
+                                                        <h2 className="text-gray-800 text-left px-3 text-sm">
+                                                            From: {convertDateTime(course.startDate)} ...  to : {convertDateTime(course.endDate)} </h2>
                                                     </div>
                                                 ) : (
                                                     <div className="pt-4 pb-5 ">

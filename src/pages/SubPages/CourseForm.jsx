@@ -11,15 +11,18 @@ const REST_COUNTRIES_URL = "https://restcountries.com/v3.1/all?fields=name";
 const REST_NATIONALITY_URL = "https://restcountries.com/v3.1/demonym/{0}?";
 // const REST_CITIES_URL = "https://countriesnow.space/api/v0.1/countries/cities";
 import { useTranslation } from 'react-i18next';
+import { success, danger } from '../../services';
+import Overlay from './Overlay';
 
 const formatString = (template, ...args) => {
     return template.replace(/{([0-9]+)}/g, function (match, index) {
         return typeof args[index] === 'undefined' ? match : args[index];
     });
 }
+
 function Course() {
 
-  const { t, i18n } = useTranslation();
+    const { t, i18n } = useTranslation();
 
     const interestAreas = [
         "Networking",
@@ -76,6 +79,8 @@ function Course() {
     const [courseInterestReasonOthersText, setCourseInterestReasonOthersText] = useState("");
     const [comment, setComment] = useState("");
 
+    const [loading, setLoading] = useState(false);
+
     useEffect(() => {
         fetchData();
         fetch(REST_COUNTRIES_URL)
@@ -119,7 +124,7 @@ function Course() {
         setCity("");
     }
 
-    function handleSubmit(e) {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const data = {
             name,
@@ -139,28 +144,17 @@ function Course() {
                 courseInterestReasonOthersText : courseInterestReason,
             comment
         }
+        try {
+        setLoading(true);
+            await submit_course_registration(data);
+            success("You have registered successfuly");
+            routeToUrl("/sudanese-learning-hub");
+        } catch (error) {
+            danger("Sorry .. Please rewrite you data..");
+        } finally {
+            setLoading(false);
 
-        submit_course_registration(data)
-            .then(response => {
-                setResponse({
-                    message: "Your Form Submitted Successfully",
-                    styleClass: "success-msg",
-                });
-                routeToUrl(`/sudanese-learning-hub`);
-            })
-            .catch(err => {
-                console.log(err);
-                let message = err.message;
-                if (err.message.includes("400"))
-                    message = "It appears there may be a mistake or incorrect data entry; please review and resubmit."
-                else if (err.message !== "Network Error")
-                    message = "Something went wrong please try again";
-
-                setResponse({
-                    message: message,
-                    styleClass: "error-msg",
-                });
-            });
+        }
     }
 
     return (
@@ -172,7 +166,7 @@ function Course() {
                 {/* title section */}
                 <section className="py-10 bg-gray-500 ">
                     <div className="py-10 text-center">
-                        <h3 className="text-3xl font-bold text-white"> Course Form  </h3>
+                        <h3 className="text-3xl font-bold text-white"> Application Form  </h3>
                     </div>
                 </section>
                 <section className="py-10 bg-white grid grid-cols-12 lg:px-16 md:px-2 px-2">
@@ -181,10 +175,10 @@ function Course() {
                         <form
                             className="register-form"
                             onSubmit={handleSubmit}>
+                                 <Overlay loading={loading} />
                             <div className="grid md:grid-cols-2 sm:grid-cols-1 border border-gray-300 p-5 overflow-hidden">
-                                <h2 className="text-red-600 text-xl text-center font-bold p-3 col-span-2">ONLY SUDANESE PEOPLE CAN APPLY</h2>
                                 <h2 className="text-gray-600 text-lg font-bold p-3 col-span-2 flex">
-                                {t("form_intro")}
+                                    {t("form_intro")}
                                 </h2>
                                 <h2 className="text-gray-600 text-lg font-bold p-3 col-span-2">{"- " + t("candidate_information")}</h2>
                                 <div className="pt-4 px-5 col-span-2">
@@ -225,9 +219,9 @@ function Course() {
                                     <input required value={phoneNumber}
                                         onChange={(e) => { setPhoneNumber(e.target.value) }}
                                         pattern="^\+?(\d{1,3})?\s?\d{4,13}$"
-                                                        title={(
-                                                            "Enter a valid phone number ranges from 4 to 13 digits"
-                                                        )}
+                                        title={(
+                                            "Enter a valid phone number ranges from 4 to 13 digits"
+                                        )}
                                         type="text" className="bg-gray-50 border border-gray-300 text-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
                                 </div>
 
@@ -241,6 +235,24 @@ function Course() {
                                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                         <option value="FEMALE">FEMALE</option>
                                         <option value="MALE">MALE</option>
+                                    </select>
+                                </div>
+                                <div className="pt-4 px-5 md:col-span-1 col-span-2">
+                                    <div className="flex">
+                                        <label className="mb-2 font-bold text-sm text-gray-600">Nationality</label>
+                                        <span className="text-red-500 px-2">*</span>
+                                    </div>
+                                    <select
+                                        name="nationality"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        onChange={(e) => { setNationality(e.target.value) }}
+                                        value={nationality}
+                                        required="required">
+                                        {countries?.map((c, index) => {
+                                            return <option
+                                                key={index}
+                                                name="country">{c}</option>
+                                        })}
                                     </select>
                                 </div>
                                 <div className="pt-4 px-5 md:col-span-1 col-span-2">
@@ -280,7 +292,7 @@ function Course() {
                                         onChange={(e) => { setCity(e.target.value) }}
                                         type="text" className="bg-gray-50 border border-gray-300 text-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
                                 </div>
-                                <div className="pt-4 px-5 col-span-2">
+                                <div className="pt-4 px-5  md:col-span-1 col-span-2">
                                     <div className="flex">
                                         <label className="mb-2 font-bold text-sm text-gray-600"> {t("it_background")}   </label>
                                         <span className="text-red-500 px-2">*</span>
@@ -332,7 +344,7 @@ function Course() {
                                                     value={cate.title}>{cate.title}</option>
                                             )
                                         })}
-                                    </select>   
+                                    </select>
                                 </div>
                                 <div className="pt-4 px-5 md:col-span-1 col-span-2">
                                     <div className="flex">
@@ -408,7 +420,6 @@ function Course() {
                                 </div>
 
                                 <button type="submit" className="btn col-span-2 mx-5">Submit</button>
-
                             </div>
                         </form>
                     </div>
