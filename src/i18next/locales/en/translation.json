@@ -306,6 +306,19 @@
   "join_us": "Join Us",
   "donate_to_project": "Donate to Project",
   "signup_to_our_monthly_magazine": "Signup to our monthly magazine",
-  "attend_an_event": "Attend an Event"
-  
+  "attend_an_event": "Attend an Event",
+  "sudanese_learning_hub": "Sudanese Learning Hub",
+  "candidate_information": "Candidate Information",
+  "nationality": "Nationality",
+  "sudanese": "Sudanese",
+  "current_location": "Current Location",
+  "interest_area": "Interest Area",
+  "it_background": "IT Background(Please mention all the skills if you are from it background)",
+  "please_fill_all_required_fields": "Please fill all the required fields",
+  "what_type_of_courses_do_you_want_to_register": "What type of courses do you want to register ?",
+  "do_you_have_laptop": "Do you have laptop ?",
+  "do_you_have_good_internet_access": "Do you have good internet access ?",
+  "why_are_you_interested_in_attending_this_training_course": "Why are you interested in attending this training course ?",
+  "comment": "Comment",
+  "form_intro": "Thank you for your interest in our tech training courses provided by Cisco Networking Academy, available ONLY to Sudanese applicants. To apply please complete the application form below."
 }

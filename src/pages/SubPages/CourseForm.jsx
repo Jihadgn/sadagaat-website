@@ -62,20 +62,20 @@ function Course() {
     const [response, setResponse] = useState({ styleClass: "", message: "" });
     // form fields
     const [name, setName] = useState("");
-    const [gender, setGender] = useState(false); // False = Male, True = Female
+    const [gender, setGender] = useState(""); // False = Male, True = Female
     const [email, setEmail] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [nationality, setNationality] = useState("");
-    const [country, setCountry] = useState("");
+    const [country, setCountry] = useState("11"); 
     const [city, setCity] = useState("");
     const [dateOfBirth, setDateOfBirth] = useState("");
-    const [interestArea, setInterestArea] = useState(interestAreas[0]);
-    const [iTBackground, setITBackground] = useState(iTBackgrounds[0]);
+    const [interestArea, setInterestArea] = useState("");
+    const [iTBackground, setITBackground] = useState("");
     const [iTBackgroundOthersText, setITBackgroundOthersText] = useState("");
     const [trainingType, setTrainingType] = useState("");
-    const [haveLaptop, setHaveLaptop] = useState(true);
-    const [haveGoodInternetAccess, setHaveGoodInternetAccess] = useState(true);
-    const [courseInterestReason, setCourseInterestReason] = useState(whyAreYouInterested[0]);
+    const [haveLaptop, setHaveLaptop] = useState("");   
+    const [haveGoodInternetAccess, setHaveGoodInternetAccess] = useState("");
+    const [courseInterestReason, setCourseInterestReason] = useState("");
     const [courseInterestReasonOthersText, setCourseInterestReasonOthersText] = useState("");
     const [comment, setComment] = useState("");
 
@@ -177,9 +177,7 @@ function Course() {
                             onSubmit={handleSubmit}>
                                  <Overlay loading={loading} />
                             <div className="grid md:grid-cols-2 sm:grid-cols-1 border border-gray-300 p-5 overflow-hidden">
-                                <h2 className="text-gray-600 text-lg font-bold p-3 col-span-2 flex">
-                                    {t("form_intro")}
-                                </h2>
+                                
                                 <h2 className="text-gray-600 text-lg font-bold p-3 col-span-2">{"- " + t("candidate_information")}</h2>
                                 <div className="pt-4 px-5 col-span-2">
                                     <div className="flex">
@@ -233,8 +231,9 @@ function Course() {
                                     <select required value={gender}
                                         onChange={(e) => { setGender(e.target.value) }}
                                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                                        <option value="FEMALE">FEMALE</option>
-                                        <option value="MALE">MALE</option>
+                                        <option value=""></option>
+                                        <option value={true}>FEMALE</option>
+                                        <option value={false}>MALE</option>
                                     </select>
                                 </div>
                                 <div className="pt-4 px-5 md:col-span-1 col-span-2">
@@ -248,6 +247,8 @@ function Course() {
                                         onChange={(e) => { setNationality(e.target.value) }}
                                         value={nationality}
                                         required="required">
+                                        <option value=""></option>
+                                        
                                         {countries?.map((c, index) => {
                                             return <option
                                                 key={index}
@@ -263,6 +264,7 @@ function Course() {
                                     <select required value={nationalities}
                                         onChange={(e) => { setNationalities(e.target.value) }}
                                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                        <option value=""></option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
                                     </select>
@@ -275,6 +277,7 @@ function Course() {
                                     <select required value={country}
                                         onChange={(e) => { handleCountryChanged(e.target.value) }}
                                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                        <option value="11" ></option>
                                         {countries?.map((c, index) => {
                                             return <option
                                                 key={index}
@@ -303,7 +306,8 @@ function Course() {
                                             setITBackgroundOthersText("");
                                         }}
                                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                                        {iTBackgrounds.map((b, index) => {
+                                        <option value=""></option>
+                                       {iTBackgrounds.map((b, index) => {
                                             return (
                                                 <option key={index}
                                                     name="it_background"
@@ -320,6 +324,8 @@ function Course() {
                                     <select onChange={(e) => { setInterestArea(e.target.value) }}
                                         value={interestArea}
                                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                        <option value=""></option>
+                                        
                                         {interestAreas.map((b, index) => {
                                             return (
                                                 <option key={index}
@@ -337,6 +343,8 @@ function Course() {
                                     <select onChange={(e) => { setTrainingType(e.target.value) }}
                                         value={trainingType}
                                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                        <option value=""></option>
+                                       
                                         {news.map((cate, index) => {
                                             return (
                                                 <option key={index}
@@ -399,6 +407,8 @@ function Course() {
                                     }}
                                         value={courseInterestReason}
                                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                        <option value=""></option>
+                                        
                                         {whyAreYouInterested.map((b, index) => {
                                             return (
                                                 <option key={index}

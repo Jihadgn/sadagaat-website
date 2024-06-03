@@ -65,10 +65,10 @@ function Learning() {
                                     </div>
                                     <div className="pt-1 md:px-10 px-1 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 pt-5">
                                         {cate.ciscoCourses.map((course, index) => (
-                                            <div className="max-w-md border-2 border-blue-800">
-                                                <h2 className=" py-3 font-bold text-white text-center text-md course-card "> {course.title} </h2>
+                                            <div className="border-2 border-blue-800">
+                                                <h2 className=" py-3 font-bold text-white text-center text-md course-card h-14"> {course.title} </h2>
                                                 <div className="pt-4">
-                                                    <h2 className=" text-gray-600 text-left px-3 text-md"> {course.description} </h2>
+                                                    <h2 className=" text-gray-600 text-left px-3 text-md h-24 overflow-hidden"> {course.description} </h2>
                                                 </div>
 
                                                 {course.startDate ? (
@@ -82,11 +82,11 @@ function Learning() {
                                                     </div>
                                                 )}
                                                 {course.link ? (
-                                                    <div className="py-4 px-10 text-center w-full mb-4">
+                                                    <div className="py-4 px-10 text-center w-full relative mb-0">
                                                         <Link className="hover:bg-blue-700 flex-wrap hover:text-white course-card text-white px-4 py-3 w-full text-center" to={course.link}>Get Started</Link>
                                                     </div>
                                                 ) : (
-                                                    <div className="py-4 px-10 text-center w-full mb-4">
+                                                    <div className="py-4 px-10 text-center w-full  relative mb-0">
                                                         <Link className="hover:bg-blue-700 flex-wrap hover:text-white course-card text-white px-4 py-3 w-full text-center" to="/course-form">Register</Link>
                                                     </div>
                                                 )}
