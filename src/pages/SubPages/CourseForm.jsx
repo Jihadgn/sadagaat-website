@@ -62,7 +62,7 @@ function Course() {
     const [response, setResponse] = useState({ styleClass: "", message: "" });
     // form fields
     const [name, setName] = useState("");
-    const [gender, setGender] = useState(""); // False = Male, True = Female
+    const [gender, setGender] = useState(false); // False = Male, True = Female
     const [email, setEmail] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [nationality, setNationality] = useState("");
@@ -232,8 +232,8 @@ function Course() {
                                         onChange={(e) => { setGender(e.target.value) }}
                                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                         <option value=""></option>
-                                        <option value={true}>FEMALE</option>
-                                        <option value={false}>MALE</option>
+                                        <option value="true">FEMALE</option>
+                                        <option value="false">MALE</option>
                                     </select>
                                 </div>
                                 <div className="pt-4 px-5 md:col-span-1 col-span-2">
