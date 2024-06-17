@@ -178,6 +178,7 @@ const FilteredProjects = (props) => {
                                 />
                             </div>
                             <div className="pt-2 flex" >
+                                <span>cdscssdcs</span>
                                 <input
                                     name="location"
                                     className="text-gray-800 text-sm"

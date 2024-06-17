@@ -153,7 +153,6 @@
   "Upcoming": "Upcoming",
   "Events1": "Events",
   "Events": "Events",
-  "Latest": "Latest",
   "Photo": "Photo",
   "Gallery": "Gallery",
   "Raised": "Raised:",
@@ -301,7 +300,7 @@
   "directMsg": "You Will be Directed to The Application Website",
   "Map not available": "There is no available map for this project",
   "Project Map": "Project Map",
-
+  "Latest": "Latest",
   "checkout_monthly_magazine": "Checkout Monthly Magazine",
   "join_us": "Join Us",
   "donate_to_project": "Donate to Project",

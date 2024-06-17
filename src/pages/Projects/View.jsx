@@ -172,26 +172,35 @@ const SingleSubHubProject = (props) => {
         <>
             <main >
                 {/* our projects */}
-                <section className="pt-10 pb-10 grid grid-cols-12 text-center">
+                <section className="pt-10 pb-10 grid grid-cols-12 ">
                     <div></div>
                     <div className="col-span-10">
                         {/* filter projects */}
                         <div className="grid flex lg:grid-cols-6 md:grid-cols-3 gap-6">
-                            <div className="pt-2 flex" >
+                            <div className="pt-2">
+                                <div className="flex">
+                                    <label className="mb-2 font-bold text-gray-600">{t("Select Start Date")}</label>
+                                </div>
                                 <input type="date"
-                                    className="text-gray-800 text-sm"
+                                    className="text-gray-800 text-sm w-full"
                                     placeholderText={t("Select Start Date")}
                                     onChange={(date) => setStartDate(date)}
                                 />
                             </div>
-                            <div className="pt-2 flex" >
+                            <div className="pt-2 " >
+                            <div className="flex">
+                                    <label className="mb-2 font-bold text-gray-600">{t("Select End Date")}</label>
+                                </div>
                                 <input type="date"
-                                    className="text-gray-800 text-sm"
+                                    className="text-gray-800 text-sm w-full"
                                     placeholderText={t("Select End Date")}
                                     onChange={(date) => setEndDate(date)}
                                 />
                             </div>
-                            <div className="pt-2 flex" >
+                            <div className="pt-2 " >
+                            <div className="flex">
+                                    <label className="mb-2 font-bold text-gray-600">{t("Location")}</label>
+                                </div>
                                 <input
                                     name="location"
                                     className="text-gray-800 text-sm"
@@ -201,10 +210,13 @@ const SingleSubHubProject = (props) => {
                                     onChange={(e) => { setLocation(e.target.value) }}
                                 />
                             </div>
-                            <div className="pt-2 flex" >
+                            <div className="pt-2" >
+                            <div className="flex">
+                                    <label className="mb-2 font-bold text-gray-600">{t("Select Hub")}</label>
+                                </div>
                                 <select
                                     name="hub"
-                                    className="text-gray-800 text-sm"
+                                    className="text-gray-800 text-sm w-full"
                                     onChange={(e) => {
                                         setHubId(parseInt(e.target.value))
                                     }}
@@ -217,7 +229,7 @@ const SingleSubHubProject = (props) => {
                                 </select>
                             </div>
                             <div className="pt-2 flex" >
-                                <button className="bg-gray-300 text-sm border-gray-900 text-gray-800 inline-flex"
+                                <button className="bg-gray-300 text-sStart datem border-gray-900 text-gray-800 inline-flex"
                                     onClick={SetDates} >
                                     {t("Filter")}
                                 </button>

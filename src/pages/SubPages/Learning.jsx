@@ -17,7 +17,99 @@ function Learning() {
         var year = date.getFullYear();
         var month = String(date.getMonth() + 1).padStart(2, '0');
         var day = String(date.getDay()).padStart(2, '0');
-        const formatedDate = year + "-" + month + "-" + day;
+        // format month
+        if (month == 1) {
+            var formatedMonth = "Jan"
+        } else if (month == 2) {
+            var formatedMonth = "Feb"
+        } else if (month == 3) {
+            var formatedMonth = "Mar"
+        } else if (month == 4) {
+            var formatedMonth = "Apr"
+        } else if (month == 5) {
+            var formatedMonth = "May"
+        } else if (month == 6) {
+            var formatedMonth = "Jun"
+        } else if (month == 7) {
+            var formatedMonth = "Jul"
+        } else if (month == 8) {
+            var formatedMonth = "Aug"
+        } else if (month == 9) {
+            var formatedMonth = "Sept"
+        } else if (month == 10) {
+            var formatedMonth = "Oct"
+        } else if (month == 11) {
+            var formatedMonth = "Nov"
+        } else {
+            var formatedMonth = "Des"
+        }
+        // format day
+        if (day == 1) {
+            var formatedDay = "1st"
+        } else if (day == 2) {
+            var formatedDay = "2nd"
+        } else if (day == 3) {
+            var formatedDay = "3ed"
+        } else if (day == 4) {
+            var formatedDay = "4th"
+        } else if (day == 5) {
+            var formatedDay = "5th"
+        } else if (day == 6) {
+            var formatedDay = "6th"
+        } else if (day == 7) {
+            var formatedDay = "7th"
+        } else if (day == 8) {
+            var formatedDay = "8th"
+        } else if (day == 9) {
+            var formatedDay = "9th"
+        } else if (day == 10) {
+            var formatedDay = "10th"
+        } else if (day == 11) {
+            var formatedDay = "11th"
+        } else if (day == 12) {
+            var formatedDay = "12th"
+        } else if (day == 13) {
+            var formatedDay = "13th"
+        } else if (day == 14) {
+            var formatedDay = "14th"
+        } else if (day == 15) {
+            var formatedDay = "15th"
+        } else if (day == 16) {
+            var formatedDay = "16th"
+        } else if (day == 17) {
+            var formatedDay = "17th"
+        } else if (day == 18) {
+            var formatedDay = "18th"
+        } else if (day == 19) {
+            var formatedDay = "19th"
+        } else if (day == 20) {
+            var formatedDay = "20th"
+        } else if (day == 21) {
+            var formatedDay = "21th"
+        } else if (day == 22) {
+            var formatedDay = "22th"
+        } else if (day == 23) {
+            var formatedDay = "23th"
+        } else if (day == 24) {
+            var formatedDay = "24th"
+        } else if (day == 25) {
+            var formatedDay = "25th"
+        } else if (day == 26) {
+            var formatedDay = "26th"
+        } else if (day == 27) {
+            var formatedDay = "27th"
+        } else if (day == 28) {
+            var formatedDay = "28th"
+        } else if (day == 29) {
+            var formatedDay = "29th"
+        } else if (day == 30) {
+            var formatedDay = "30th"
+        } else if (day == 31) {
+            var formatedDay = "31th"
+        } else {
+            var formatedDay = " "
+        }
+        const formatedDate = formatedMonth + "    " + formatedDay + ", " + year;
         return formatedDate;
     }
 
@@ -40,12 +132,10 @@ function Learning() {
                 <TopBar />
                 <NavBar />
                 {/* coursesPage */}
-                <section className="py-10 bg-gray-500 ">
-                    <div className="py-10 text-center grid grid-cols-6  gap-6">
+                <section className="py-10 bg-blue-100 ">
+                    <div className="py-10 text-center grid grid-cols-3 gap-1">
                         <div></div>
-                        <img src={cisco} className="h-24 w-24" />
-                        <h3 className="text-3xl pt-5 font-bold text-white col-span-2">Cisco Networking Academy</h3>
-                        <div></div>
+                        <img src={cisco} className="h-42 w-42" />
                     </div>
                 </section>
                 <section className="py-10 bg-white grid grid-cols-12">
@@ -63,7 +153,7 @@ function Learning() {
                                     <div className="pt-4">
                                         <h2 className="text-gray-600 text-left px-3 text-md"> {cate.description} </h2>
                                     </div>
-                                    <div className="pt-1 md:px-10 px-1 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 pt-5">
+                                    <div className="pt-1 md:px-10 px-1 grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-10 pt-5">
                                         {cate.ciscoCourses.map((course, index) => (
                                             <div className="border-2 border-blue-800">
                                                 <h2 className=" py-3 font-bold text-white text-center text-md course-card h-14"> {course.title} </h2>
@@ -72,13 +162,73 @@ function Learning() {
                                                 </div>
 
                                                 {course.startDate ? (
-                                                    <div className="pt-4 pb-5 flex">
-                                                        <h2 className="text-gray-800 text-left px-3 text-sm">
-                                                            From: {convertDateTime(course.startDate)} ...  to : {convertDateTime(course.endDate)} </h2>
+                                                    <div>
+                                                        <div className="pt-4 pb-5 flex">
+                                                            <h2 className="text-gray-800 text-center px-3 text-sm">
+                                                                <span className="font-bold">From:</span> {convertDateTime(course.startDate)} - <span className="font-bold">To:</span> {convertDateTime(course.endDate)} </h2>
+                                                        </div>
+                                                        <div className="py-5 px-2 text-center grid lg:grid-cols-2 xl:grid-cols-3 grid-cols-2">
+                                                            <span className="text-white  text-xs course-card py-2 mt-3 px-3 flex rounded-lg mx-2">
+                                                            <span><svg class="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                                </svg></span>
+                                                                <span className="mx-1 pt-1">{course.numberOfHours}</span> <span className=" pt-1">Hours</span></span>
+                                                            <span className="text-white gap-1 text-xs bg-green-500 py-2 mt-3 px-3 flex rounded-lg mx-2">
+                                                                <span><svg class="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15v4m6-6v6m6-4v4m6-6v6M3 11l6-5 6 5 5.5-5.5" />
+                                                                </svg></span>
+                                                                <span className="pt-1">{course.level}</span></span>
+                                                            {course.lab ? (
+                                                                <span className="text-white  text-xs bg-gray-500 py-2 mt-3 px-3 flex rounded-lg mx-2">
+                                                                    <span><svg class="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15v4m6-6v6m6-4v4m6-6v6M3 11l6-5 6 5 5.5-5.5" />
+                                                                    </svg></span>
+                                                                    <span className="mx-1 pt-1">{course.lab}</span><span className="mx-1 pt-1">Labs</span></span>
+                                                            )
+                                                                :
+                                                                (
+                                                                    <span className="text-white  text-xs bg-gray-500 py-2 mt-3 px-3 flex rounded-lg mx-2">
+                                                                       <span> <svg class="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.5 4h-13m13 16h-13M8 20v-3.333a2 2 0 0 1 .4-1.2L10 12.6a1 1 0 0 0 0-1.2L8.4 8.533a2 2 0 0 1-.4-1.2V4h8v3.333a2 2 0 0 1-.4 1.2L13.957 11.4a1 1 0 0 0 0 1.2l1.643 2.867a2 2 0 0 1 .4 1.2V20H8Z" />
+                                                                        </svg></span>
+
+                                                                        <span className="mx-1 pt-1">0</span><span className="mx-1 pt-1">Labs</span></span>
+                                                                )}
+                                                        </div>
                                                     </div>
                                                 ) : (
-                                                    <div className="pt-4 pb-5 ">
-                                                        <h2 className="text-gray-800 text-center px-3 text-md font-bold">Comming Soon...</h2>
+                                                    <div>
+                                                        <div className="pt-4 pb-5 ">
+                                                            <h2 className="text-gray-800 text-center px-3 text-md font-bold">Comming Soon...</h2>
+                                                        </div>
+                                                        <div className="py-5 text-center grid md:grid-cols-2 grid-cols-3 xl:grid-cols-3">
+                                                            <span className="text-white text-xs  font-bold course-card py-2 mt-3 px-3 flex rounded-lg mx-2">
+                                                            <span><svg class="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                                </svg></span>
+                                                                <span className="mx-1 pt-1">{course.numberOfHours}</span> <span className=" pt-1">Hours</span></span>
+                                                            <span className="text-white gap-1 text-xs bg-green-500 py-2 mt-3 px-3 flex rounded-lg mx-2">
+                                                                <span><svg class="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15v4m6-6v6m6-4v4m6-6v6M3 11l6-5 6 5 5.5-5.5" />
+                                                                </svg></span>
+                                                                <span className="pt-1">{course.level}</span></span>
+                                                            {course.lab ? (
+                                                                <span className="text-white text-xs bg-gray-500 py-2 mt-3 px-3 flex rounded-lg mx-2">
+                                                                    <span><svg class="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15v4m6-6v6m6-4v4m6-6v6M3 11l6-5 6 5 5.5-5.5" />
+                                                                    </svg></span>
+                                                                    <span className="mx-1 pt-1">{course.lab}</span><span className="mx-1 pt-1">Labs</span></span>
+                                                            )
+                                                                :
+                                                                (
+                                                                    <span className="text-white text-xs bg-gray-500 py-2 mt-3 px-3 flex rounded-lg mx-2">
+                                                                       <span> <svg class="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.5 4h-13m13 16h-13M8 20v-3.333a2 2 0 0 1 .4-1.2L10 12.6a1 1 0 0 0 0-1.2L8.4 8.533a2 2 0 0 1-.4-1.2V4h8v3.333a2 2 0 0 1-.4 1.2L13.957 11.4a1 1 0 0 0 0 1.2l1.643 2.867a2 2 0 0 1 .4 1.2V20H8Z" />
+                                                                        </svg></span>
+
+                                                                        <span className="mx-1 pt-1">0</span><span className="mx-1 pt-1">Labs</span></span>
+                                                                )}
+                                                        </div>
                                                     </div>
                                                 )}
                                                 {course.link ? (

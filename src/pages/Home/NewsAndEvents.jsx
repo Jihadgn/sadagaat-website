@@ -41,9 +41,7 @@ function NewsAndEvents() {
                     <div></div>
                     <div className="col-span-10 pt-8">
                             <div>
-                                <span className="text-left text-2xl font-bold pb-4 sm:pl-0 lg:pl-8 md:pl-0 text-gray-900 ">Latest </span>
-                                <span className="text-left text-2xl font-bold pb-4 text-blue-700 "> {t("News")}</span>
-                                <hr className="eventsHr-1 w-10" />
+                                <span className="text-left text-2xl font-bold pb-4 sm:pl-0 lg:pl-8 md:pl-0 text-gray-900 "> {t("Latest News")} </span>
                             </div>
                             <div className="pt-9 grid lg:grid-cols-3 md:grid-cols-2 grid:cols-1 gap-6">
                                     {news.map((news_) => (

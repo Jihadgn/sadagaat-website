@@ -61,23 +61,23 @@ function Course() {
 
     const [response, setResponse] = useState({ styleClass: "", message: "" });
     // form fields
-    const [name, setName] = useState("");
-    const [gender, setGender] = useState(false); // False = Male, True = Female
-    const [email, setEmail] = useState("");
-    const [phoneNumber, setPhoneNumber] = useState("");
-    const [nationality, setNationality] = useState("");
-    const [country, setCountry] = useState("11"); 
-    const [city, setCity] = useState("");
-    const [dateOfBirth, setDateOfBirth] = useState("");
-    const [interestArea, setInterestArea] = useState("");
-    const [iTBackground, setITBackground] = useState("");
-    const [iTBackgroundOthersText, setITBackgroundOthersText] = useState("");
-    const [trainingType, setTrainingType] = useState("");
-    const [haveLaptop, setHaveLaptop] = useState("");   
-    const [haveGoodInternetAccess, setHaveGoodInternetAccess] = useState("");
-    const [courseInterestReason, setCourseInterestReason] = useState("");
-    const [courseInterestReasonOthersText, setCourseInterestReasonOthersText] = useState("");
-    const [comment, setComment] = useState("");
+    const [name, setName] = useState(null);
+    const [gender, setGender] = useState(null); // False = Male, True = Female
+    const [email, setEmail] = useState(null);
+    const [phoneNumber, setPhoneNumber] = useState(null);
+    const [nationality, setNationality] = useState(null);
+    const [country, setCountry] = useState(null); 
+    const [city, setCity] = useState(null);
+    const [dateOfBirth, setDateOfBirth] = useState(null);
+    const [interestArea, setInterestArea] = useState(null);
+    const [iTBackground, setITBackground] = useState(null);
+    const [iTBackgroundOthersText, setITBackgroundOthersText] = useState(null);
+    const [trainingType, setTrainingType] = useState(null);
+    const [haveLaptop, setHaveLaptop] = useState(null);   
+    const [haveGoodInternetAccess, setHaveGoodInternetAccess] = useState(null);
+    const [courseInterestReason, setCourseInterestReason] = useState(null);
+    const [courseInterestReasonOthersText, setCourseInterestReasonOthersText] = useState(null);
+    const [comment, setComment] = useState(null);
 
     const [loading, setLoading] = useState(false);
 
@@ -89,32 +89,7 @@ function Course() {
                 const list = data.map(d => d.name.common);
                 list.sort();
                 setCountries(list);
-                handleCountryChanged(list[0]);
-
-                // Fetch each country's nationalities
-                const listOfPromises = list.map(c => {
-                    return fetch(formatString(REST_NATIONALITY_URL + new URLSearchParams({
-                        fields: "demonyms"
-                    }), c.replace(/ /g, '%20')))
-                        .then(res => res.json())
-                        .catch(console.error)
-                })
-
-                Promise.all(listOfPromises)
-                    .then(res => {
-                        let nas = []
-                        res.forEach(data => {
-                            if (!Array.isArray(data))
-                                return;
-
-                            const n = data?.map(i => i.demonyms.eng.f);
-                            nas = nas.concat(n);
-                        })
-                        nas.sort();
-                        setNationalities(nas);
-                        if (nas.length > 0)
-                            setNationality(nas[0]);
-                    })
+                handleCountryChanged(list[999]);
             })
             .catch(console.error)
     }, []);
@@ -139,6 +114,7 @@ function Course() {
                 iTBackgroundOthersText : iTBackground,
             hasDevice: haveLaptop,
             trainingType,
+            nationalities,
             hasInternet: haveGoodInternetAccess,
             reasoning: courseInterestReasonOthersText.length > 0 ?
                 courseInterestReasonOthersText : courseInterestReason,
@@ -148,7 +124,7 @@ function Course() {
         setLoading(true);
             await submit_course_registration(data);
             success("You have registered successfuly");
-            routeToUrl("/sudanese-learning-hub");
+            // routeToUrl("/sudanese-learning-hub");
         } catch (error) {
             danger("Sorry .. Please rewrite you data..");
         } finally {
@@ -277,7 +253,7 @@ function Course() {
                                     <select required value={country}
                                         onChange={(e) => { handleCountryChanged(e.target.value) }}
                                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                                        <option value="11" ></option>
+                                        <option key={999} selected name="" ></option>
                                         {countries?.map((c, index) => {
                                             return <option
                                                 key={index}

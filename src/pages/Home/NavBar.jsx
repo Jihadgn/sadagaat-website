@@ -60,7 +60,7 @@ function NavBar() {
                             <span className="px-4"> {t("Donate")}</span>
                         </button>
                         <Navbar.Toggle className="bg-white" />
-                    </div>
+                    </div>0
                     <Navbar.Collapse className="text-gray-800 gap-4 flex-wrap">
                         <Navbar.Link href="/" >
                             <img src={logo} className="h-16 w-24" 
@@ -69,7 +69,7 @@ function NavBar() {
                                 top: 0
                             }}/>
                         </Navbar.Link>
-                        <Navbar.Link href="/" className="text-gray-700 flex font-bold text-md mt-3 px-3"> {t("Home")}</Navbar.Link>
+                        <Navbar.Link href="/" className="text-gray-700 flex font-bold text-md mt-6 px-3"> {t("Home")}</Navbar.Link>
                         <Dropdown label= {t("About Us")} inline className="text-gray-800 text-md font-bold">
                             <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3" href="/about">
                             {t("About Us")}</Dropdown.Item>

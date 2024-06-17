@@ -133,7 +133,7 @@ function Home() {
                             </div>
                         </div>
                         <div className="text-black px-4 xl:pt-0 md:pt-6 sm:pt-6">
-                            <h1 className="text-2xl font-bold tracking-tight text-gray-900">ABOUT SADAGAAT</h1>
+                            <h1 className="text-2xl font-bold tracking-tight text-gray-900">{t("About Sadagaat")}</h1>
                             <p className="pt-7 font-normal text-gray-700">
                                 {about != null ?
                                     <p>
