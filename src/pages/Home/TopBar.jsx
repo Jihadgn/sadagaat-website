@@ -49,8 +49,8 @@ useEffect(() => {
       <main>
         {/* Top bar */}
         <section className="px-4 top">
-          <div className="block grid xl:grid-cols-3 md:grid-cols-3 sm:grid-cols-3 justify-center">
-            <div className="flex justify-center px-10 pl-10 pr-10 gap-4 pt-5">
+          <div className="block grid xl:grid-cols-3 md:grid-cols-3 sm:grid-cols-1 justify-center">
+            <div className="flex justify-center px-10 grid lg:grid-cols-9 grid-cols-9 sm:grid-cols-3 gap-5 pt-8">
               <a className="text-center hover:text-gray-500" href={contact.facebook ?? "https://web.facebook.com/Sadagaat/?_rdc=1&_rdr"} target="blank">
                 <svg className="w-5 h-5  text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                   <path fillRule="evenodd" d="M13.135 6H15V3h-1.865a4.147 4.147 0 0 0-4.142 4.142V9H7v3h2v9.938h3V12h2.021l.592-3H12V6.591A.6.6 0 0 1 12.592 6h.543Z" clipRule="evenodd" />
@@ -88,7 +88,7 @@ useEffect(() => {
               </a>
 
             </div>
-            <div className="flex justify-center sm:pt-4 gap-4">
+            <div className="flex justify-center pt-8 gap-4">
               <h6 className="text-md text-white flex gap-2 text-center">
                 <svg className="w-5 h-5  text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                   <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18.427 14.768 17.2 13.542a1.733 1.733 0 0 0-2.45 0l-.613.613a1.732 1.732 0 0 1-2.45 0l-1.838-1.84a1.735 1.735 0 0 1 0-2.452l.612-.613a1.735 1.735 0 0 0 0-2.452L9.237 5.572a1.6 1.6 0 0 0-2.45 0c-3.223 3.2-1.702 6.896 1.519 10.117 3.22 3.221 6.914 4.745 10.12 1.535a1.601 1.601 0 0 0 0-2.456Z" />
@@ -101,7 +101,7 @@ useEffect(() => {
                 {contact.email ?? "info@sadagaat-uk.org"}</h6>
             </div>
             <div className="grid grid-cols-2 py-2 justify-center">
-              <div className="flex lg:py-2 sm:pt-4">
+              <div className="flex lg:py-2 pt-8 col-span-2">
                 <div className="relative w-full justify-center">
                   <form action="" onSubmit={redirectSearchPage}>
                     <input type="text" name="search" id="searchQuery"

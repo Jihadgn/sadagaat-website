@@ -57,23 +57,21 @@ function Course() {
         setNews(response);
     }
     const [countries, setCountries] = useState([]);
-    const [nationalities, setNationalities] = useState([]);
-
-    const [response, setResponse] = useState({ styleClass: "", message: "" });
+    const [nationalities, setNationalities] = useState(null);
     // form fields
     const [name, setName] = useState(null);
     const [gender, setGender] = useState(null); // False = Male, True = Female
     const [email, setEmail] = useState(null);
     const [phoneNumber, setPhoneNumber] = useState(null);
     const [nationality, setNationality] = useState(null);
-    const [country, setCountry] = useState(null); 
+    const [country, setCountry] = useState(null);
     const [city, setCity] = useState(null);
     const [dateOfBirth, setDateOfBirth] = useState(null);
     const [interestArea, setInterestArea] = useState(null);
     const [iTBackground, setITBackground] = useState(null);
     const [iTBackgroundOthersText, setITBackgroundOthersText] = useState(null);
     const [trainingType, setTrainingType] = useState(null);
-    const [haveLaptop, setHaveLaptop] = useState(null);   
+    const [haveLaptop, setHaveLaptop] = useState(null);
     const [haveGoodInternetAccess, setHaveGoodInternetAccess] = useState(null);
     const [courseInterestReason, setCourseInterestReason] = useState(null);
     const [courseInterestReasonOthersText, setCourseInterestReasonOthersText] = useState(null);
@@ -99,6 +97,27 @@ function Course() {
         setCity("");
     }
 
+    function clear() {
+        setName("");
+        setGender("");
+        setEmail("");
+        setPhoneNumber("");
+        setNationality("");
+        setCountry("");
+        setCity("");
+        setDateOfBirth("");
+        setInterestArea("");
+        setITBackground("");
+        setITBackgroundOthersText("");
+        setTrainingType("");
+        setHaveLaptop("");
+        setHaveGoodInternetAccess("");
+        setCourseInterestReason("");
+        setCourseInterestReasonOthersText("");
+        setComment("");
+        setNationalities("");
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const data = {
@@ -121,15 +140,14 @@ function Course() {
             comment
         }
         try {
-        setLoading(true);
             await submit_course_registration(data);
+            clear();
             success("You have registered successfuly");
-            // routeToUrl("/sudanese-learning-hub");
+            routeToUrl("/sudanese-learning-hub");
         } catch (error) {
             danger("Sorry .. Please rewrite you data..");
         } finally {
             setLoading(false);
-
         }
     }
 
@@ -151,9 +169,9 @@ function Course() {
                         <form
                             className="register-form"
                             onSubmit={handleSubmit}>
-                                 <Overlay loading={loading} />
+                            <Overlay loading={loading} />
                             <div className="grid md:grid-cols-2 sm:grid-cols-1 border border-gray-300 p-5 overflow-hidden">
-                                
+
                                 <h2 className="text-gray-600 text-lg font-bold p-3 col-span-2">{"- " + t("candidate_information")}</h2>
                                 <div className="pt-4 px-5 col-span-2">
                                     <div className="flex">
@@ -224,7 +242,7 @@ function Course() {
                                         value={nationality}
                                         required="required">
                                         <option value=""></option>
-                                        
+
                                         {countries?.map((c, index) => {
                                             return <option
                                                 key={index}
@@ -283,7 +301,7 @@ function Course() {
                                         }}
                                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                         <option value=""></option>
-                                       {iTBackgrounds.map((b, index) => {
+                                        {iTBackgrounds.map((b, index) => {
                                             return (
                                                 <option key={index}
                                                     name="it_background"
@@ -301,7 +319,7 @@ function Course() {
                                         value={interestArea}
                                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                         <option value=""></option>
-                                        
+
                                         {interestAreas.map((b, index) => {
                                             return (
                                                 <option key={index}
@@ -320,7 +338,7 @@ function Course() {
                                         value={trainingType}
                                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                         <option value=""></option>
-                                       
+
                                         {news.map((cate, index) => {
                                             return (
                                                 <option key={index}
@@ -384,7 +402,7 @@ function Course() {
                                         value={courseInterestReason}
                                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                         <option value=""></option>
-                                        
+
                                         {whyAreYouInterested.map((b, index) => {
                                             return (
                                                 <option key={index}

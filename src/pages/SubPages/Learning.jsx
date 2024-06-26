@@ -15,99 +15,103 @@ function Learning() {
     function convertDateTime(dateTime) {
         var date = new Date(dateTime);
         var year = date.getFullYear();
-        var month = String(date.getMonth() + 1).padStart(2, '0');
-        var day = String(date.getDay()).padStart(2, '0');
+        var month = String(date.getMonth() + 1);
+        var day = String(date.getDate());
+        console.log(date, day,  month, year);
+      
         // format month
-        if (month == 1) {
+        if (month == "1") {
             var formatedMonth = "Jan"
-        } else if (month == 2) {
+        } else if (month == "2") {
             var formatedMonth = "Feb"
-        } else if (month == 3) {
+        } else if (month == "3") {
             var formatedMonth = "Mar"
-        } else if (month == 4) {
+        } else if (month == "4") {
             var formatedMonth = "Apr"
-        } else if (month == 5) {
+        } else if (month == "5") {
             var formatedMonth = "May"
-        } else if (month == 6) {
+        } else if (month == "6") {
             var formatedMonth = "Jun"
-        } else if (month == 7) {
+        } else if (month == "7") {
             var formatedMonth = "Jul"
-        } else if (month == 8) {
+        } else if (month == "8") {
             var formatedMonth = "Aug"
-        } else if (month == 9) {
+        } else if (month == "9") {
             var formatedMonth = "Sept"
-        } else if (month == 10) {
+        } else if (month == "10") {
             var formatedMonth = "Oct"
-        } else if (month == 11) {
+        } else if (month == "11") {
             var formatedMonth = "Nov"
         } else {
             var formatedMonth = "Des"
         }
         // format day
-        if (day == 1) {
-            var formatedDay = "1st"
-        } else if (day == 2) {
-            var formatedDay = "2nd"
-        } else if (day == 3) {
-            var formatedDay = "3ed"
-        } else if (day == 4) {
-            var formatedDay = "4th"
-        } else if (day == 5) {
-            var formatedDay = "5th"
-        } else if (day == 6) {
-            var formatedDay = "6th"
-        } else if (day == 7) {
-            var formatedDay = "7th"
-        } else if (day == 8) {
-            var formatedDay = "8th"
-        } else if (day == 9) {
-            var formatedDay = "9th"
-        } else if (day == 10) {
-            var formatedDay = "10th"
-        } else if (day == 11) {
-            var formatedDay = "11th"
-        } else if (day == 12) {
-            var formatedDay = "12th"
-        } else if (day == 13) {
-            var formatedDay = "13th"
-        } else if (day == 14) {
-            var formatedDay = "14th"
-        } else if (day == 15) {
-            var formatedDay = "15th"
-        } else if (day == 16) {
-            var formatedDay = "16th"
-        } else if (day == 17) {
-            var formatedDay = "17th"
-        } else if (day == 18) {
-            var formatedDay = "18th"
-        } else if (day == 19) {
-            var formatedDay = "19th"
-        } else if (day == 20) {
-            var formatedDay = "20th"
-        } else if (day == 21) {
-            var formatedDay = "21th"
-        } else if (day == 22) {
-            var formatedDay = "22th"
-        } else if (day == 23) {
-            var formatedDay = "23th"
-        } else if (day == 24) {
-            var formatedDay = "24th"
-        } else if (day == 25) {
-            var formatedDay = "25th"
-        } else if (day == 26) {
-            var formatedDay = "26th"
-        } else if (day == 27) {
-            var formatedDay = "27th"
-        } else if (day == 28) {
-            var formatedDay = "28th"
-        } else if (day == 29) {
-            var formatedDay = "29th"
-        } else if (day == 30) {
-            var formatedDay = "30th"
-        } else if (day == 31) {
-            var formatedDay = "31th"
+        if (day === "1") {
+            var formatedDay = "1st";
+        } else if (day === "0") {
+            var formatedDay = "1st";
+        } else if (day === "2") {
+            var formatedDay = "2nd";
+        } else if (day === "3") {
+            var formatedDay = "3ed";
+        } else if (day === "4") {
+            var formatedDay = "4th";
+        } else if (day === "5") {
+            var formatedDay = "5th";
+        } else if (day === "6") {
+            var formatedDay = "6th";
+        } else if (day === "7") {
+            var formatedDay = "7th";
+        } else if (day === "8") {
+            var formatedDay = "8th";
+        } else if (day === "9") {
+            var formatedDay = "9th";
+        } else if (day === "10") {
+            var formatedDay = "10th";
+        } else if (day === "11") {
+            var formatedDay = "11th";
+        } else if (day === "12") {
+            var formatedDay = "12th";
+        } else if (day === "13") {
+            var formatedDay = "13th";
+        } else if (day === "14") {
+            var formatedDay = "14th";
+        } else if (day === "15") {
+            var formatedDay = "15th";
+        } else if (day === "16") {
+            var formatedDay = "16th";
+        } else if (day === "17") {
+            var formatedDay = "17th";
+        } else if (day === "18") {
+            var formatedDay = "18th";
+        } else if (day === "19") {
+            var formatedDay = "19th";
+        } else if (day === "20") {
+            var formatedDay = "20th";
+        } else if (day === "21") {
+            var formatedDay = "21th";
+        } else if (day === "22") {
+            var formatedDay = "22th";
+        } else if (day === "23") {
+            var formatedDay = "23th";
+        } else if (day === "24") {
+            var formatedDay = "24th";
+        } else if (day === "25") {
+            var formatedDay = "25th";
+        } else if (day === "26") {
+            var formatedDay = "26th";
+        } else if (day === "27") {
+            var formatedDay = "27th";
+        } else if (day === "28") {
+            var formatedDay = "28th";
+        } else if (day === "29") {
+            var formatedDay = "29th";
+        } else if (day === "30") {
+            var formatedDay = "30th";
+        } else if (day === "31") {
+            var formatedDay = "31th";
         } else {
-            var formatedDay = " "
+            var formatedDay = " ";
         }
         const formatedDate = formatedMonth + "    " + formatedDay + ", " + year;
         return formatedDate;
@@ -163,11 +167,13 @@ function Learning() {
 
                                                 {course.startDate ? (
                                                     <div>
-                                                        <div className="pt-4 pb-5 flex">
-                                                            <h2 className="text-gray-800 text-center px-3 text-sm">
-                                                                <span className="font-bold">From:</span> {convertDateTime(course.startDate)} - <span className="font-bold">To:</span> {convertDateTime(course.endDate)} </h2>
+                                                        <div className="pt-4 pb-5 ">
+                                                            <h2 className="text-gray-800 text-start pt-3 px-4 text-sm">
+                                                                <span className="font-bold flex-wrap">From:</span> {convertDateTime(course.startDate)} </h2>
+                                                                <h2 className="text-gray-800 text-start pt-3 px-4 text-sm">
+                                                                <span className="font-bold flex-wrap">To:</span> {convertDateTime(course.endDate)} </h2>
                                                         </div>
-                                                        <div className="py-5 px-2 text-center grid lg:grid-cols-2 xl:grid-cols-3 grid-cols-2">
+                                                        <div className="py-5 px-2 text-center grid lg:grid-cols-3 xl:grid-cols-2 sm:grid-cols-2">
                                                             <span className="text-white  text-xs course-card py-2 mt-3 px-3 flex rounded-lg mx-2">
                                                             <span><svg class="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
