@@ -5,9 +5,6 @@ import FixedButton from '../Home/FixedButton';
 import Volunteering from '../Home/Volunteering';
 import Footer from '../Home/Footer';
 import address from "../../services";
-import work from "../../assets/images/work.jpg";
-import dates from "../../assets/images/dates.jpg";
-import blood from "../../assets/images/blood.jpg";
 import { Gallery } from "react-grid-gallery";
 function More() {
 

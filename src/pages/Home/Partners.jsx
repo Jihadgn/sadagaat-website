@@ -5,14 +5,6 @@ import address from '../../services';
 import part_1 from "../../assets/images/partener1.png"
 import part_2 from "../../assets/images/partener2.png"
 import part_3 from "../../assets/images/partener3.png"
-import part_4 from "../../assets/images/partener4.png"
-import part_5 from "../../assets/images/partener5.png"
-import part_6 from "../../assets/images/partener6.png"
-import part_7 from "../../assets/images/partener7.png"
-import part_9 from "../../assets/images/partener9.png"
-import part_10 from "../../assets/images/partener10.png"
-import part_11 from "../../assets/images/partener11.png"
-import part_12 from "../../assets/images/partener12.png"
 import LazyLoad from 'react-lazy-load'; 
 import {useTranslation} from "react-i18next";
 
@@ -31,16 +23,8 @@ function Partners() {
     const images = [
         { img: part_1 },
         { img: part_2 },
-        { img: part_3 },
-        { img: part_4 },
-        { img: part_5 },
-        { img: part_6 },
-        { img: part_7 },
-        { img: part_9 },
-        { img: part_10 },
-        { img: part_11 },
-        { img: part_12 }
-    ]
+        { img: part_3 }
+        ]
 
     // get sliders on page load
     useEffect(() => {

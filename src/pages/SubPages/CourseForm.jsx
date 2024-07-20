@@ -13,7 +13,7 @@ const REST_NATIONALITY_URL = "https://restcountries.com/v3.1/demonym/{0}?";
 import { useTranslation } from 'react-i18next';
 import { success, danger } from '../../services';
 import Overlay from './Overlay';
-
+import BtnPrimary from '../BtnPrimary';
 const formatString = (template, ...args) => {
     return template.replace(/{([0-9]+)}/g, function (match, index) {
         return typeof args[index] === 'undefined' ? match : args[index];
@@ -57,13 +57,12 @@ function Course() {
         setNews(response);
     }
     const [countries, setCountries] = useState([]);
-    const [nationalities, setNationalities] = useState(null);
+    const [sudanese, setSudanese] = useState(null);
     // form fields
     const [name, setName] = useState(null);
     const [gender, setGender] = useState(null); // False = Male, True = Female
     const [email, setEmail] = useState(null);
     const [phoneNumber, setPhoneNumber] = useState(null);
-    const [nationality, setNationality] = useState(null);
     const [country, setCountry] = useState(null);
     const [city, setCity] = useState(null);
     const [dateOfBirth, setDateOfBirth] = useState(null);
@@ -102,7 +101,6 @@ function Course() {
         setGender("");
         setEmail("");
         setPhoneNumber("");
-        setNationality("");
         setCountry("");
         setCity("");
         setDateOfBirth("");
@@ -115,7 +113,7 @@ function Course() {
         setCourseInterestReason("");
         setCourseInterestReasonOthersText("");
         setComment("");
-        setNationalities("");
+        setSudanese("");
     };
 
     const handleSubmit = async (e) => {
@@ -123,23 +121,23 @@ function Course() {
         const data = {
             name,
             phoneNumber,
-            gender: gender ? "FEMALE" : "MALE",
+            gender,
             email,
             dateOfBirth,
-            nationality,
             location: `${country}#@@#${city}`, // Combing country and city into a single variable
             interestArea,
             iTBackground: iTBackgroundOthersText.length > 0 ?
                 iTBackgroundOthersText : iTBackground,
             hasDevice: haveLaptop,
             trainingType,
-            nationalities,
+            sudanese,
             hasInternet: haveGoodInternetAccess,
             reasoning: courseInterestReasonOthersText.length > 0 ?
                 courseInterestReasonOthersText : courseInterestReason,
             comment
         }
         try {
+            setLoading(true);
             await submit_course_registration(data);
             clear();
             success("You have registered successfuly");
@@ -226,28 +224,8 @@ function Course() {
                                         onChange={(e) => { setGender(e.target.value) }}
                                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                         <option value=""></option>
-                                        <option value="true">FEMALE</option>
-                                        <option value="false">MALE</option>
-                                    </select>
-                                </div>
-                                <div className="pt-4 px-5 md:col-span-1 col-span-2">
-                                    <div className="flex">
-                                        <label className="mb-2 font-bold text-sm text-gray-600">Nationality</label>
-                                        <span className="text-red-500 px-2">*</span>
-                                    </div>
-                                    <select
-                                        name="nationality"
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                        onChange={(e) => { setNationality(e.target.value) }}
-                                        value={nationality}
-                                        required="required">
-                                        <option value=""></option>
-
-                                        {countries?.map((c, index) => {
-                                            return <option
-                                                key={index}
-                                                name="country">{c}</option>
-                                        })}
+                                        <option value="FEMALE">FEMALE</option>
+                                        <option value="MALE">MALE</option>
                                     </select>
                                 </div>
                                 <div className="pt-4 px-5 md:col-span-1 col-span-2">
@@ -255,12 +233,12 @@ function Course() {
                                         <label className="mb-2 font-bold text-sm text-gray-600">Sudanese</label>
                                         <span className="text-red-500 px-2">*</span>
                                     </div>
-                                    <select required value={nationalities}
-                                        onChange={(e) => { setNationalities(e.target.value) }}
+                                    <select required value={sudanese}
+                                        onChange={(e) => { setSudanese(e.target.value) }}
                                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                         <option value=""></option>
-                                        <option value="Yes">Yes</option>
-                                        <option value="No">No</option>
+                                        <option value={true}>Yes</option>
+                                        <option value={false}>No</option>
                                     </select>
                                 </div>
                                 <div className="pt-4 px-5 md:col-span-1 col-span-2">
@@ -289,7 +267,7 @@ function Course() {
                                         onChange={(e) => { setCity(e.target.value) }}
                                         type="text" className="bg-gray-50 border border-gray-300 text-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
                                 </div>
-                                <div className="pt-4 px-5  md:col-span-1 col-span-2">
+                                <div className="pt-4 px-5 col-span-2">
                                     <div className="flex">
                                         <label className="mb-2 font-bold text-sm text-gray-600"> {t("it_background")}   </label>
                                         <span className="text-red-500 px-2">*</span>
@@ -356,16 +334,16 @@ function Course() {
                                         <div className="flex px-1">
                                             <input
                                                 onChange={(e) => { setHaveLaptop(true) }}
-                                                checked={haveLaptop}
-                                                id="country-option-1" type="radio" className="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300" />
-                                            <label for="checkbox-1" className="ms-2 text-md text-gray-900">Yes </label>
+                                                checked={haveLaptop == true}
+                                                id="laptop-option" type="radio" className="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300" />
+                                            <label for="checkbox" className="ms-2 text-md text-gray-900">Yes </label>
                                         </div>
                                         <div className="flex px-1">
                                             <input
                                                 onChange={(e) => { setHaveLaptop(false) }}
-                                                checked={!haveLaptop}
-                                                id="country-option-1" type="radio" className="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300" />
-                                            <label for="checkbox-2" className="ms-2 text-md text-gray-900">No </label>
+                                                checked={haveLaptop == false}
+                                                id="laptop-option-1" type="radio" className="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300" />
+                                            <label for="checkbox-1" className="ms-2 text-md text-gray-900">No </label>
                                         </div>
                                     </div>
                                 </div>
@@ -377,16 +355,16 @@ function Course() {
                                         <div className="flex px-1">
                                             <input
                                                 onChange={(e) => { setHaveGoodInternetAccess(true) }}
-                                                checked={haveGoodInternetAccess}
-                                                id="country-option-1" type="radio" className="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300" />
-                                            <label for="checkbox-1" className="ms-2 text-md text-gray-900">Yes </label>
+                                                checked={haveGoodInternetAccess == true}
+                                                id="internet-option" type="radio" className="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300" />
+                                            <label for="checkbox-2" className="ms-2 text-md text-gray-900">Yes </label>
                                         </div>
                                         <div className="flex px-1">
                                             <input
                                                 onChange={(e) => { setHaveGoodInternetAccess(false) }}
-                                                checked={!haveGoodInternetAccess}
-                                                id="country-option-1" type="radio" className="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300" />
-                                            <label for="checkbox-2" className="ms-2 text-md text-gray-900">No </label>
+                                                checked={haveGoodInternetAccess == false}
+                                                id="internet-option-1" type="radio" className="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300" />
+                                            <label for="checkbox-3" className="ms-2 text-md text-gray-900">No </label>
                                         </div>
                                     </div>
                                 </div>
@@ -422,8 +400,10 @@ function Course() {
                                         placeholder="Please let use know if you have something to tell us"
                                         type="text" className="bg-gray-50 border border-gray-300 text-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
                                 </div>
+                                <div className="pt-4 px-5 col-span-2 text-center pb-10">
+                                <BtnPrimary type="submit" title="Submit" isLoading={loading} />
+                                </div>
 
-                                <button type="submit" className="btn col-span-2 mx-5">Submit</button>
                             </div>
                         </form>
                     </div>
