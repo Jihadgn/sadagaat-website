@@ -139,8 +139,8 @@ const ProjectsSlider = (props) => {
                             <Slider {...settings}>
                                 {data !== undefined && data.length > 0 ? (
                                     data.map((project, index) => (
-                                        <Link to={"/single-project/" + project.id}>
-                                            <Card className="max-w-md text-gray-900 causes px-3" key={index}>
+                                        <Link to={"/single-project/" + project.id} key={index}>
+                                            <Card className="max-w-md text-gray-900 causes px-3" >
                                                 <div className="thumb" >
                                                     <img
                                                         src={`${address()}projects/${project.id}/image`}

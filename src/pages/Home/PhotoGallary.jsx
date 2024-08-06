@@ -33,11 +33,11 @@ function PhotoGalary() {
                         <span className="text-3xl font-bold tracking-tight text-blue-800 "> {t("Gallery")} </span>
                         <div className="grid md:grid-cols-3 sm:grid-cols-1 px-10 pt-9 ">
                             {image.slice(Math.max(image.length - 3, 1)).map((image, index) => (
-                                <div className="gallery-item px-3" style={{ float: "left" }}>
+                                <div className="gallery-item px-3" style={{ float: "left" }} key={index} >
                                     <div className="thumb ">
                                         <img
                                             className="overflow-hidden h-full w-full"
-                                            src={`${address()}gallary/${image.imageName}/image`} key={index} />
+                                            src={`${address()}gallary/${image.imageName}/image`} />
                                     </div>
                                 </div>
                             ))

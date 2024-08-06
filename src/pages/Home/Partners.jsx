@@ -21,12 +21,11 @@ function Partners() {
 
 
     const images = [
-        { img: part_1 },
-        { img: part_2 },
-        { img: part_3 }
+        { img: part_1, key: 1 },
+        { img: part_2, key: 2},
+        { img: part_3, key: 3}
         ]
 
-    // get sliders on page load
     useEffect(() => {
         fetchData();
     }, []);
@@ -77,10 +76,10 @@ function Partners() {
                         <Slider {...secSettings}>
                             {
                                 Object.keys(part).length !== 0 ?
-                                    part.map((part) => (
-                                        <div className="item">
+                                    part.map((part, index) => (
+                                        <div className="item" key={index}>
                                             <LazyLoad once={true}>
-                                                <a href={part.link}>
+                                                <a href={part.link} >
 
                                                     <img
                                                         src={`${address()}partener/${part.imageName}/image`}
@@ -91,16 +90,16 @@ function Partners() {
                                         </div>
                                     ))
                                     :
-                                    images.map((image) => (
-                                        <LazyLoad once={true}>
-                                            <div className="item">
+                                    images.map((image, index) => (
+                                        <div className="item"  key={index}>
+                                                <LazyLoad once={true}>
                                                 <img
                                                     src={image.img}
                                                     height="100vh" width='150px'
                                                     alt="Sudanese American Medical Association"
                                                 />
-                                            </div>
                                         </LazyLoad>
+                                            </div>
                                     ))
                             }
                         </Slider>

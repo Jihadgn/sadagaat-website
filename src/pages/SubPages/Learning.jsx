@@ -176,18 +176,18 @@ function Learning() {
                                                         </div>
                                                         <div className="py-5 px-2 text-center grid lg:grid-cols-3 xl:grid-cols-2 sm:grid-cols-2">
                                                             <span className="text-white  text-xs course-card py-2 mt-3 px-3 flex rounded-lg mx-2">
-                                                                <span><svg class="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                                <span><svg className="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                                                 </svg></span>
                                                                 <span className="mx-1 pt-1">{course.numberOfHours}</span> <span className=" pt-1">Hours</span></span>
                                                             <span className="text-white gap-1 text-xs bg-green-500 py-2 mt-3 px-3 flex rounded-lg mx-2">
-                                                                <span><svg class="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                                <span><svg className="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15v4m6-6v6m6-4v4m6-6v6M3 11l6-5 6 5 5.5-5.5" />
                                                                 </svg></span>
                                                                 <span className="pt-1">{course.level}</span></span>
                                                             {course.lab ? (
                                                                 <span className="text-white  text-xs bg-gray-500 py-2 mt-3 px-3 flex rounded-lg mx-2">
-                                                                    <span><svg class="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                                    <span><svg className="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15v4m6-6v6m6-4v4m6-6v6M3 11l6-5 6 5 5.5-5.5" />
                                                                     </svg></span>
                                                                     <span className="mx-1 pt-1">{course.lab}</span><span className="mx-1 pt-1">Labs</span></span>
@@ -195,7 +195,7 @@ function Learning() {
                                                                 :
                                                                 (
                                                                     <span className="text-white  text-xs bg-gray-500 py-2 mt-3 px-3 flex rounded-lg mx-2">
-                                                                        <span> <svg class="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                                        <span> <svg className="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.5 4h-13m13 16h-13M8 20v-3.333a2 2 0 0 1 .4-1.2L10 12.6a1 1 0 0 0 0-1.2L8.4 8.533a2 2 0 0 1-.4-1.2V4h8v3.333a2 2 0 0 1-.4 1.2L13.957 11.4a1 1 0 0 0 0 1.2l1.643 2.867a2 2 0 0 1 .4 1.2V20H8Z" />
                                                                         </svg></span>
 
@@ -210,18 +210,18 @@ function Learning() {
                                                         </div>
                                                         <div className="py-5 text-center grid md:grid-cols-2 grid-cols-3 xl:grid-cols-3">
                                                             <span className="text-white text-xs  font-bold course-card py-2 mt-3 px-3 flex rounded-lg mx-2">
-                                                                <span><svg class="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                                <span><svg className="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                                                 </svg></span>
                                                                 <span className="mx-1 pt-1">{course.numberOfHours}</span> <span className=" pt-1">Hours</span></span>
                                                             <span className="text-white gap-1 text-xs bg-green-500 py-2 mt-3 px-3 flex rounded-lg mx-2">
-                                                                <span><svg class="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                                <span><svg className="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15v4m6-6v6m6-4v4m6-6v6M3 11l6-5 6 5 5.5-5.5" />
                                                                 </svg></span>
                                                                 <span className="pt-1">{course.level}</span></span>
                                                             {course.lab ? (
                                                                 <span className="text-white text-xs bg-gray-500 py-2 mt-3 px-3 flex rounded-lg mx-2">
-                                                                    <span><svg class="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                                    <span><svg className="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15v4m6-6v6m6-4v4m6-6v6M3 11l6-5 6 5 5.5-5.5" />
                                                                     </svg></span>
                                                                     <span className="mx-1 pt-1">{course.lab}</span><span className="mx-1 pt-1">Labs</span></span>
@@ -229,7 +229,7 @@ function Learning() {
                                                                 :
                                                                 (
                                                                     <span className="text-white text-xs bg-gray-500 py-2 mt-3 px-3 flex rounded-lg mx-2">
-                                                                        <span> <svg class="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                                        <span> <svg className="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.5 4h-13m13 16h-13M8 20v-3.333a2 2 0 0 1 .4-1.2L10 12.6a1 1 0 0 0 0-1.2L8.4 8.533a2 2 0 0 1-.4-1.2V4h8v3.333a2 2 0 0 1-.4 1.2L13.957 11.4a1 1 0 0 0 0 1.2l1.643 2.867a2 2 0 0 1 .4 1.2V20H8Z" />
                                                                         </svg></span>
 

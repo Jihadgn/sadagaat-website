@@ -24,13 +24,13 @@ function Home() {
     async function fetchAboutImages() {
         const img1 = await window.fetch(`${address()}about-us/ABOUTUS1/image`);
         const res1 = await img1.json();
-        setAbout1(img1);
+        setAbout1(res1);
         const img2 = await window.fetch(`${address()}about-us/ABOUTUS2/image`);
         const res2 = await img2.json();
         setAbout2(img2);
         const img3 = await window.fetch(`${address()}about-us/ABOUTUS3/image`);
         const res3 = await img3.json();
-        setAbout3(img3);
+        setAbout3(res3);
     }
     // const classParameter  set class name value  = pe-0 or pl-0 after Check page direction
     const classParameter = i18n.dir() === "rtl" ? "pr-0" : "pl-0";
@@ -39,7 +39,7 @@ function Home() {
 
     // get sliders on page load
     useEffect(() => {
-        fetchAboutImages();
+        // fetchAboutImages();
         fetchAbout();
     }, [i18n.language]);
 
@@ -121,7 +121,7 @@ function Home() {
                                                 className="img-responsive"
 
                                                 //  src={`${address()}cover-image/MAINPAGE1`}
-                                                src={require("../images/x.jpg")}
+                                                src={require("../images/about 350-300.jpg")}
                                                 alt=""
                                                 style={{ width: "100%", height: "156px" }}
                                             />
@@ -134,7 +134,7 @@ function Home() {
                         </div>
                         <div className="text-black px-4 xl:pt-0 md:pt-6 sm:pt-6">
                             <h1 className="text-2xl font-bold tracking-tight text-gray-900">{t("About Sadagaat")}</h1>
-                            <p className="pt-7 font-normal text-gray-700">
+                            <div className="pt-7 font-normal text-gray-700">
                                 {about != null ?
                                     <p>
                                         {about} <br />
@@ -144,7 +144,7 @@ function Home() {
                                                 {t("about_message_2")}
                                     </p>
                                 }
-                            </p>
+                            </div>
                             <div className="grid lg:grid-cols-4 md:grid-cols-4 grid-cols-2   gap-2 pt-6">
                                 <Link to="/about"
                                     className={`text-center bg-white border rounded border-black text-blue-900 py-3 ${buttonClass}`}>{t("Read More")}</Link>

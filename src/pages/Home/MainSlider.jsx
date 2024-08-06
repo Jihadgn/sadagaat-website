@@ -41,8 +41,8 @@ function MainSlider() {
                 {/* Carousel */}
                 <section className="bg-white  mb-10">
                     <Slider {...sliderSetting}>
-                        {slides.map((slide) => (
-                            <div>
+                        {slides.map((slide, index) => (
+                            <div key={index}>
                                 <img src={`${address()}slider/${slide.imageName}/image`} className="slider w-full"/>
                             </div>
                         ))}

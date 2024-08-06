@@ -242,7 +242,7 @@ const SingleSubHubProject = (props) => {
                                 <button className="bg-white block text-xs border-gray-900 text-gray-800 inline-flex "
                                     onClick={toggleSortBtn} >
                                    {t("Sort By Date") + " "}
-                                    <svg class="w-5 h-5 mx-2 text-gray-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <svg className="w-5 h-5 mx-2 text-gray-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 20V10m0 10-3-3m3 3 3-3m5-13v10m0-10 3 3m-3-3-3 3" />
                                     </svg>
                                 </button>

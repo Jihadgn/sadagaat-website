@@ -101,7 +101,7 @@ function NavBar() {
                             label= {t("featured_ongoing_projects")} inline className="text-gray-800 text-md font-bold">
                             {featuredOnGoingProjects.map((project, index) => {
                                 return (
-                                    <Dropdown.Item className="text-gray-700 flex font-bold text-md mt-3"
+                                    <Dropdown.Item key={index} className="text-gray-700 flex font-bold text-md mt-3"
                                         href={`/single-project/${project.id}`}> {project.name}</Dropdown.Item>
                                 )
                             })}

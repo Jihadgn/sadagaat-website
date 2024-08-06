@@ -39,6 +39,8 @@ function More() {
         obj['thumbnail'] = `${address()}gallary/${image[i].imageName}/image`;
         obj['thumbnailWidth'] = 320;
         obj['thumbnailHeight'] = 320;
+        obj['index'] = i;
+
         data.push(obj);
     }
 
