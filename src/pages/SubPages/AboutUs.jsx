@@ -33,15 +33,15 @@ function Home() {
             headers: { "accept-language": `${i18n.language}` },
         });
         setCover(fetch);
-        // const img1 = await window.fetch(`${address()}about-us/ABOUTUS1/image`);
-        // const res1 = await img1.json();
-        // setAbout1(img1);
-        // const img2 = await window.fetch(`${address()}about-us/ABOUTUS2/image`);
-        // const res2 = await img2.json();
-        // setAbout2(img2);
-        // const img3 = await window.fetch(`${address()}about-us/ABOUTUS3/image`);
-        // const res3 = await img3.json();
-        // setAbout3(img3);
+       const img1 = await window.fetch(`${address()}about-us/ABOUTUS1/image`);
+        const res1 = await img1.json();
+        setAbout1(img1);
+        const img2 = await window.fetch(`${address()}about-us/ABOUTUS2/image`);
+        const res2 = await img2.json();
+        setAbout2(img2);
+        const img3 = await window.fetch(`${address()}about-us/ABOUTUS3/image`);
+        const res3 = await img3.json();
+        setAbout3(img3);
     }
 
 
