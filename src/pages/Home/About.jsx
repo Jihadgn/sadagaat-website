@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import address from '../../services';
+import '../../i18next/i18n';
 import { useTranslation } from "react-i18next";
 
 function Home() {
@@ -135,7 +136,7 @@ function Home() {
                         <div className="text-black px-4 xl:pt-0 md:pt-6 sm:pt-6">
                             <h1 className="text-2xl font-bold tracking-tight text-gray-900">{t("About Sadagaat")}</h1>
                             <div className="pt-7 font-normal text-gray-700">
-                                {about != null ?
+                                {about !== null ?
                                     <p>
                                         {about} <br />
                                     </p> :

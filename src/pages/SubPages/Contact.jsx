@@ -141,7 +141,7 @@ function Contact() {
                                 <div className="col-span-3 pt-3 ">
                                     <h2 className="flex font-bold text-sm pb-3 text-gray-800">{t("Our Office Location")}</h2>
                                     {
-                                        (contacts != undefined && location != undefined) ?
+                                        (contacts !== undefined && location !== undefined) ?
                                             <p>{location.name}</p> :
                                             <p>{t("Address 33-39, Bowling Green Lane,London")}</p>
 
@@ -155,7 +155,7 @@ function Contact() {
                                 </div>
                                 <div className="col-span-3 pt-3">
                                     <div className="flex font-bold text-sm pb-3 text-gray-800">{t("Contact Number")}</div>
-                                    {(contacts != undefined && contacts.length != 0) ?
+                                    {(contacts !== undefined && contacts.length !== 0) ?
                                         <p> {contacts.phone}</p> :
                                         <p>{i18n.dir() === "rtl"
                                         ? "447884060063+"
@@ -171,7 +171,7 @@ function Contact() {
                                 <div className="col-span-3 pt-3">
                                     <div className="flex font-bold text-sm pb-3 text-gray-800">{t("Email Address")}</div>
                                     {
-                                        contacts != undefined && contacts.length != 0 ?
+                                        contacts !== undefined && contacts.length !== 0 ?
                                             <p>
                                                 {contacts.email}
                                             </p>
@@ -187,7 +187,7 @@ function Contact() {
                                 <div className="col-span-3 pt-3">
                                     <div className="flex font-bold text-sm pb-3 text-gray-800">{t("Website")}</div>
                                     {
-                                        contacts != undefined && contacts.length != 0 ?
+                                        contacts !== undefined && contacts.length !== 0 ?
                                             <p>
                                                 {contacts.website}
                                             </p>

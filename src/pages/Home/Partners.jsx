@@ -10,7 +10,7 @@ import {useTranslation} from "react-i18next";
 
 function Partners() {
 
-    const {t} = useTranslation();
+    const { t, i18n } = useTranslation();
     const [part, setPart] = useState([]);
     async function fetchData() {
         const fetcher = await window.fetch(`${address()}partener`);
@@ -28,7 +28,7 @@ function Partners() {
 
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [i18n.language]);
 
     var secSettings = {
         dots: false,
@@ -78,7 +78,6 @@ function Partners() {
                                 Object.keys(part).length !== 0 ?
                                     part.map((part, index) => (
                                         <div className="item" key={index}>
-                                            <LazyLoad once={true}>
                                                 <a href={part.link} >
 
                                                     <img
@@ -86,19 +85,16 @@ function Partners() {
                                                         height="100vh" width='150px'
                                                         alt="Sudanese American Medical Association" />
                                                 </a>
-                                            </LazyLoad>
                                         </div>
                                     ))
                                     :
                                     images.map((image, index) => (
                                         <div className="item"  key={index}>
-                                                <LazyLoad once={true}>
                                                 <img
                                                     src={image.img}
                                                     height="100vh" width='150px'
                                                     alt="Sudanese American Medical Association"
                                                 />
-                                        </LazyLoad>
                                             </div>
                                     ))
                             }

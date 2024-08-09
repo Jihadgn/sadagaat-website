@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import address from "../../services";
 import { Link } from "react-router-dom";
+import '../../i18next/i18n';
 import { useTranslation } from "react-i18next";
 import i18n from "i18next";
 

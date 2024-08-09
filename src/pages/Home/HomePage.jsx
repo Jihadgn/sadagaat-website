@@ -26,22 +26,12 @@ function Home() {
         <MainSlider />
         <Hubs />
         <About />
-        <LazyLoad once={true}>
         <ProjectsSlider />
-        </LazyLoad> 
-        <LazyLoad once={true}>
         <ProjectsStatistics />
-        </LazyLoad>
-        <LazyLoad once={true}>
         <Partners />
-        </LazyLoad>
-        <LazyLoad once={true}>
         <PhotoGallary />
-        </LazyLoad>
         <Video />
-        <LazyLoad once={true}>
         <NewsAndEvents />
-        </LazyLoad>
         <Volunteering />
         <Footer />
       </div>

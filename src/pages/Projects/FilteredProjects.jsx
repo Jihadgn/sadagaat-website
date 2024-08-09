@@ -13,6 +13,7 @@ import parse from 'html-react-parser';
 import ReactPaginate from "react-paginate";
 import DatePicker from "react-datepicker";
 import i18n from "i18next";
+import '../../i18next/i18n';
 import { useTranslation } from "react-i18next";
 
 

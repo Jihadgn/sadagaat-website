@@ -1,4 +1,5 @@
 import React from "react";
+import '../../i18next/i18n';
 import { useTranslation } from "react-i18next";
 
 function FixedButton() {

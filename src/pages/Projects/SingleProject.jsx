@@ -8,6 +8,7 @@ import { React, useEffect, useState } from "react";
 import { Tabs, } from 'flowbite-react';
 import { Precision, getNumber } from "../../services/getMonthName";
 import i18n from "i18next";
+import '../../i18next/i18n';
 import { useTranslation } from "react-i18next";
 
 import {

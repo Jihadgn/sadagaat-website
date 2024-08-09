@@ -10,6 +10,7 @@ import { Precision, getNumber } from "../../services/getMonthName";
 import parse from "html-react-parser";
 import ReactPaginate from "react-paginate";
 import i18n from "i18next";
+import '../../i18next/i18n';
 import { useTranslation } from "react-i18next";
 
 const SingleSubHubProject = (props) => {

@@ -54,7 +54,7 @@ function More() {
                 <section className="py-10 bg-white grid grid-cols-12">
                     <div></div>
                     <div className="col-span-10">
-                        {Object.keys(image).length != 0
+                        {Object.keys(image).length !== 0
                             ?
                             <div className="container" style={{ marginTop: "50px", marginBottom: "90px" }} >
                                 <Gallery

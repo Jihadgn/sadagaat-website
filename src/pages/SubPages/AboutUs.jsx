@@ -5,9 +5,9 @@ import Volunteering from '../Home/Volunteering';
 import Footer from '../Home/Footer';
 import React from "react";
 import { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
 import address from '../../services';
 import Partners from '../Home/Partners';
+import '../../i18next/i18n';
 import { useTranslation } from "react-i18next";
 
 function Home() {
@@ -164,7 +164,7 @@ function Home() {
                         <div className="text-black px-4 xl:pt-0 md:pt-6 sm:pt-6">
                             <h1 className="text-2xl font-bold tracking-tight text-gray-900">  {t("About")} <span>{t("Sadagaat")}</span></h1>
                             {
-                                about != null ? <p>
+                                about !== null ? <p>
                                     {about} <br />
                                 </p> :
                                     <p>
@@ -184,7 +184,7 @@ function Home() {
                         <div className="lg:pl-10 md:pl-0">
                             <h2 className="lg:pl-10 md:pl-0 text-3xl font-bold pt-5 text-center text-white">{t("Our Vision")}</h2>
                             {
-                                about.vision != null ?
+                                about.vision !== null ?
                                     <p className="text-white text-center text-xl pt-6">{about.vision}</p>
                                     :
                                     <p className="text-white text-center text-xl pt-6">{t("vision_message_1")}</p>
@@ -193,7 +193,7 @@ function Home() {
                         <div className="pl-10">
                             <h2 className="text-3xl font-bold pt-5 text-center text-white">{t("Our Mission")}</h2>
                             {
-                                about.mission != null ?
+                                about.mission !== null ?
                                     <p className="text-white text-center text-xl pt-6">{about.mission}</p>
 
                                     :
@@ -204,7 +204,7 @@ function Home() {
                         <div className="pl-10">
                             <h2 className="text-3xl font-bold pt-5 text-center text-white">{t("Our Values")}</h2>
                             {
-                                about.value != null ?
+                                about.value !== null ?
                                     <p className="text-white text-center text-xl pt-6">{about.value}</p>
 
                                     :

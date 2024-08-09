@@ -4,13 +4,13 @@ import address from '../../services';
 import { Link } from "react-router-dom";
 import { Card } from "flowbite-react";
 import i18n from "i18next";
+import '../../i18next/i18n';
 import { useTranslation } from "react-i18next";
 
 function NewsAndEvents() {
 
     const [news, setNews] = useState([]);
-    const { t } = useTranslation();
-    const style = i18n.dir() === "rtl" ? "pull-right ml-20" : "pull-left mr-20";
+    const { t, i18n } = useTranslation();
 
     async function fetchNews() {
         const fetcher = await window.fetch(`${address()}news`, {

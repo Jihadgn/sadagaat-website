@@ -57,7 +57,7 @@ class ModalVedioComponent extends Component {
       <main>
         {this.state.isOpen && (
           <>
-            {id != "" ? (
+            {id !== "" ? (
               <div className="z-999 overflow-hidden">
               <ModalVideo
                 channel="youtube"

@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import address from '../../services';
+import '../../i18next/i18n';
 import { useTranslation } from "react-i18next";
 
 function PhotoGalary() {

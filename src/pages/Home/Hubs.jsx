@@ -1,5 +1,4 @@
 import React from "react";
-import LazyLoad from 'react-lazy-load';
 import { Link } from "react-router-dom";
 import part_11 from "../../assets//11.png"
 import part_22 from "../../assets//22.png"

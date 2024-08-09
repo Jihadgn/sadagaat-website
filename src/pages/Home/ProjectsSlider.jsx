@@ -12,6 +12,7 @@ import { Precision, getNumber } from "../../services/getMonthName";
 import parse from 'html-react-parser';
 import i18n from "i18next";
 import { withTranslation } from "react-i18next";
+import '../../i18next/i18n';
 import { useTranslation } from "react-i18next";
 
 const ProjectsSlider = (props) => {
@@ -20,19 +21,9 @@ const ProjectsSlider = (props) => {
  const { t } = useTranslation();
 
     const [data, setData] = useState([]);
-    const [startDate, setStartDate] = useState(null);
-    const [endDate, setEndDate] = useState(null);
-    const [location, setLocation] = useState("");
-    const [hubId, setHubId] = useState(-1);
-    const [alertOn, setAlert] = useState(false);
-    const [alertMsg, setAlertMsg] = useState("");
-    let [filterOn, setFilterOn] = useState(false);
-    const [loading, setLoading] = useState(true);
-    let [sorting, toggleSorting] = useState(false);
-    let [sortBtnFlip, toggleSortBtns] = useState("");
+
     let [currentPage, setCurrentPage] = useState(0);
     const [postsPerPage] = useState(6);
-    const [totalPages, setTotalPages] = useState(0);
 
     function filterProjectsType(type) {
         return (type === "completed" ? 1 : (type === "ongoing" ? 2 : 3));
