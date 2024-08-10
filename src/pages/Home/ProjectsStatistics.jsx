@@ -3,12 +3,12 @@ import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import address from '../../services';
 import CountUp from "react-countup";
-import i18n from "i18next";
 import {useTranslation} from "react-i18next";
+
 
 function ProjectsStatistics() {
 
-    const {t} = useTranslation();
+    const { t, i18n } = useTranslation();
     const [doneProjects, setDoneProjects] = useState([]);
     const [notDoneProjects, setNotDoneProjects] = useState([]);
     const [dooners, setDooners] = useState([]);

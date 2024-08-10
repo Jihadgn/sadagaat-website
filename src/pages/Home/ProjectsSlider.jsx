@@ -9,16 +9,12 @@ import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import address from '../../services';
 import { Precision, getNumber } from "../../services/getMonthName";
-import parse from 'html-react-parser';
-import i18n from "i18next";
-import { withTranslation } from "react-i18next";
-import '../../i18next/i18n';
 import { useTranslation } from "react-i18next";
+
 
 const ProjectsSlider = (props) => {
 
- const lastLang = i18n.language;
- const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
 
     const [data, setData] = useState([]);
 
@@ -53,8 +49,7 @@ const ProjectsSlider = (props) => {
         const response = await fetcher.json();
         console.log(response);
         setData(response.data);
-        setTotalPages(response.totalPages);
-        setLoading(false);
+
     }
 
     useEffect(() => {
@@ -174,7 +169,7 @@ const ProjectsSlider = (props) => {
                                                         {project.name}
                                                     </h2>
                                                     <h2 className="text-left text-md font-normal">
-                                                        {parse(project.description)}
+                                                        {project.description}
                                                     </h2>
                                                 </div>
                                                 <div className="items-center px-4 pt-1">

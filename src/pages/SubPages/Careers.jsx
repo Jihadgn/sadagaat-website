@@ -6,7 +6,7 @@ import Footer from '../Home/Footer';
 import address from "../../services";
 import { React, useEffect, useState } from "react";
 import FroalaEditorView from "react-froala-wysiwyg/FroalaEditorView";
-import i18n from "i18next";
+
 import { useTranslation } from 'react-i18next';
 
 function Careers() {

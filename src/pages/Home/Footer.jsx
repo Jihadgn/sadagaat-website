@@ -1,14 +1,12 @@
 import React from "react";
-import parse from 'html-react-parser';
 import { Link } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import address from '../../services';
-import '../../i18next/i18n';
+
 import { useTranslation } from "react-i18next";
 
 function Footer() {
     const { t, i18n } = useTranslation();
-    const dir = i18n.dir();
     const [footer, setFooter] = useState([]);
     const [contact, setContact] = useState({})
     const [location, setLocation] = useState({})

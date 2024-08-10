@@ -7,8 +7,7 @@ import address from "../../services";
 import { React, useEffect, useState } from "react";
 import { Tabs } from 'flowbite-react';
 import SubHub from './SubHuds'
-import parse from 'html-react-parser';
-import '../../i18next/i18n';
+
 import { useTranslation } from "react-i18next";
 
 function Feeding() {
@@ -37,8 +36,8 @@ function Feeding() {
     const fetch = await window.fetch(`${address()}cover-image/FEEDING_SECT`, {
       headers: { "accept-language": `${i18n.language}` },
     });
-    setData({ hub: response, files: response.files, details: response.formatedDescription, cover: fetch });
-    console.log("the fetched data ...", hub);
+    const img = fetch.json();
+    setData({ hub: response, files: response.files, details: response.formatedDescription, cover: img });
 
   }
   // get hub on page load

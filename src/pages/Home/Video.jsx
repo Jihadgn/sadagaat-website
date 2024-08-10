@@ -1,12 +1,12 @@
 import address from "../../services";
 import { React, useEffect, useState } from "react";
 import ModalVedioComponent from "./videoModel";
-import i18n from "i18next";
+
 import {useTranslation} from "react-i18next";
 
 function Video() {
 
-    const {t} = useTranslation();
+    const {t , i18n} = useTranslation();
     const [link, setLink] = useState({})
     async function fetchTable() {
         const fetcher = await window.fetch(`${address()}video-config`,

@@ -12,8 +12,7 @@ import {
   Navigate,
   useParams,
 } from "react-router-dom";
-import i18n from "i18next";
-import '../../i18next/i18n';
+
 import { useTranslation } from "react-i18next";
 
 function SinglSubHub() {

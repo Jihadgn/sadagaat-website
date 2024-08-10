@@ -6,11 +6,11 @@ import Footer from "../Home/Footer";
 import address from "../../services";
 import { React, useEffect, useState } from "react";
 import FilteredProjects from "./FilteredProjects";
-import '../../i18next/i18n';
+
 import { useTranslation } from "react-i18next";
 
 function SearchResult() {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
 
     return (
         <>

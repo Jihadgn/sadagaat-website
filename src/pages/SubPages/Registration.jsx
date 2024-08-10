@@ -6,7 +6,7 @@ import Footer from '../Home/Footer';
 import address from "../../services";
 import { React, useEffect, useState } from "react";
 import submitvolunteer from "../../repository"
-import '../../i18next/i18n';
+
 import {useTranslation} from "react-i18next";
 
 function Registration() {

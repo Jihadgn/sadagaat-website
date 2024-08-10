@@ -9,12 +9,11 @@ import address from "../../services";
 import { Precision, getNumber } from "../../services/getMonthName";
 import parse from "html-react-parser";
 import ReactPaginate from "react-paginate";
-import i18n from "i18next";
-import '../../i18next/i18n';
+
 import { useTranslation } from "react-i18next";
 
 const SingleSubHubProject = (props) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const [data, setData] = useState([]);
   let [currentPage, setCurrentPage] = useState(0);

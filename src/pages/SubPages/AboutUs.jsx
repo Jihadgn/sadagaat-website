@@ -7,7 +7,7 @@ import React from "react";
 import { useState, useEffect } from 'react';
 import address from '../../services';
 import Partners from '../Home/Partners';
-import '../../i18next/i18n';
+
 import { useTranslation } from "react-i18next";
 
 function Home() {

@@ -3,8 +3,7 @@ import { useState, useEffect } from 'react';
 import address from '../../services';
 import { Link } from "react-router-dom";
 import { Card } from "flowbite-react";
-import i18n from "i18next";
-import '../../i18next/i18n';
+
 import { useTranslation } from "react-i18next";
 
 function NewsAndEvents() {
@@ -20,16 +19,8 @@ function NewsAndEvents() {
         setNews(response.slice(0, 3));
     }
 
-    //   async function fetchEvents() {
-    //     const fetcher = await window.fetch(`${address()}events`, {
-    //       headers: { "accept-language": `${i18n.language}` },
-    //     });
-    //     const response = await fetcher.json();
-    //     setEvent(response.slice(0, 3));
-    //   }
 
     useEffect(() => {
-        // fetchEvents();
         fetchNews();
     }, [i18n.language]);
 

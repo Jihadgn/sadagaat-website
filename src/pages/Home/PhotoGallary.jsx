@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import address from '../../services';
-import '../../i18next/i18n';
+
 import { useTranslation } from "react-i18next";
 
 function PhotoGalary() {
@@ -14,7 +14,7 @@ function PhotoGalary() {
         setImage(res8);
     }
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
     // get sliders on page load
     useEffect(() => {

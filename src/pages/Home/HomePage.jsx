@@ -13,7 +13,6 @@ import NavBar from './NavBar';
 import FixedButton from './FixedButton';
 import Volunteering from './Volunteering';
 import Footer from './Footer';
-import LazyLoad from 'react-lazy-load'; 
 
 function Home() {
 

@@ -9,11 +9,9 @@ import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import address from '../../services';
 import { Precision, getNumber } from "../../services/getMonthName";
-import parse from 'html-react-parser';
 import ReactPaginate from "react-paginate";
 import DatePicker from "react-datepicker";
-import i18n from "i18next";
-import '../../i18next/i18n';
+
 import { useTranslation } from "react-i18next";
 
 
@@ -270,7 +268,7 @@ const FilteredProjects = (props) => {
                                                 {project.name}
                                             </h2>
                                             <h2 className="project-discription text-left text-md font-normal">
-                                                {parse(project.description)}
+                                                {project.description}
                                             </h2>
                                         </Card>
                                     </Link>

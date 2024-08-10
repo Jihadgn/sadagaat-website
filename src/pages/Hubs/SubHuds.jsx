@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import address from "../../services";
 import { Link } from "react-router-dom";
-import '../../i18next/i18n';
 import { useTranslation } from "react-i18next";
-import i18n from "i18next";
+
 
 
 /**
@@ -20,7 +19,7 @@ const Hub_Subhubs = (props) => {
   // how meny subhubs dispaly per page
   const [postsPerPage] = useState(6);
   const hubId = props.hubId;
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   /**  useEffect call SubHubs() function when component mounted or  when recived props
    */

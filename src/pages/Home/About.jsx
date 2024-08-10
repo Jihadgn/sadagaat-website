@@ -2,12 +2,12 @@ import React from "react";
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import address from '../../services';
-import '../../i18next/i18n';
 import { useTranslation } from "react-i18next";
+import i18n from "i18next";
 
 function Home() {
 
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const [about, setAbout] = useState([]);
     const [about1, setAbout1] = useState("")
     const [about2, setAbout2] = useState("")

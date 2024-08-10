@@ -8,7 +8,6 @@ import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Precision, getNumber } from "../../services/getMonthName";
 import "react-circular-progressbar/dist/styles.css";
-import parse from 'html-react-parser';
 import ReactPaginate from "react-paginate";
 import {
     Card,
@@ -200,7 +199,7 @@ const VolunteerPrograms = (props) => {
                                                 {program.name}
                                             </h2>
                                             <h2 className="project-discription text-left text-md font-normal">
-                                                {parse(program.description)}
+                                                {program.description}
                                             </h2>
                                         </Card>
                                     </Link>
