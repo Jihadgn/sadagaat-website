@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import address from '../../services';
 
@@ -108,19 +107,19 @@ function Footer() {
                                     <hr />
                                 </div>
                                 <div className="pt-5">
-                                    <Link to="/wash" className="text-md text-white hover:text-gray-400 pt-6">{t("Water Sector")}</Link>
+                                    <a href="/wash" className="text-md text-white hover:text-gray-400 pt-6">{t("Water Sector")}</a>
                                     <hr className="hrNew" />
                                 </div>
                                 <div className="pt-5">
-                                    <Link to="/health" className="text-md text-white hover:text-gray-400 pt-6">{t("Health Sector")}</Link>
+                                    <a href="/health" className="text-md text-white hover:text-gray-400 pt-6">{t("Health Sector")}</a>
                                     <hr className="hrNew" />
                                 </div>
                                 <div className="pt-5">
-                                    <Link to="/feeding" className="text-md text-white hover:text-gray-400 pt-6">{t("Feeding Sector")}</Link>
+                                    <a href="/feeding" className="text-md text-white hover:text-gray-400 pt-6">{t("Feeding Sector")}</a>
                                     <hr className="hrNew" />
                                 </div>
                                 <div className="pt-5  ">
-                                    <Link to="/education" className="text-md text-white hover:text-gray-400 pt-6">{t("Education Sector")}</Link>
+                                    <a href="/education" className="text-md text-white hover:text-gray-400 pt-6">{t("Education Sector")}</a>
                                     <hr className="hrNew" />
                                 </div>
                             </div>
@@ -130,16 +129,16 @@ function Footer() {
                                     <hr />
                                 </div>
                                 <div className="pt-5">
-                                    <Link to="/about" className="text-md text-white hover:text-gray-400 pt-6">{t("About Us")}</Link>
+                                    <a href="/about" className="text-md text-white hover:text-gray-400 pt-6">{t("About Us")}</a>
                                     <hr className="hrNew" />
                                 </div>
                                 <div className="pt-5">
-                                    <Link to="/ongoin-projects" className="text-md text-white hover:text-gray-400 pt-6">{t("Projects")}</Link>
+                                    <a href="/ongoin-projects" className="text-md text-white hover:text-gray-400 pt-6">{t("Projects")}</a>
                                     <hr className="hrNew" />
                                 </div>
                                 <div className="pt-5  ">
-                                    <Link to={magazineLinks.allMagazineLink}
-                                        target="_blank" className="text-md text-white hover:text-gray-400 pt-6">{t("our_magazine")}</Link>
+                                    <a href={magazineLinks.allMagazineLink}
+                                        target="_blank" className="text-md text-white hover:text-gray-400 pt-6">{t("our_magazine")}</a>
                                     <hr className="hrNew" />
                                 </div>
                             </div>

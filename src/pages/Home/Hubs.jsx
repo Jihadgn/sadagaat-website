@@ -24,41 +24,41 @@ function Hubs() {
                     <div></div>
                         {i18n.language === "en" ? (
                     <div className="col-span-10 grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 gap-0">
-                            <Link to="/wash" className="curser-pointer">
+                            <a href="/wash" className="curser-pointer">
                                 <img className="h-full w-full" src={part_11} alt="" />
-                            </Link>
-                            <Link to="/health" className="curser-pointer">
+                            </a>
+                            <a href="/health" className="curser-pointer">
                             <img className="h-full w-full" src={part_22} alt="" />
-                        </Link>
+                        </a>
 
 
-                        <Link to="/feeding" className="curser-pointer">
+                        <a href="/feeding" className="curser-pointer">
                             <img className="h-full w-full" src={part_33} alt="" />
-                        </Link>
+                        </a>
 
 
-                        <Link to="/education" className="curser-pointer">
+                        <a href="/education" className="curser-pointer">
                             <img className="h-full w-full" src={part_44} alt="" />
-                        </Link>
+                        </a>
                     </div>
                         ) : (
                             <div className="col-span-10 grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 gap-0">
-                            <Link to="/wash" className="curser-pointer">
+                            <a href="/wash" className="curser-pointer">
                                 <img className="h-full w-full" src={part_1} alt="" />
-                            </Link>
-                            <Link to="/health" className="curser-pointer">
+                            </a>
+                            <a href="/health" className="curser-pointer">
                             <img className="h-full w-full" src={part_2} alt="" />
-                        </Link>
+                        </a>
 
 
-                        <Link to="/feeding" className="curser-pointer">
+                        <a href="/feeding" className="curser-pointer">
                             <img className="h-full w-full" src={part_3} alt="" />
-                        </Link>
+                        </a>
 
 
-                        <Link to="/education" className="curser-pointer">
+                        <a href="/education" className="curser-pointer">
                             <img className="h-full w-full" src={part_4} alt="" />
-                        </Link>
+                        </a>
                     </div>
                         )}
 
