@@ -1,6 +1,4 @@
 import React from "react";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { useState, useEffect } from 'react';
 import address from '../../services';
@@ -19,19 +17,18 @@ function MainSlider() {
     // get sliders on page load
     useEffect(() => {
         fetchData();
-
     }, []);
 
 
     var sliderSetting = {
         dots: false,
-        speed: 2000,
-        autoPlay: 3000,
+        arrows: false,
+        infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
-        infinite: true,
-        pauseOnHover: true,
-        arrows: false, 
+        autoplay: true,
+        speed: 2000,
+        autoplaySpeed: 3000,
     };
 
 

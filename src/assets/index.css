@@ -3,8 +3,51 @@
 @tailwind utilities;
 
 
+
+@font-face {
+  font-family: "sadagaat";
+  src: url("../fonts/Sadagaat-English-Regular.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "sadagaat";
+  src: url("../fonts/Sadagaat-English-Medium.otf") format("truetype");
+  font-weight: medium;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "sadagaat";
+  src: url("../fonts/Sadagaat-English-Bold.otf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "sadagaatAr";
+  src: url("../fonts/Sadagaat-Arabic-Light_0.otf.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "sadagaatAr";
+  src: url("../fonts/Sadagaat-Arabic-Regular_0.otf") format("truetype");
+  font-weight: medium;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "sadagaatAr";
+  src: url("../fonts/Sadagaat-Arabic-Bold_0.otf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
 :root {
-  font-family: sans-serif;
+  font-family: "sadagaat", serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -20,8 +63,8 @@
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-background-size: auto;
-background-color: #fff;
+  background-size: auto;
+  background-color: #fff;
 
 }
 
@@ -42,8 +85,10 @@ background-color: #fff;
 }
 
 .course-card {
-  background-color: #0c79a0 !important ;
+  background-color: #0c79a0 !important;
+  font-family: "sadagaat", serif;
 }
+
 .hrNew {
   border-top: 1px dashed black;
 }
@@ -52,6 +97,7 @@ background-color: #fff;
   background: #bf9e58;
   color: #fff;
   border: 1px solid black;
+  font-family: "sadagaat", serif;
 }
 
 .pagination li a {
@@ -63,13 +109,26 @@ background-color: #fff;
   border-bottom-right-radius: 4px;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-  box-sizing: border-box
+  box-sizing: border-box;
+  font-family: "sadagaat", serif;
 }
 
 .pagination li.active a {
+  font-family: "sadagaat", serif;
   background: #73ade2;
   color: #fff;
   border: 1px solid rgb(112, 110, 110);
+}
+
+.Navbar .Dropdown label{
+  font: bold !important;
+}
+
+.aboutUs {
+  font-family: "sadagaat", sans-serif !important;
+  font-size: 14px;
+  line-height: 23.8px;
+  color: rgb(102, 102, 102)
 }
 
 .pagination {
@@ -77,12 +136,14 @@ background-color: #fff;
 }
 
 .hub-section {
+  font-family: "sadagaat", serif;
   background-color: rgb(53, 52, 52);
   opacity: 1;
   background-blend-mode: overlay;
 }
 
 .Our {
+  font-family: "sadagaat", serif;
   background-color: rgba(6, 105, 147, 0.8) !important;
   z-index: 10;
   opacity: 1;
@@ -90,11 +151,13 @@ background-color: #fff;
 }
 
 .pragraphe {
+  font-family: "sadagaat", serif;
   font-size: 15px;
 
 }
 
 .footer {
+  font-family: "sadagaat", sans-serif;
   background-image: url("https://sadagaat-uk.org/images/footer-mask.svg");
   background-size: cover;
   opacity: 1;
@@ -103,6 +166,7 @@ background-color: #fff;
 
 
 .top {
+  font-family: "sadagaat", sans-serif;
   background-image: url("https://sadagaat-uk.org/images/header-mask.svg");
   background-size: 800%;
   background-position: center;
@@ -110,16 +174,19 @@ background-color: #fff;
 }
 
 .nav {
+  font-family: "sadagaat", serif;
   background-color: #f7f8fa !important;
   height: inherit !important;
 }
 
 .slider {
+  font-family: "sadagaat", serif;
   height: 500px;
   overflow: hidden;
   background-color: #fff;
 }
-.slider img{
+
+.slider img {
   height: fit-content;
   width: fit-content;
   overflow: hidden;
@@ -129,13 +196,15 @@ background-color: #fff;
   border: 1.4px solid black;
   margin-right: 200px;
 }
+
 .contact-hr-1 {
   border: 1.4px solid black;
-  margin-right: 400px;  
+  margin-right: 400px;
 }
+
 .contact-hr-2 {
   border: 1.4px solid black;
-  margin-right: 600px;  
+  margin-right: 600px;
 }
 
 .img-fullwidth {
@@ -144,6 +213,7 @@ background-color: #fff;
 }
 
 .sectors {
+  font-family: "sadagaat", serif;
   border: 1.6px solid black;
   height: 2px;
   left: opx;
@@ -162,6 +232,7 @@ background-color: #fff;
 }
 
 .btn {
+  font-family: "sadagaat", serif;
   background-color: #125e98;
   color: white;
   font-weight: 500;
@@ -169,6 +240,7 @@ background-color: #fff;
 }
 
 .btn:hover {
+  font-family: "sadagaat", serif;
   background-color: #256da4;
   color: white;
   font-weight: 500;
@@ -177,6 +249,7 @@ background-color: #fff;
 
 
 .project-discription {
+  font-family: "sadagaat", serif;
   white-space: wrap;
   height: 6em;
   overflow: hidden;
@@ -184,17 +257,18 @@ background-color: #fff;
 }
 
 .causes .thumb {
+  font-family: "sadagaat", serif;
   position: relative;
   overflow: hidden;
-  max-height: 270px !important; 
-} 
+  max-height: 270px !important;
+}
 
 
 .causes .thumb img {
   transition: all 500ms ease 0s;
-  position: relative; 
-  width:400px;
-  height:360px;
+  position: relative;
+  width: 400px;
+  height: 360px;
 }
 
 .causes:hover .thumb img {
@@ -202,7 +276,8 @@ background-color: #fff;
 }
 
 .coursesPage {
-  background-image: url("1234.png") ;
+  font-family: "sadagaat", serif;
+  background-image: url("1234.png");
   background-size: contain;
   background-position: center;
   opacity: 0.7;
@@ -210,6 +285,7 @@ background-color: #fff;
 }
 
 .gallery-item .thumb {
+  font-family: "sadagaat", serif;
   position: relative;
   overflow: hidden;
   max-height: 370px !important;
@@ -218,8 +294,8 @@ background-color: #fff;
 .gallery-item .thumb img {
   transition: all 500ms ease 0s;
   position: relative;
-  width:400px;
-  height:360px;
+  width: 400px;
+  height: 360px;
 }
 
 .gallery-item:hover .thumb img {
@@ -233,6 +309,7 @@ background-color: #fff;
   font-size: 10px;
   line-height: 8px;
   padding: 8px 5px;
+  font-family: "sadagaat", serif;
   position: absolute;
   right: -10px;
   text-align: center;
@@ -240,6 +317,7 @@ background-color: #fff;
 }
 
 .causes .progress-item .progress {
+  font-family: "sadagaat", serif;
   background-color: #efefef;
   border-bottom: 1px solid #d3d3d3;
   box-shadow: none;
@@ -247,6 +325,7 @@ background-color: #fff;
 }
 
 .progress-item .progress {
+  font-family: "sadagaat", serif;
   background-color: #f8f8f8;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.4) inset;
   border-radius: 0;
@@ -254,6 +333,7 @@ background-color: #fff;
 }
 
 .progress-item .progress-bar {
+  font-family: "sadagaat", serif;
   font-size: 11px;
   padding-left: 10px;
   position: relative;
@@ -266,6 +346,7 @@ background-color: #fff;
 }
 
 .progress-item .progress-bar .percent {
+  font-family: "sadagaat", serif;
   background-color: #ff5722;
   border-radius: 0 7px 7px 0;
   padding: 0 8px;
@@ -275,10 +356,12 @@ background-color: #fff;
 }
 
 .progress-item.progress-white .progress {
+  font-family: "sadagaat", serif;
   padding: 2px;
 }
 
 .progress-item.style2 .progress {
+  font-family: "sadagaat", serif;
   height: 25px;
 }
 
@@ -295,6 +378,7 @@ background-color: #fff;
 }
 
 .slide-container {
+  font-family: "sadagaat", serif;
   direction: ltr;
   width: 80% !important;
   margin-bottom: -140px;
@@ -303,6 +387,7 @@ background-color: #fff;
 }
 
 a {
+  font-family: "sadagaat", sans-serif;
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
@@ -333,6 +418,7 @@ a {
 }
 
 .fixed-btn {
+  font-family: "sadagaat", serif;
   top: 30%;
   left: -44px;
   transform: rotate(-90deg);
@@ -340,24 +426,29 @@ a {
 }
 
 .primary {
+  font-family: "sadagaat", serif;
   background-color: rgb(0, 169, 88);
   font-weight: bold;
 }
 
 .table-row-1 {
+  font-family: "sadagaat", serif;
   background-color: #edecec !important;
 }
 
 .transparent {
+  font-family: "sadagaat", serif;
   background: transparent !important;
 }
 
 a:hover {
+  font-family: "sadagaat", serif;
   color: #535bf2;
 }
 
 body {
   margin: 0;
+  font-family: "sadagaat", serif;
   align-items: center;
   place-items: center;
   /* max-width: 1200px; */
@@ -365,8 +456,30 @@ body {
 }
 
 h1 {
+  font-family: "sadagaat", serif;
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+h2{
+  font-family: "sadagaat", sans-serif;
+}
+
+h3{
+  font-family: "sadagaat", sans-serif;
+}
+
+span{
+  font-family: "sadagaat", sans-serif;
+}
+
+p{
+  font-family: "sadagaat", sans-serif;
+
+}
+
+h6 {
+  font-family: "sadagaat", serif ;
 }
 
 button {
@@ -375,32 +488,37 @@ button {
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
-  font-family: inherit;
+  font-family: "sadagaat",sans-serif;
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 
 button:hover {
+  font-family: "sadagaat", sans-serif;
   border-color: #646cff;
 }
 
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+  font-family: "sadagaat", serif;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
+    font-family: "sadagaat", serif;
   }
 
   a:hover {
     color: #747bff;
+    font-family: "sadagaat", serif;
   }
 
   button {
     background-color: #f9f9f9;
+    font-family: "sadagaat", serif;
   }
 }

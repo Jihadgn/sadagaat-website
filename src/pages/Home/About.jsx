@@ -37,7 +37,6 @@ function Home() {
     const classParameter = i18n.dir() === "rtl" ? "pr-0" : "pl-0";
     // const buttonClass  =  set class name value after Check page direction
     const buttonClass = i18n.dir() === "rtl" ? "mr-5" : "ml-5";
-
     // get sliders on page load
     useEffect(() => {
         // fetchAboutImages();
@@ -51,109 +50,225 @@ function Home() {
                 {/* about Sadagaat */}
                 <section className="pt-1 pb-10 grid grid-cols-12 bg-white">
                     <div></div>
-                    <div className="col-span-10 grid xl:grid-cols-2 md:grid-cols-1 pt-2">
-                        <div className="grid lg:grid-cols-2 md:grid-cols-2 gap-3">
-                            <div className={`${classParameter}`}>
-                                <div className="img-hover-border">
+                    {i18n.language === "en" ? (
+                        <div className="col-span-10 grid xl:grid-cols-2 md:grid-cols-1 pt-2">
+                            <div className="grid lg:grid-cols-2 md:grid-cols-2 gap-3">
+                                <div className={`${classParameter}`}>
+                                    <div className="img-hover-border">
 
-                                    {
-                                        !about1 ?
-                                            <img
-                                                className="img-responsive"
+                                        {
+                                            !about1 ?
+                                                <img
+                                                    className="img-responsive"
 
-                                                src={`${address()}about-us/ABOUTUS1/image`}
-                                                // src={require("../images/about 275 330.jpg")}
-                                                alt=""
-                                                style={{ width: "100%", height: "330px" }}
-                                            />
-                                            :
-                                            <img
-                                                className="img-responsive"
+                                                    src={`${address()}about-us/ABOUTUS1/image`}
+                                                    // src={require("../images/about 275 330.jpg")}
+                                                    alt=""
+                                                    style={{ width: "100%", height: "330px" }}
+                                                />
+                                                :
+                                                <img
+                                                    className="img-responsive"
 
-                                                //  src={`${address()}cover-image/MAINPAGE1`}
-                                                src={require("../images/about 275 330.jpg")}
-                                                alt=""
-                                                style={{ width: "100%", height: "330px" }}
-                                            />
+                                                    //  src={`${address()}cover-image/MAINPAGE1`}
+                                                    src={require("../images/about 275 330.jpg")}
+                                                    alt=""
+                                                    style={{ width: "100%", height: "330px" }}
+                                                />
 
-                                    }
+                                        }
 
 
+                                    </div>
+                                </div>
+                                <div className="hidden  md:block">
+                                    <div className="img-hover-border">
+                                        {
+                                            !about2 ?
+                                                <img
+                                                    className="img-responsive"
+
+                                                    src={`${address()}about-us/ABOUTUS2/image`}
+                                                    // src={require("../images/about 275 330.jpg")}
+                                                    alt=""
+                                                    style={{ width: "100%", height: "156px" }}
+                                                />
+                                                :
+                                                <img
+                                                    className="img-responsive"
+
+                                                    //  src={`${address()}cover-image/MAINPAGE1`}
+                                                    src={require("../images/about 325-177.jpg")}
+                                                    alt=""
+                                                    style={{ width: "100%", height: "156px" }}
+                                                />
+
+                                        }
+
+                                    </div>
+                                    <div className="img-hover-border mt-4 mt-sm-20">
+                                        {
+                                            !about3 ?
+                                                <img
+                                                    className="img-responsive"
+
+                                                    src={`${address()}about-us/ABOUTUS3/image`}
+                                                    // src={require("../images/about 275 330.jpg")}
+                                                    alt=""
+                                                    style={{ width: "100%", height: "156px" }}
+                                                />
+                                                :
+                                                <img
+                                                    className="img-responsive"
+
+                                                    //  src={`${address()}cover-image/MAINPAGE1`}
+                                                    src={require("../images/about 350-300.jpg")}
+                                                    alt=""
+                                                    style={{ width: "100%", height: "156px" }}
+                                                />
+
+                                        }
+
+
+                                    </div>
                                 </div>
                             </div>
-                            <div className="hidden  md:block">
-                                <div className="img-hover-border">
-                                    {
-                                        !about2 ?
-                                            <img
-                                                className="img-responsive"
-
-                                                src={`${address()}about-us/ABOUTUS2/image`}
-                                                // src={require("../images/about 275 330.jpg")}
-                                                alt=""
-                                                style={{ width: "100%", height: "156px" }}
-                                            />
-                                            :
-                                            <img
-                                                className="img-responsive"
-
-                                                //  src={`${address()}cover-image/MAINPAGE1`}
-                                                src={require("../images/about 325-177.jpg")}
-                                                alt=""
-                                                style={{ width: "100%", height: "156px" }}
-                                            />
-
+                            <div className={`text-black px-4 xl:pt-0 md:pt-6 sm:pt-6 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
+                                <h1 className="text-2xl font-bold tracking-tight text-gray-900 uppercase">{t("About Sadagaat")}</h1>
+                                <div className="pt-7 font-normal text-gray-700">
+                                    {about !== null ?
+                                        <p className={`${i18n.language === "en" ? "text-left" : "text-right"}`}>
+                                            {about} <br />
+                                        </p> :
+                                        <p>
+                                            {t("about_message_1")} <br />
+                                            {t("about_message_2")}
+                                        </p>
                                     }
-
                                 </div>
-                                <div className="img-hover-border mt-4 mt-sm-20">
-                                    {
-                                        !about3 ?
-                                            <img
-                                                className="img-responsive"
-
-                                                src={`${address()}about-us/ABOUTUS3/image`}
-                                                // src={require("../images/about 275 330.jpg")}
-                                                alt=""
-                                                style={{ width: "100%", height: "156px" }}
-                                            />
-                                            :
-                                            <img
-                                                className="img-responsive"
-
-                                                //  src={`${address()}cover-image/MAINPAGE1`}
-                                                src={require("../images/about 350-300.jpg")}
-                                                alt=""
-                                                style={{ width: "100%", height: "156px" }}
-                                            />
-
-                                    }
-
-
+                                <div className="grid lg:grid-cols-4 md:grid-cols-4 grid-cols-2  gap-2 pt-6">
+                                    <Link to="/about"
+                                        className={`text-center bg-white border rounded border-black text-blue-900 py-3 ${buttonClass}`}>
+                                        {t("Read More")}
+                                    </Link>
+                                    <button onClick={() => { window.location.href = '/donate' }}
+                                        className={`text-center btn border-black text-white px-7 py-3  ${buttonClass}`}>
+                                        {t("Donate")}
+                                    </button>
                                 </div>
                             </div>
-                        </div>
-                        <div className="text-black px-4 xl:pt-0 md:pt-6 sm:pt-6">
-                            <h1 className="text-2xl font-bold tracking-tight text-gray-900">{t("About Sadagaat")}</h1>
-                            <div className="pt-7 font-normal text-gray-700">
-                                {about !== null ?
-                                    <p>
-                                        {about} <br />
-                                    </p> :
-                                    <p>
-                                        {t("about_message_1")} <br />
+                        </div>)
+                        :
+                        (
+                            <div className="col-span-10 grid xl:grid-cols-2 md:grid-cols-1 pt-2">
+                                <div className={`text-black px-4 xl:pt-0 md:pt-6 sm:pt-6 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
+                                    <h2 className="text-2xl font-bold aboutUs text-gray-900 uppercase">{t("About Sadagaat")}</h2>
+                                    <div className="pt-7 font-normal text-gray-700">
+                                        {about !== null ?
+                                            <p className={`${i18n.language === "en" ? "text-left" : "text-right"}`}>
+                                                {about} <br />
+                                            </p> :
+                                            <p>
+                                                {t("about_message_1")} <br />
                                                 {t("about_message_2")}
-                                    </p>
-                                }
+                                            </p>
+                                        }
+                                    </div>
+                                    <div className="grid lg:grid-cols-4 md:grid-cols-4 grid-cols-2  gap-2 pt-6">
+                                        <Link to="/about"
+                                            className={`text-center bg-white border rounded border-black text-blue-900 py-3 ${buttonClass}`}>
+                                            {t("Read More")}
+                                        </Link>
+                                        <button onClick={() => { window.location.href = '/donate' }}
+                                            className={`text-center btn border-black text-white px-7 py-3  ${buttonClass}`}>
+                                            {t("Donate")}
+                                        </button>
+                                    </div>
+                                </div>
+                                <div className="grid lg:grid-cols-2 md:grid-cols-2 gap-3">
+                                    <div className="hidden  md:block">
+                                        <div className="img-hover-border">
+                                            {
+                                                !about2 ?
+                                                    <img
+                                                        className="img-responsive"
+
+                                                        src={`${address()}about-us/ABOUTUS2/image`}
+                                                        // src={require("../images/about 275 330.jpg")}
+                                                        alt=""
+                                                        style={{ width: "100%", height: "156px" }}
+                                                    />
+                                                    :
+                                                    <img
+                                                        className="img-responsive"
+
+                                                        //  src={`${address()}cover-image/MAINPAGE1`}
+                                                        src={require("../images/about 325-177.jpg")}
+                                                        alt=""
+                                                        style={{ width: "100%", height: "156px" }}
+                                                    />
+
+                                            }
+
+                                        </div>
+                                        <div className="img-hover-border mt-4 mt-sm-20">
+                                            {
+                                                !about3 ?
+                                                    <img
+                                                        className="img-responsive"
+
+                                                        src={`${address()}about-us/ABOUTUS3/image`}
+                                                        // src={require("../images/about 275 330.jpg")}
+                                                        alt=""
+                                                        style={{ width: "100%", height: "156px" }}
+                                                    />
+                                                    :
+                                                    <img
+                                                        className="img-responsive"
+
+                                                        //  src={`${address()}cover-image/MAINPAGE1`}
+                                                        src={require("../images/about 350-300.jpg")}
+                                                        alt=""
+                                                        style={{ width: "100%", height: "156px" }}
+                                                    />
+
+                                            }
+
+
+                                        </div>
+                                    </div>
+                                    <div className={`${classParameter}`}>
+                                        <div className="img-hover-border">
+
+                                            {
+                                                !about1 ?
+                                                    <img
+                                                        className="img-responsive"
+
+                                                        src={`${address()}about-us/ABOUTUS1/image`}
+                                                        // src={require("../images/about 275 330.jpg")}
+                                                        alt=""
+                                                        style={{ width: "100%", height: "330px" }}
+                                                    />
+                                                    :
+                                                    <img
+                                                        className="img-responsive"
+
+                                                        //  src={`${address()}cover-image/MAINPAGE1`}
+                                                        src={require("../images/about 275 330.jpg")}
+                                                        alt=""
+                                                        style={{ width: "100%", height: "330px" }}
+                                                    />
+
+                                            }
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
-                            <div className="grid lg:grid-cols-4 md:grid-cols-4 grid-cols-2   gap-2 pt-6">
-                                <Link to="/about"
-                                    className={`text-center bg-white border rounded border-black text-blue-900 py-3 ${buttonClass}`}>{t("Read More")}</Link>
-                                <button onClick={() => { window.location.href = '/donate' }}
-                                    className={`text-center btn border-black text-white px-7 py-3  ${buttonClass}`}>{t("Donate")}</button>
-                            </div>
-                        </div>
-                    </div>
+                        )}
                 </section>
             </main>
         </>

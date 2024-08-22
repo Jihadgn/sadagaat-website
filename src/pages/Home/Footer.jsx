@@ -58,7 +58,7 @@ function Footer() {
                         <div></div>
                         <div className="col-span-10 grid lg:grid-cols-4 md:grid-cols-4 grid-cols-2 pt-8 pb-8 px-2 gap-9">
                             <div>
-                                <h1 className="text-2xl font-bold text-white">{t("SADAGAAT")}</h1>
+                                <h1 className={`text-2xl font-bold text-white${i18n.language === "en" ? "text-left" : "text-right"}`}>{t("SADAGAAT")}</h1>
                                 <h2 className="text-md pt-5 font-bold text-white" >{t("hashtag")}</h2>
                                 <div className="grid lg:grid-cols-2 md:grid-cols-1">
                                     <div className="flex justify-center px-10 pl-3 grid lg:grid-cols-5 grid-cols-3 gap-10 pt-5">
@@ -101,13 +101,13 @@ function Footer() {
                                     </div>
                                 </div>
                             </div>
-                            <div>
-                                <h2 className="text-md font-bold text-white">{t("Sectors")}</h2>
-                                <div className="grid grid-cols-2  pt-3">
+                            <div className={`${i18n.language === "en" ? "text-left" : "text-right"}`}>
+                                <h2 className={`text-md font-bold text-white `}>{t("Sectors")}</h2>
+                                <div className=" px-2 pt-1 mt-1">
                                     <hr />
                                 </div>
                                 <div className="pt-5">
-                                    <a href="/wash" className="text-md text-white hover:text-gray-400 pt-6">{t("Water Sector")}</a>
+                                    <a href="/wash" className={`text-md text-white hover:text-gray-400 pt-6 `}>{t("Water Sector")}</a>
                                     <hr className="hrNew" />
                                 </div>
                                 <div className="pt-5">
@@ -123,9 +123,9 @@ function Footer() {
                                     <hr className="hrNew" />
                                 </div>
                             </div>
-                            <div>
+                            <div className={`${i18n.language === "en" ? "text-left" : "text-right"}`}>
                                 <h2 className="text-md font-bold text-white"> {t("Quick Links")}</h2>
-                                <div className="grid grid-cols-2  pt-3">
+                                <div className=" px-2 pt-1 mt-1">
                                     <hr />
                                 </div>
                                 <div className="pt-5">
@@ -142,9 +142,9 @@ function Footer() {
                                     <hr className="hrNew" />
                                 </div>
                             </div>
-                            <div>
+                            <div className={`${i18n.language === "en" ? "text-left" : "text-right"}`}>
                                 <h2 className="text-md font-bold text-white">{t("Contact Us")}</h2>
-                                <div className="grid grid-cols-2  pt-3">
+                                <div className=" px-2 pt-1 mt-1">
                                     <hr />
                                 </div>
                                 <div>

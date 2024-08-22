@@ -5,7 +5,6 @@ import address from '../../services';
 import part_1 from "../../assets/images/partener1.png"
 import part_2 from "../../assets/images/partener2.png"
 import part_3 from "../../assets/images/partener3.png"
-import LazyLoad from 'react-lazy-load'; 
 import {useTranslation} from "react-i18next";
 
 function Partners() {
@@ -38,7 +37,7 @@ function Partners() {
         slidesToScroll: 1,
         autoplay: true,
         speed: 500,
-        autoplaySpeed: 3000,
+        autoplaySpeed: 2000,
         cssEase: "linear",
         responsive: [
             {

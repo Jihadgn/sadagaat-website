@@ -8,8 +8,6 @@ import part_1 from "../../assets//1.png"
 import part_2 from "../../assets//2.png"
 import part_3 from "../../assets//3.png"
 import part_4 from "../../assets//4.png"
-
-
 import { useTranslation } from "react-i18next";
 
 function Hubs() {

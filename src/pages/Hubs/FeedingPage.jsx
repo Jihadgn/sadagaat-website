@@ -29,7 +29,7 @@ function Feeding() {
 
   async function fetchData() {
     //  Get id of subhub from url
-    const fetcher = await window.fetch(`${address()}hubs/1744`, {
+    const fetcher = await window.fetch(`${address()}hubs/8775`, {
       headers: { "accept-language": `${i18n.language}` },
     });
     const response = await fetcher.json();

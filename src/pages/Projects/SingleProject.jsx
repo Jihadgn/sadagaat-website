@@ -5,24 +5,17 @@ import Volunteering from '../Home/Volunteering';
 import Footer from '../Home/Footer';
 import address from "../../services";
 import { React, useEffect, useState } from "react";
-import { Tabs, } from 'flowbite-react';
-import { Precision, getNumber } from "../../services/getMonthName";
-
+import { Tabs } from 'flowbite-react';
 import { useTranslation } from "react-i18next";
-
-import {
-    Link,
-    Outlet,
-    Navigate,
-    useParams,
-} from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function SingleProject() {
 
-  const { t, i18n } = useTranslation();
+    const { t, i18n } = useTranslation();
 
     const [project, setProject] = useState([]);
     const [data, setData] = useState([]);
+    const [steps, setSteps] = useState([]);
 
     const [images, setImages] = useState([]);
 
@@ -39,14 +32,30 @@ function SingleProject() {
         const data2 = res1.images;
         setProject(data);
         setData(res1);
-        let currentLocation = [data.locationLat, data.locationLng];
+
+
+        try {
+            const steps = await axios.get(
+                `${address()}projects/step/${id}`,
+                {
+                    headers: { "accept-language": `${i18n.language}` },
+                }
+            );
+            setSteps({ steps });
+            console.log(steps);
+        } catch (error) {
+            console.log("can not load project for the home page slider");
+        }
+
+
         setImages(data2)
     }
+    let currentLocation = [project.locationLat, project.locationLng];
+    let zoom = 9;
 
     // get project on page load
     useEffect(() => {
         fetchData()
-
     }, [i18n.language])
 
 
@@ -119,26 +128,110 @@ function SingleProject() {
                                             <hr />
                                         </Tabs.Item>
                                         <Tabs.Item title={t("Project Timeline")} >
-                                            <h4 className="text-center font-bold text-2xl">{t("No Project Timeline")}</h4>
+                                            {steps.length > 0 ? (
+                                                <div>
+                                                    {/* <Timeline
+                                                        lineColor={"#ddd"}
+                                                        className={timeline_class}
+                                                    >
+                                                        {steps.map((step) => (
+                                                            <TimelineItem
+                                                                key={step.id}
+                                                                dateText={
+                                                                    t("Phase") +
+                                                                    " " +
+                                                                    (steps.indexOf(step, 0) + 1)
+                                                                }
+                                                                style={{
+                                                                    color: "#243f60",
+                                                                    background: "#243f60",
+                                                                }}
+                                                            >
+                                                                <p>{parse(step.text)}</p>
+                                                                <div className="slider-container">
+                                                                    {allMedia[this.state.Steps.indexOf(step, 0)]
+                                                                        .media.length === 1 ? (
+                                                                        <div
+                                                                            className="post-thumb thumb"
+                                                                            style={{ margin: "20px 0" }}
+                                                                        >
+                                                                            {allMedia[
+                                                                                this.state.Steps.indexOf(step, 0)
+                                                                            ].media[0].type === "img" ? (
+                                                                                <img
+                                                                                    src={`${address()}projects/step/${allMedia[
+                                                                                        this.state.Steps.indexOf(
+                                                                                            step,
+                                                                                            0
+                                                                                        )
+                                                                                    ].media[0].item.name
+                                                                                        }/image`}
+                                                                                    alt="project image"
+                                                                                />
+                                                                            ) : (
+                                                                                <ReactPlayer
+                                                                                    controls={true}
+                                                                                    playIcon
+                                                                                    className="img-fullwidth img-carousel"
+                                                                                    url={`${address()}projects/step/${allMedia[
+                                                                                        this.state.Steps.indexOf(
+                                                                                            step,
+                                                                                            0
+                                                                                        )
+                                                                                    ].media[0].item.name
+                                                                                        }/video`}
+                                                                                />
+                                                                            )}
+                                                                        </div>
+                                                                    ) : (
+                                                                        <StepSlider
+                                                                            media={
+                                                                                allMedia[
+                                                                                this.state.Steps.indexOf(step, 0)
+                                                                                ]
+                                                                            }
+                                                                        ></StepSlider>
+                                                                    )}
+                                                                </div>
+                                                            </TimelineItem>
+                                                        ))}
+                                                    </Timeline> */}
+
+                                                </div>
+                                            ) : (
+                                                <h4>{t("No Project Timeline")}</h4>
+                                            )}
                                         </Tabs.Item>
-                                        <Tabs.Item title={t("Project Map")} >
+                                        <Tabs.Item title={t("Project Map")}>
 
-                                            {/* <Map center={currentLocation} zoom={zoom}>
-                                                <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                                                <Marker
-                                                    position={currentLocation}
-                                                    icon={VenueLocationIcon}
-                                                >
-                                                    <Popup>
-                                                        <div className="poup-text">
-                                                            <h6>{project.name}</h6>
-                                                            <p>{project.locationName}</p>
-                                                        </div>
-                                                    </Popup>
-                                                </Marker>
-                                            </Map> */}
-                                            <h4 className="text-center font-bold text-2xl">{t("Map not available")}</h4>
+                                            {project.locationLat != 0.0 &&
+                                                project.locationLng != 0.0 ? (
+                                                <div id="LocationMap">
+                                                    {/* {showMap ? (
+                                                        <Map center={currentLocation} zoom={zoom}>
+                                                            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                                                            <Marker
+                                                                position={currentLocation}
+                                                            // icon={VenueLocationIcon}
+                                                            >
+                                                                <Popup>
+                                                                    <div className="poup-text">
+                                                                        <h6>{project.name}</h6>
+                                                                        <p>{project.locationName}</p>
+                                                                    </div>
+                                                                </Popup>
+                                                            </Marker>
+                                                        </Map>
 
+                                                    ) : (
+                                                        <p className="text-center">
+                                                            {t("Loading Map")}
+                                                        </p>
+                                                    )} */}
+                                                </div>
+                                            ) : (
+                                                <h4>{t("Map not available")}</h4>
+                                            )}
                                         </Tabs.Item>
                                     </Tabs>
                                 </div>

@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import address from '../../services';
 import { Precision, getNumber } from "../../services/getMonthName";
 import { useTranslation } from "react-i18next";
+import parse from "html-react-parser";
 
 
 const ProjectsSlider = (props) => {
@@ -133,9 +134,9 @@ const ProjectsSlider = (props) => {
 
                                                     />
                                                 </div>
-                                                <div className="grid grid-cols-2 pt-1">
-                                                    <h3 className="text-left flex text-lg font-bold">{t("Raised")}  {getNumber(project.raised)}   </h3>
-                                                    <h3 className="text-right flex text-lg font-bold"> {t("Goal")} {getNumber(project.goal)} </h3>
+                                                <div className={`grid grid-cols-2 pt-1 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
+                                                    <h3 className="text-right flex text-lg font-bold">{t("Raised")}  {getNumber(project.raised)}   </h3>
+                                                    <h3 className="text-left flex text-lg font-bold"> {t("Goal")} {getNumber(project.goal)} </h3>
                                                 </div>
                                                 <div className="progress-item mt-0">
                                                     <div className="progress">
@@ -149,7 +150,7 @@ const ProjectsSlider = (props) => {
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <h2 className="text-left text-lg font-bold pt-1">{t("Project Progress")}</h2>
+                                                <h2 className={`text-left text-lg font-bold pt-1 ${i18n.language === "en" ? "text-left" : "text-right"}`}>{t("Project Progress")}</h2>
                                                 <div className="progress-item mt-0">
 
                                                     <div className="progress">
@@ -165,10 +166,10 @@ const ProjectsSlider = (props) => {
                                                 </div>
                                                 <div className="project-discription">
 
-                                                    <h2 className="text-left text-xl font-bold pt-1">
+                                                    <h2 className={`text-left text-xl font-bold pt-1 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                                                         {project.name}
                                                     </h2>
-                                                    <h2 className="text-left text-md font-normal">
+                                                    <h2 className={`text-left text-md font-normal ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                                                         {project.description}
                                                     </h2>
                                                 </div>
@@ -181,7 +182,7 @@ const ProjectsSlider = (props) => {
                                     ))
                                 ) : (
                                     <h3 className="text-center">
-              {t("No Available Results for Your Search")}
+                                        {t("No Available Results for Your Search")}
                                     </h3>
                                 )}
                             </Slider>
