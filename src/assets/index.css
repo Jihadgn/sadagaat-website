@@ -199,12 +199,20 @@
 
 .contact-hr-1 {
   border: 1.4px solid black;
-  margin-right: 400px;
+  margin-right: 350px;
+}
+.contact-hr-12 {
+  border: 1.4px solid black;
+  margin-left: 350px;
 }
 
 .contact-hr-2 {
   border: 1.4px solid black;
   margin-right: 600px;
+}
+.contact-hr-21 {
+  border: 1.4px solid black;
+  margin-left: 600px;
 }
 
 .img-fullwidth {

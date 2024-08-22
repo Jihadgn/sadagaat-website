@@ -76,8 +76,6 @@ function Health() {
         <section className="bg-white p-10 grid grid-cols-12">
           <div></div>
           <div className="col-span-10">
-          <h2 className="text-left text-2xl font-extrabold pb-4 mt-0 text-gray-900">{hub.name}</h2>
-          <hr className="sectors " />
           <div className="overflow-x-auto pt-7">
             <Tabs aria-label="Full width tabs" >
               <Tabs.Item active title={t("Sector Details")}>

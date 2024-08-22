@@ -79,9 +79,8 @@ function SinglSubHub() {
                   />
                 </div>
                 <div className="py-4 px-3">
-                <h2 className="pb-3 px-3 text-xl font-bold text-gray-900">{data.name}</h2>
-                <hr className="sectors  "/>
-                  <p className="text-gray-900 text-sm pt-5">{data.description}</p>
+                <h2 className={`pb-3 px-3 text-xl font-bold text-gray-900 ${i18n.language === "en" ? "text-left" : "text-right"}`}>{data.name}</h2>
+                  <p className={`text-gray-900 text-sm pt-5 ${i18n.language === "en" ? "text-left" : "text-right"}`}>{data.description}</p>
                 </div>
               </div>  
             </div>

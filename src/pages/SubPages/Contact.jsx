@@ -125,12 +125,13 @@ function Contact() {
                     <div></div>
                     <div className="md:col-span-10 col-span-12 grid grid-cols-5 text-gray-800 md:px-10 px-0 gap-6 pb-10">
                         {/* contact */}
-                        <div className="grid grid-cols-2 gap-3 lg:col-span-3 md:col-span-5 col-span-5 mx-5 pb-16">
-                            <div className="col-span-2  pb-9">
-                                <h2 className="font-bold text-xl pb-3">
+                        <div className="grid grid-cols-2 gap-3 lg:col-span-3 md:col-span-5 col-span-5 mx-5 ">
+                            <div className="col-span-2">
+                                <h2 className={`font-bold text-xl pb-3 px-9 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                                 {t("Contact Us")}
+                                {i18n.language === "en" ? (<hr className="contact-hr-2 mt-2" />)
+                                : (<hr className="contact-hr-21 mt-2" />)}
                                 </h2>
-                                <hr className="contact-hr-2" />
                             </div>
                             <div className="bg-gray-100 grid grid-cols-4 md:col-span-1 col-span-2 p-5">
                                 <div><svg className="w-12 h-12 text-blue-600 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -200,52 +201,53 @@ function Contact() {
                         {/* form */}
                         <div className="grid grid-cols-2 gap-3 lg:col-span-2 md:col-span-5 col-span-5">
                             <div className="col-span-2 pb-9 text-gray-700">
-                                <h2 className="font-bold text-xl pb-3">
+                                <h2 className={`font-bold text-xl pb-3 px-9 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                                 {t("Get in Touch")}
+                                {i18n.language === "en" ? (<hr className="contact-hr-1 mt-3" />)
+                                : (<hr className="contact-hr-12 mt-3" />)}
                                 </h2>
-                                <hr className="contact-hr-1" />
                             </div>
                             <form className="grid grid-cols-2  gap-3 col-span-2">
                                 <div className="pt-2 col-span-2 md:col-span-1">
-                                    <div className="flex">
+                                    <div className={` ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                                         <label className="mb-2 font-bold text-gray-600">{t("name")}</label>
                                     </div>
                                     <input placeholder={t("full_name")} value={data.fullName} onChange={(e) => { setData({ ...data, fullName: e.target.value }) }}
-                                        type="text" className="bg-gray-50 border border-gray-300 text-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 d" />
+                                        type="text" className={`bg-gray-50 border border-gray-300 text-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 d ${i18n.language === "en" ? "text-left" : "text-right"}`} />
                                 </div>
                                 <div className="pt-2 col-span-2 md:col-span-1">
-                                    <div className="flex">
+                                    <div className={` ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                                         <label className="mb-2 font-bold text-gray-600">{t("E-Mail")}</label>
                                         <span className="text-red-500 px-2">*</span>
                                     </div>
                                     <input placeholder={t("Enter Email")} title={t("that email address is invalid")} pattern="^([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-z]{2,8})(\.[a-z]{2,8})?$"
                                      required value={data.email} onChange={(e) => { setData({ ...data, email: e.target.value }) }}
-                                        type="email" className="bg-gray-50 border border-gray-300 text-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 d" />
+                                        type="email" className={`bg-gray-50 border border-gray-300 text-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 d ${i18n.language === "en" ? "text-left" : "text-right"}`} />
                                 </div>
                                 <div className="pt-2 col-span-2 md:col-span-1">
-                                    <div className="flex">
+                                    <div className={` ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                                         <label className="mb-2 font-bold text-gray-600">{t("Subject")}</label>
                                     </div>
                                     <input placeholder={t("Enter Subject")} pattern="^[^\s].+[^\s]$" title={t("Enter a valid Subject")}
                                      value={data.subject} onChange={(e) => { setData({ ...data, subject: e.target.value }) }}
-                                        type="text" className="bg-gray-50 border border-gray-300 text-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 d" />
+                                        type="text" className={`bg-gray-50 border border-gray-300 text-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 d ${i18n.language === "en" ? "text-left" : "text-right"}`} />
                                 </div>
                                 <div className="pt-2 col-span-2 md:col-span-1">
-                                    <div className="flex">
-                                        <label className="mb-2 font-bold text-gray-600">{t("Phone")} :</label>
+                                    <div className={` ${i18n.language === "en" ? "text-left" : "text-right"}`}>
+                                        <label className="mb-4 font-bold text-gray-600">{t("Phone")}</label>
                                     </div>
                                     <input placeholder={t("Enter Phone")} pattern="^(0[0-9]{9})|(00[0-9]{12})$" 
                                     title={t("Enter a valid phone number with 10 number or 14")}
                                      value={data.phone} onChange={(e) => { setData({ ...data, phone: e.target.value }) }}
-                                        type="tel" className="bg-gray-50 border border-gray-300 text-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 d" />
+                                        type="tel" className={`bg-gray-50 border border-gray-300 text-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 d ${i18n.language === "en" ? "text-left" : "text-right"}`} />
                                 </div>
                                 <div className="pt-2 col-span-2 ">
-                                    <div className="flex">
+                                    <div className={` ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                                         <label className="mb-2 font-bold text-gray-600"> {t("Message")}</label>
                                         <span className="text-red-500 px-2">*</span>
                                     </div>
                                     <textarea placeholder={t("contact_message")} rows={4} required value={data.message} onChange={(e) => { setData({ ...data, message: e.target.value }) }}
-                                        type="text" className="bg-gray-50 border border-gray-300 text-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
+                                        type="text" className={`bg-gray-50 border border-gray-300 text-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${i18n.language === "en" ? "text-left" : "text-right"}`} />
                                 </div>
                                 <button onClick={Submit} type="submit" className="btn text-xs"> {t("Send your message")}</button>
 

@@ -134,7 +134,7 @@ function Home() {
                                 </div>
                             </div>
                             <div className={`text-black px-4 xl:pt-0 md:pt-6 sm:pt-6 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
-                                <h1 className="text-2xl font-bold tracking-tight text-gray-900 uppercase">{t("About Sadagaat")}</h1>
+                                <span className="text-xl font-bold  text-gray-900 ">{t("About Sadagaat")}</span>
                                 <div className="pt-7 font-normal text-gray-700">
                                     {about !== null ?
                                         <p className={`${i18n.language === "en" ? "text-left" : "text-right"}`}>
@@ -162,7 +162,7 @@ function Home() {
                         (
                             <div className="col-span-10 grid xl:grid-cols-2 md:grid-cols-1 pt-2">
                                 <div className={`text-black px-4 xl:pt-0 md:pt-6 sm:pt-6 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
-                                    <h2 className="text-2xl font-bold aboutUs text-gray-900 uppercase">{t("About Sadagaat")}</h2>
+                                    <span className="text-xl font-bold  text-gray-900 ">{t("About Sadagaat")}</span>
                                     <div className="pt-7 font-normal text-gray-700">
                                         {about !== null ?
                                             <p className={`${i18n.language === "en" ? "text-left" : "text-right"}`}>

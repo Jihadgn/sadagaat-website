@@ -178,20 +178,20 @@ const SingleSubHubProject = (props) => {
             {/* filter projects */}
             <div className="grid flex lg:grid-cols-6 md:grid-cols-3 gap-6">
               <div className="pt-2">
-                <div className="flex">
-                  <label className="mb-2 font-bold text-gray-600">
+                <div className={`${i18n.language === "en" ? "text-left" : "text-right"}`}>
+                  <label className={`mb-2 font-bold text-gray-600 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                     {t("Select Start Date")}
                   </label>
                 </div>
                 <input
                   type="date"
-                  className="text-gray-800 text-sm w-full"
+                  className={`text-gray-800 text-sm w-full ${i18n.language === "en" ? "text-left" : "text-right"}`}
                   placeholder={t("Select Start Date")}
                   onChange={(e) => setStartDate(e.target.value)}
                 />
               </div>
               <div className="pt-2 ">
-                <div className="flex">
+                <div className={` ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                   <label className="mb-2 font-bold text-gray-600">
                     {t("Select End Date")}
                   </label>
@@ -204,14 +204,14 @@ const SingleSubHubProject = (props) => {
                 />
               </div>
               <div className="pt-2 ">
-                <div className="flex">
+                <div className={` ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                   <label className="mb-2 font-bold text-gray-600">
                     {t("Location")}
                   </label>
                 </div>
                 <input
                   name="location"
-                  className="text-gray-800 text-sm"
+                  className={`text-gray-800 text-sm  ${i18n.language === "en" ? "text-left" : "text-right"}`}
                   type="text"
                   placeholder={t("Location")}
                   value={location}
@@ -221,7 +221,7 @@ const SingleSubHubProject = (props) => {
                 />
               </div>
               <div className="pt-2">
-                <div className="flex">
+                <div className={` ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                   <label className="mb-2 font-bold text-gray-600">
                     {t("Select Hub")}
                   </label>
@@ -281,7 +281,7 @@ const SingleSubHubProject = (props) => {
               {data !== undefined && data.length > 0 ? (
                 pageProjects().map((project, index) => (
                   <Link to={"/single-project/" + project.id}>
-                    <Card
+                   <Card
                       className="max-w-md text-gray-900 causes px-3  "
                       key={index}
                     >
@@ -293,10 +293,10 @@ const SingleSubHubProject = (props) => {
                         />
                       </div>
                       <div className="grid grid-cols-2 pt-1">
-                        <h3 className="text-left text-lg font-bold">
+                        <h3 className={` text-lg font-bold ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                           {t("Raised")} {getNumber(project.raised)}{" "}
                         </h3>
-                        <h3 className="text-right text-lg font-bold">
+                        <h3 className={`text-lg font-bold ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                           {t("Goal")} {getNumber(project.goal)}{" "}
                         </h3>
                       </div>
@@ -312,7 +312,7 @@ const SingleSubHubProject = (props) => {
                           </div>
                         </div>
                       </div>
-                      <h2 className="text-left text-lg font-bold pt-1">
+                      <h2 className={`text-left text-lg font-bold pt-1 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                         {t("Project Progress")}
                       </h2>
                       <div className="progress-item mt-0">
@@ -327,10 +327,10 @@ const SingleSubHubProject = (props) => {
                           </div>
                         </div>
                       </div>
-                      <h2 className="text-left text-xl font-bold pt-1">
+                      <h2 className={`text-left text-xl font-bold pt-1 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                         {project.name}
                       </h2>
-                      <h2 className="project-discription text-left text-md font-normal">
+                      <h2 className={`project-discription text-left text-md font-normal ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                         {parse(project.description)}
                       </h2>
                     </Card>

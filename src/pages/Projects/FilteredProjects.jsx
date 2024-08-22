@@ -17,7 +17,7 @@ import { useTranslation } from "react-i18next";
 
 const FilteredProjects = (props) => {
 
-  const { t, i18n } = useTranslation();
+    const { t, i18n } = useTranslation();
 
     let [data, setData] = useState([]);
     let [currentPage, setCurrentPage] = useState(0);
@@ -162,37 +162,60 @@ const FilteredProjects = (props) => {
                     <div className="col-span-10">
                         {/* filter projects */}
                         <div className="grid flex lg:grid-cols-6 md:grid-cols-3 gap-6">
-                            <div className="pt-2 flex" >
-                                <input type="date"
-                                    className="text-gray-800 text-sm"
-                                    placeholderText={t("Select Start Date")}
-                                    onChange={(date) => setStartDate(date)}
+                            <div className="pt-2">
+                                <div className={`${i18n.language === "en" ? "text-left" : "text-right"}`}>
+                                    <label className={`mb-2 font-bold text-gray-600 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
+                                        {t("Select Start Date")}
+                                    </label>
+                                </div>
+                                <input
+                                    type="date"
+                                    className={`text-gray-800 text-sm w-full ${i18n.language === "en" ? "text-left" : "text-right"}`}
+                                    placeholder={t("Select Start Date")}
+                                    onChange={(e) => setStartDate(e.target.value)}
                                 />
                             </div>
-                            <div className="pt-2 flex" >
-                                <input type="date"
-                                    className="text-gray-800 text-sm"
-                                    placeholderText={t("Select End Date")}
-                                    onChange={(date) => setEndDate(date)}
+                            <div className="pt-2 ">
+                                <div className={` ${i18n.language === "en" ? "text-left" : "text-right"}`}>
+                                    <label className="mb-2 font-bold text-gray-600">
+                                        {t("Select End Date")}
+                                    </label>
+                                </div>
+                                <input
+                                    type="date"
+                                    className="text-gray-800 text-sm w-full"
+                                    placeholder={t("Select End Date")}
+                                    onChange={(e) => setEndDate(e.target.value)}
                                 />
                             </div>
-                            <div className="pt-2 flex" >
-                                <span>cdscssdcs</span>
+                            <div className="pt-2 ">
+                                <div className={` ${i18n.language === "en" ? "text-left" : "text-right"}`}>
+                                    <label className="mb-2 font-bold text-gray-600">
+                                        {t("Location")}
+                                    </label>
+                                </div>
                                 <input
                                     name="location"
-                                    className="text-gray-800 text-sm"
+                                    className={`text-gray-800 text-sm  ${i18n.language === "en" ? "text-left" : "text-right"}`}
                                     type="text"
                                     placeholder={t("Location")}
                                     value={location}
-                                    onChange={(e) => { setLocation(e.target.value) }}
+                                    onChange={(e) => {
+                                        setLocation(e.target.value);
+                                    }}
                                 />
                             </div>
-                            <div className="pt-2 flex" >
+                            <div className="pt-2">
+                                <div className={` ${i18n.language === "en" ? "text-left" : "text-right"}`}>
+                                    <label className="mb-2 font-bold text-gray-600">
+                                        {t("Select Hub")}
+                                    </label>
+                                </div>
                                 <select
                                     name="hub"
-                                    className="text-gray-800 text-sm"
+                                    className="text-gray-800 text-sm w-full"
                                     onChange={(e) => {
-                                        setHubId(parseInt(e.target.value))
+                                        setHubId(parseInt(e.target.value));
                                     }}
                                 >
                                     <option value={-1}>{t("none")}</option>
@@ -202,22 +225,39 @@ const FilteredProjects = (props) => {
                                     <option value={1738}>{t("Education")}</option>
                                 </select>
                             </div>
-                            <div className="pt-2 flex" >
-                                <button className="bg-gray-300 text-sm border-gray-900 text-gray-800 inline-flex"
-                                    onClick={SetDates} >
+                            <div className="pt-2 flex">
+                                <button
+                                    className="bg-gray-300 text-sStart datem border-gray-900 text-gray-800 inline-flex"
+                                    onClick={SetDates}
+                                >
                                     {t("Filter")}
                                 </button>
-                                <button className="bg-gray-500 text-sm border-gray-900 text-white inline-flex"
-                                    onClick={clearFilter} >
+                                <button
+                                    className="bg-gray-500 text-sm border-gray-900 text-white inline-flex"
+                                    onClick={clearFilter}
+                                >
                                     {t("Clear Filter")}
                                 </button>
                             </div>
                             <div className="pt-2 flex text-right ">
-                                <button className="bg-white block text-xs border-gray-900 text-gray-800 inline-flex "
-                                    onClick={toggleSortBtn} >
-                                   {t("Sort By Date") + " "}
-                                    <svg className="w-5 h-5 mx-2 text-gray-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 20V10m0 10-3-3m3 3 3-3m5-13v10m0-10 3 3m-3-3-3 3" />
+                                <button
+                                    className="bg-white block text-xs border-gray-900 text-gray-800 inline-flex "
+                                    onClick={toggleSortBtn}
+                                >
+                                    {t("Sort By Date") + " "}
+                                    <svg
+                                        class="w-5 h-5 mx-2 text-gray-800"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke="currentColor"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M8 20V10m0 10-3-3m3 3 3-3m5-13v10m0-10 3 3m-3-3-3 3"
+                                        />
                                     </svg>
                                 </button>
                             </div>
@@ -226,8 +266,11 @@ const FilteredProjects = (props) => {
                             {data !== undefined && data.length > 0 ? (
                                 pageProjects().map((project, index) => (
                                     <Link to={"/single-project/" + project.id}>
-                                        <Card className="max-w-md text-gray-900 causes px-3  " key={index}>
-                                            <div className="thumb" >
+                                        <Card
+                                            className="max-w-md text-gray-900 causes px-3  "
+                                            key={index}
+                                        >
+                                            <div className="thumb">
                                                 <img
                                                     src={`${address()}projects/${project.id}/image`}
                                                     width="400"
@@ -235,8 +278,12 @@ const FilteredProjects = (props) => {
                                                 />
                                             </div>
                                             <div className="grid grid-cols-2 pt-1">
-                                                <h3 className="text-left text-lg font-bold">{t("Raised")}  {getNumber(project.raised)}   </h3>
-                                                <h3 className="text-right text-lg font-bold">{t("Goal")}  {getNumber(project.goal)} </h3>
+                                                <h3 className={` text-lg font-bold ${i18n.language === "en" ? "text-left" : "text-right"}`}>
+                                                    {t("Raised")} {getNumber(project.raised)}{" "}
+                                                </h3>
+                                                <h3 className={`text-lg font-bold ${i18n.language === "en" ? "text-left" : "text-right"}`}>
+                                                    {t("Goal")} {getNumber(project.goal)}{" "}
+                                                </h3>
                                             </div>
                                             <div className="progress-item mt-0">
                                                 <div className="progress">
@@ -250,9 +297,10 @@ const FilteredProjects = (props) => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <h2 className="text-left text-lg font-bold pt-1">{t("Project Progress")}</h2>
+                                            <h2 className={`text-left text-lg font-bold pt-1 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
+                                                {t("Project Progress")}
+                                            </h2>
                                             <div className="progress-item mt-0">
-
                                                 <div className="progress">
                                                     <div
                                                         data-percent={Precision(project.projectProgress)}
@@ -264,18 +312,18 @@ const FilteredProjects = (props) => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <h2 className="text-left text-xl font-bold pt-1">
+                                            <h2 className={`text-left text-xl font-bold pt-1 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                                                 {project.name}
                                             </h2>
-                                            <h2 className="project-discription text-left text-md font-normal">
-                                                {project.description}
+                                            <h2 className={`project-discription text-left text-md font-normal ${i18n.language === "en" ? "text-left" : "text-right"}`}>
+                                                {parse(project.description)}
                                             </h2>
                                         </Card>
                                     </Link>
                                 ))
                             ) : (
                                 <h3 className="text-center">
-                                   {t("No Available Results for Your Search")}
+                                    {t("No Available Results for Your Search")}
                                 </h3>
                             )}
 

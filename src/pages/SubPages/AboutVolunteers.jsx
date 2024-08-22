@@ -10,11 +10,10 @@ import 'froala-editor/css/froala_style.min.css';
 import 'froala-editor/css/froala_editor.pkgd.min.css';
 import FroalaEditorView from 'react-froala-wysiwyg/FroalaEditorView';
 import { useTranslation } from 'react-i18next';
-import i18n from 'i18next'
 
 function Volunteers() {
 
-  const {t} = useTranslation()
+  const {t, i18n} = useTranslation()
 
     const [volunteers, setVolunteers] = useState([])
     const [volunteerMedia, setVolunteerMedia] = useState([])
@@ -24,7 +23,9 @@ function Volunteers() {
 
     // get volunteer page data from API
     async function fetchData() {
-        const fetcher = await window.fetch(`${address()}voulenter-page`)
+        const fetcher = await window.fetch(`${address()}voulenter-page`,{
+            headers: { 'accept-language': `${i18n.language}` }
+        })
         const response = await fetcher.json()
         setVolunteers(response)
         setLoading(false)
@@ -77,7 +78,7 @@ function Volunteers() {
                 }
                 <section className="py-10 bg-white grid grid-cols-12">
                     <div></div>
-                    <div className="text-gray-800 col-span-10 m-6 p-6">
+                    <div className={`text-gray-800 col-span-10 m-6 p-6 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                         {/* check language  */}
                         {i18n.language === 'ar'?(
                           <FroalaEditorView

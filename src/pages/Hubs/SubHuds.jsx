@@ -56,12 +56,12 @@ const Hub_Subhubs = (props) => {
   return (
     <div>
       <div className=" pt-6">
-          <h3 className="text-left text-xl font-bold pb-4 text-gray-900">{props.name}</h3>
-          <hr className="sectors " />
+          <h3 className={`text-xl font-bold pb-4 text-gray-900 ${i18n.language === "en" ? "text-left" : "text-right"}`}>{props.name}</h3>
 
-          <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6 pt-9">
+          <div className={`grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6 pt-9 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
             {currentPosts.map((sub_hub) => (
-              <div className="col-span-1 border border-2  " key={sub_hub.id}>
+              <div className={`col-span-1 border border-2 ${i18n.language === "en" ? "text-left" : "text-right"}`} 
+              key={sub_hub.id}>
                 <div className="causes bg-white mb-30" >
                   <Link to={"/single-subhub/" + sub_hub.id}>
                     <div className="thumb">
@@ -71,7 +71,7 @@ const Hub_Subhubs = (props) => {
                         />
                     </div>
                     <div className="causes-details py-5 px-5">
-                      <h4 className="text-left text-md font-bold pt-4 text-gray-900 uppercase ">{sub_hub.name}</h4>
+                      <h4 className={`text-md font-bold pt-4 text-gray-900 uppercase ${i18n.language === "en" ? "text-left" : "text-right"}`}>{sub_hub.name}</h4>
 
                       {/* <Link to={'/sub_hubs/'+sub_hub.id}
                 className="btn btn-default btn-theme-colored btn-xs font-16 mt-10">

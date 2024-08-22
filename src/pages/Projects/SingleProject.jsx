@@ -8,6 +8,8 @@ import { React, useEffect, useState } from "react";
 import { Tabs } from 'flowbite-react';
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
+import parse from "html-react-parser";
+import { Precision, getNumber } from "../../services/getMonthName";
 
 function SingleProject() {
 
@@ -71,10 +73,9 @@ function SingleProject() {
                     <div className="px-10  py-10 col-span-10 gap-4">
                         <div className="text-gray-800">
                             <div className="event-content pb-6">
-                                <h2 className="font-bold text-3xl pb-3">
+                                <h2 className={`font-bold text-3xl pb-3 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                                     {project.name}
                                 </h2>
-                                <hr className="eventsHr w-10" />
                                 <div className="overflow-x-auto pt-7">
                                     <Tabs aria-label="Full width tabs" >
                                         <Tabs.Item active title={t("Project Details")}>
@@ -90,11 +91,15 @@ function SingleProject() {
                                                         style={{ height: "500px", width: "500px" }}
                                                     />
                                                 </div>
-                                                <div className="py-4">
-                                                    <span className="text-gray-600 text-md px-4">{project.locationName}</span>
-                                                    <span className="text-gray-600 text-md px-4">{project.startAt}</span>
-                                                    <p className="text-gray-900 text-md pb-10 pt-10">{project.description}</p>
-                                                    <span className="text-blue-800 text-md font-bold pt-10">{t("Project Progress")}</span>
+                                                <div className={`py-4 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
+                                                    <span className="text-gray-600 text-lg font-bold px-4">{project.locationName}</span>
+                                                    <span className="text-gray-600 text-lg font-bold px-4">{project.startAt}</span>
+                                                    <h2 className={`project-discription text-left text-md font-normal pt-6 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
+                                                        {project.description}
+                                                    </h2>
+                                                    <h2 className={`text-left text-lg font-bold pt-1 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
+                                                        {t("Project Progress")}
+                                                    </h2>
                                                     <div className="progress-item mt-0 pt-3">
                                                         <div className="progress">
                                                             <div
@@ -119,9 +124,13 @@ function SingleProject() {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div className="pt-5 flex">
-                                                        <h3 className="pr-10 text-md font-bold">{t("Raised")}{" "} USD {data.raised}   </h3>
-                                                        <h3 className="pl-10 text-md font-bold">{t("Goal")} USD {data.goal} </h3>
+                                                    <div className="grid grid-cols-2 pt-1">
+                                                        <h3 className={` text-lg font-bold ${i18n.language === "en" ? "text-left" : "text-right"}`}>
+                                                            {t("Raised")} {getNumber(data.raised)}{" "}
+                                                        </h3>
+                                                        <h3 className={`text-lg font-bold ${i18n.language === "en" ? "text-left" : "text-right"}`}>
+                                                            {t("Goal")} {getNumber(data.goal)}{" "}
+                                                        </h3>
                                                     </div>
                                                 </div>
                                             </div>

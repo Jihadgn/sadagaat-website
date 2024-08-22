@@ -188,7 +188,7 @@ const SingleSubHubProject = (props) => {
         <section className="pt-10 pb-10 grid grid-cols-12 text-center bg-white ">
           <div></div>
           <div className="col-span-10">
-            <div className="pt-10 pb-10 grid xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 text-center gap-4  border-b-2">
+            <div className={`pt-10 pb-10 grid xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 text-center gap-4  border-b-2 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
               {data !== undefined && data.length > 0 ? (
                 pageProjects().map((project, index) => (
                   <Link to={"/single-project/" + project.id}>
@@ -204,10 +204,10 @@ const SingleSubHubProject = (props) => {
                         />
                       </div>
                       <div className="grid grid-cols-2 pt-1">
-                        <h3 className="text-left text-lg font-bold">
+                        <h3 className={` text-lg font-bold ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                           {t("Raised")} {getNumber(project.raised)}{" "}
                         </h3>
-                        <h3 className="text-right text-lg font-bold">
+                        <h3 className={`text-lg font-bold ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                           {t("Goal")} {getNumber(project.goal)}{" "}
                         </h3>
                       </div>
@@ -223,7 +223,7 @@ const SingleSubHubProject = (props) => {
                           </div>
                         </div>
                       </div>
-                      <h2 className="text-left text-lg font-bold pt-1">
+                      <h2 className={`text-left text-lg font-bold pt-1 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                         {t("Project Progress")}
                       </h2>
                       <div className="progress-item mt-0">
@@ -238,10 +238,10 @@ const SingleSubHubProject = (props) => {
                           </div>
                         </div>
                       </div>
-                      <h2 className="text-left text-xl font-bold pt-1">
+                      <h2 className={`text-left text-xl font-bold pt-1 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                         {project.name}
                       </h2>
-                      <h2 className="project-discription text-left text-md font-normal">
+                      <h2 className={`project-discription text-left text-md font-normal ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                         {parse(project.description)}
                       </h2>
                     </Card>
