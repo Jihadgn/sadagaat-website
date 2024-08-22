@@ -11,7 +11,7 @@ import address from '../../services';
 import { Precision, getNumber } from "../../services/getMonthName";
 import ReactPaginate from "react-paginate";
 import DatePicker from "react-datepicker";
-
+import parse from "html-react-parser";
 import { useTranslation } from "react-i18next";
 
 
@@ -316,7 +316,7 @@ const FilteredProjects = (props) => {
                                                 {project.name}
                                             </h2>
                                             <h2 className={`project-discription text-left text-md font-normal ${i18n.language === "en" ? "text-left" : "text-right"}`}>
-                                                {parse(project.description)}
+                                                {parse(`${project.description} `)}
                                             </h2>
                                         </Card>
                                     </Link>

@@ -13,6 +13,7 @@ import Donate from "./pages/SubPages/Donate";
 import Rrgisteration from "./pages/SubPages/Registration";
 import Volunteers from "./pages/SubPages/AboutVolunteers";
 import Careers from "./pages/SubPages/Careers";
+import SinglVacancy from "./pages/SubPages/SingleVacancy";
 import Events from "./pages/SubPages/Events";
 import SingleEvent from "./pages/SubPages/SingleEvent";
 import News from "./pages/SubPages/News";
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
   {
     path: "/careers",
     element: <Careers />,
+  },
+  {
+    path: "/vacancy/:career_id",
+    element: <SinglVacancy />,
   },
   {
     path: "/events",

@@ -169,8 +169,8 @@ const ProjectsSlider = (props) => {
                                                     <h2 className={`text-left text-xl font-bold pt-1 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                                                         {project.name}
                                                     </h2>
-                                                    <h2 className={`text-left text-md font-normal ${i18n.language === "en" ? "text-left" : "text-right"}`}>
-                                                        {project.description}
+                                                    <h2 className={`text-left text-sm ${i18n.language === "en" ? "text-left" : "text-right"}`}>
+                                                    {parse(`${project.description} `)}
                                                     </h2>
                                                 </div>
                                                 <div className="items-center px-4 pt-1">

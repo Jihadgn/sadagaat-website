@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1928" height="359" viewBox="0 0 1928 359">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #006b92;
+        stroke: #707070;
+      }
+
+      .cls-2 {
+        fill: #3eadd5;
+        opacity: 0.21;
+      }
+
+      .cls-3 {
+        stroke: none;
+      }
+
+      .cls-4 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="Statistic_" transform="translate(0 -3267)">
+    <g id="Rectangle_14" class="cls-1" transform="translate(0 3267)">
+      <rect class="cls-3" width="2048" height="359"/>
+      <rect class="cls-4" x="0.5" y="0.5" width="1919" height="358"/>
+    </g>
+    <path id="Path_3" class="cls-2" d="M48.061-64.631s5.285,141.289,345.877,157.7,652.46-110.8,910.981,90.277S1970-64.631,1970-64.631Z" transform="translate(-42 3331.631)"/>
+  </g>
+</svg>

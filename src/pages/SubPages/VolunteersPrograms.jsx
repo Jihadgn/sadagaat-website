@@ -13,6 +13,7 @@ import {
     Card,
 } from 'flowbite-react';
 import { useTranslation } from 'react-i18next';
+import parse from "html-react-parser";
 
 const VolunteerPrograms = (props) => {
 
@@ -199,7 +200,7 @@ const VolunteerPrograms = (props) => {
                                                 {program.name}
                                             </h2>
                                             <h2 className="project-discription text-left text-md font-normal">
-                                                {program.description}
+                                                {parse(`${program.description} `)}
                                             </h2>
                                         </Card>
                                     </Link>

@@ -12,6 +12,7 @@ import {
   useParams,
 } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
+import parse from "html-react-parser";
 
 function SingleNews() {
 
@@ -79,12 +80,12 @@ function SingleNews() {
                 </div>
               <div className="text-gray-800">
                 <div className="event-content pb-6">
-                  <h2 className="font-bold text-xl pb-3">
+                  <h2 className={`font-bold text-xl pb-3 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                     {news.name}
                   </h2>
                   <hr className="eventsHr w-10" />
-                  <p className="project-discription text-lg pt-7">
-                    {news.description}
+                  <p className={`project-discription text-lg pt-7 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
+                    {parse(`${news.description} `)}
                   </p>
                 </div>
               </div>

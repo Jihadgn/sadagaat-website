@@ -8,6 +8,7 @@ import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Card } from 'flowbite-react'
 import { useTranslation } from 'react-i18next';
+import parse from "html-react-parser";
 
 function Events() {
 
@@ -73,12 +74,12 @@ function Events() {
                                 <Card key={eventData.id}>
                                     <div className="text-gray-800">
                                         <div className="event-content pb-6  ">
-                                            <h2 className="font-bold text-xl pt-10 pb-3">
+                                            <h2 className={`font-bold text-xl pt-10 pb-3 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                                                 {eventData.name}
                                             </h2>
                                             <hr className="eventsHr w-10" />
-                                            <p className="project-discription text-lg pt-7">
-                                                {eventData.description}
+                                            <p className={`project-discription text-lg pt-7 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
+                                                {parse(`${eventData.description} `)}
                                             </p>
                                             <h2 className="text-md text-gray-500 pt-6 pb-3">
                                                 <span className="text-md text-gray-500 flex">

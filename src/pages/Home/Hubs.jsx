@@ -21,7 +21,7 @@ function Hubs() {
                 <section className=" pb-10 grid grid-cols-12 bg-white">
                     <div></div>
                         {i18n.language === "en" ? (
-                    <div className="col-span-10 grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 gap-0">
+                    <div className="col-span-10 grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 gap-0 px-16">
                             <a href="/wash" className="curser-pointer">
                                 <img className="h-full w-full" src={part_11} alt="" />
                             </a>
@@ -40,7 +40,7 @@ function Hubs() {
                         </a>
                     </div>
                         ) : (
-                            <div className="col-span-10 grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 gap-0">
+                            <div className="col-span-10 grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 gap-0 px-16">
                             <a href="/wash" className="curser-pointer">
                                 <img className="h-full w-full" src={part_1} alt="" />
                             </a>

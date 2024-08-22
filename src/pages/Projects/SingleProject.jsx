@@ -95,7 +95,7 @@ function SingleProject() {
                                                     <span className="text-gray-600 text-lg font-bold px-4">{project.locationName}</span>
                                                     <span className="text-gray-600 text-lg font-bold px-4">{project.startAt}</span>
                                                     <h2 className={`project-discription text-left text-md font-normal pt-6 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
-                                                        {project.description}
+                                                    {parse(`${project.description} `)}
                                                     </h2>
                                                     <h2 className={`text-left text-lg font-bold pt-1 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                                                         {t("Project Progress")}

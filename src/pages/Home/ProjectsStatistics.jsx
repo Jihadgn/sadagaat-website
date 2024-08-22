@@ -43,6 +43,7 @@ function ProjectsStatistics() {
        <>
             <main>
                 {/* projects fixed background */}
+                
                 <section className="fixedBackGround pt-6 pb-6 pb-10 grid grid-cols-12 text-center ">
                     <div></div>
                     <div className="col-span-10 text-gray-900 grid lg:grid-cols-5 grid-cols-2 pt-5 pb-5 text-center">

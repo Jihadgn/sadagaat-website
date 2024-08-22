@@ -12,7 +12,7 @@ import {
   Navigate,
   useParams,
 } from "react-router-dom";
-
+import parse from "html-react-parser";
 import { useTranslation } from "react-i18next";
 
 function SinglSubHub() {
@@ -80,7 +80,7 @@ function SinglSubHub() {
                 </div>
                 <div className="py-4 px-3">
                 <h2 className={`pb-3 px-3 text-xl font-bold text-gray-900 ${i18n.language === "en" ? "text-left" : "text-right"}`}>{data.name}</h2>
-                  <p className={`text-gray-900 text-sm pt-5 ${i18n.language === "en" ? "text-left" : "text-right"}`}>{data.description}</p>
+                  <p className={`text-gray-900 text-sm pt-5 ${i18n.language === "en" ? "text-left" : "text-right"}`}> {parse(`${data.description} `)}</p>
                 </div>
               </div>  
             </div>

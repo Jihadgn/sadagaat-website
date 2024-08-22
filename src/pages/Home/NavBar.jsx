@@ -47,10 +47,10 @@ function NavBar() {
 
     return (
         <>
-            <main>
+            <main className="bg-gray-100">
                 {/* navbar */}
                 {i18n.language === "en" ? (
-                    <Navbar fluid rounded>
+                    <Navbar fluid rounded >
                         <Navbar.Brand href="/">
                             <img src={logo} className="h-16 w-auto" />
                         </Navbar.Brand>

@@ -170,6 +170,8 @@ function Course() {
                             <Overlay loading={loading} />
                             <div className="grid md:grid-cols-2 sm:grid-cols-1 border border-gray-300 p-5 overflow-hidden">
 
+                                <h2 className="text-gray-600 text-lg font-bold p-3 col-span-2">Thank you for your interest in our tech training courses provided by Cisco Networking Academy, available ONLY to Sudanese applicants. To apply please complete the application form below.
+                                </h2>
                                 <h2 className="text-gray-600 text-lg font-bold p-3 col-span-2">{"- " + t("candidate_information")}</h2>
                                 <div className="pt-4 px-5 col-span-2">
                                     <div className="flex">

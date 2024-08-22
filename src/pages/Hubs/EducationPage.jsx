@@ -7,7 +7,7 @@ import address from "../../services";
 import { React, useEffect, useState } from "react";
 import { Tabs } from 'flowbite-react';
 import SubHub from './SubHuds'
-
+import parse from "html-react-parser";
 import { useTranslation } from "react-i18next";
 
 
@@ -110,7 +110,7 @@ function Health() {
                         </div>
                       ) : (
                         <div>
-                          {data.details}
+                          {parse(`${data.details} `)}
                         </div>)
                     }
                   </Tabs.Item>

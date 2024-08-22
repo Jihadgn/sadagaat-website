@@ -11,11 +11,11 @@ import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import { Card } from 'flowbite-react';
 import { useTranslation } from 'react-i18next';
+import parse from "html-react-parser";
 
 function News() {
 
     const [news, setNews] = useState([]);
-    const [events, setEvent] = useState([]);
     const { t, i18n } = useTranslation();
 
     async function fetchNews() {
@@ -24,19 +24,8 @@ function News() {
         });
         const response = await fetcher.json();
         console.log(response);
-        setNews(response.slice(0, 5));
+        setNews(response);
     }
-
-
-    //   async function fetchEvents() {
-    //     const fetcher = await window.fetch(`${address()}events`, {
-    //       headers: { "accept-language": `en` },
-    //     });
-    //     const response = await fetcher.json();
-    //     console.log(response);
-    //     setEvent(response.slice(0, 3));
-    //   }
-
 
     const [cover, setCover] = useState();
 
@@ -48,8 +37,8 @@ function News() {
     }
 
     useEffect(() => {
-        fetchCover();
         fetchNews();
+        fetchCover();
     }, [i18n.language]);
 
 
@@ -91,12 +80,12 @@ function News() {
                                     />
                                     <div className="text-gray-800">
                                         <div className="event-content pb-6  ">
-                                            <h2 className="font-bold text-xl pt-10 pb-3">
+                                            <h2 className={`font-bold text-xl pt-10 pb-3 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                                                 {newsData.name}
                                             </h2>
                                             <hr className="eventsHr w-10" />
-                                            <p className="project-discription text-lg pt-7">
-                                                {newsData.description}
+                                            <p className={`project-discription text-lg pt-7 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
+                                                {parse(`${newsData.description} `)}
                                             </p>
                                         </div>
                                     </div>
