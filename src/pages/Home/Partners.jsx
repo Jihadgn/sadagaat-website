@@ -69,8 +69,8 @@ function Partners() {
             <main >
                 {/* our Partners */}
                 <section className=" pt-10 pb-10 text-center bg-gray-100 ">
-                    <span className="text-3xl font-bold tracking-tight text-gray-900 px-2"> {t("Our")}{" "} </span>
-                    <span className="text-3xl font-bold tracking-tight text-blue-800 "> {t("Partners")} </span>
+                    <span className="text-3xl font-bold  tracking-tight text-gray-900 px-2 uppercase"> {t("Our")}{" "} </span>
+                    <span className="text-3xl font-bold prim tracking-tight  uppercase"> {t("Partners")} </span>
                     <div className="slider-container pt-9 px-10">
                         <Slider {...secSettings}>
                             {

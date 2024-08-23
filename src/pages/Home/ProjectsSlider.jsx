@@ -119,10 +119,10 @@ const ProjectsSlider = (props) => {
                 {/* our projects */}
                 <section className="pt-10 pb-10 grid grid-cols-12 text-center bg-gray-100 ">
                     <div></div>
-                    <div className="col-span-10">
-                        <span className="text-3xl font-bold tracking-tight text-gray-900 px-2">{t("Our")}{" "} </span>
-                        <span className="text-3xl font-bold tracking-tight text-blue-800 ">  {t("Projects")} </span>
-                        <div className="pt-9">
+                    <div className="col-span-10 px-16">
+                        <span className="text-3xl font-bold tracking-tight  text-gray-900 px-2 uppercase">{t("Our")}{" "} </span>
+                        <span className="text-3xl font-bold tracking-tight  prim uppercase">  {t("Projects")} </span>
+                        <div className="pt-9 px-10">
                             <Slider {...settings}>
                                 {data !== undefined && data.length > 0 ? (
                                     data.map((project, index) => (

@@ -74,7 +74,7 @@
   background-position: center;
   background-repeat: repeat;
   opacity: 0.9;
-  background-blend-mode:overlay;
+  background-blend-mode: overlay;
 }
 
 .fixedBackGround2 {
@@ -120,7 +120,7 @@
   border: 1px solid rgb(112, 110, 110);
 }
 
-.Navbar .Dropdown label{
+.Navbar .Dropdown label {
   font: bold !important;
 }
 
@@ -181,7 +181,7 @@
 
 .slider {
   font-family: "sadagaat", serif;
-  height: 500px;
+  height: 450px;
   overflow: hidden;
   background-color: #fff;
 }
@@ -201,6 +201,7 @@
   border: 1.4px solid black;
   margin-right: 350px;
 }
+
 .contact-hr-12 {
   border: 1.4px solid black;
   margin-left: 350px;
@@ -210,6 +211,7 @@
   border: 1.4px solid black;
   margin-right: 600px;
 }
+
 .contact-hr-21 {
   border: 1.4px solid black;
   margin-left: 600px;
@@ -401,6 +403,25 @@ a {
   text-decoration: inherit;
 }
 
+.font {
+  font-family: "sadagaat", serif;
+}
+
+.prim {
+  color: rgb(0, 107, 146);
+}
+
+.about-mess {
+  color: rgb(102, 102, 102);
+  font-family: "sadagaat", sans-serif;
+  font-size: 14px;
+  line-height: 22.8px;
+  margin-bottom: 10px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+}
+
 .project-icon-1 {
   background-color: #3eadd5 !important;
   min-height: auto !important;
@@ -467,25 +488,25 @@ h1 {
   font-family: "sadagaat", sans-serif;
 }
 
-h2{
+h2 {
   font-family: "sadagaat", sans-serif;
 }
 
-h3{
+h3 {
   font-family: "sadagaat", sans-serif;
 }
 
-span{
+span {
   font-family: "sadagaat", sans-serif;
 }
 
-p{
+p {
   font-family: "sadagaat", sans-serif;
 
 }
 
 h6 {
-  font-family: "sadagaat", serif ;
+  font-family: "sadagaat", serif;
 }
 
 button {
@@ -494,7 +515,7 @@ button {
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
-  font-family: "sadagaat",sans-serif;
+  font-family: "sadagaat", sans-serif;
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
@@ -522,14 +543,17 @@ button:focus-visible {
     color: #747bff;
     font-family: "sadagaat", sans-serif;
   }
-Link {
-  font-family: "sadagaat", sans-serif;
 
-}
-Link:hover {
-  font-family: "sadagaat", sans-serif;
+  Link {
+    font-family: "sadagaat", sans-serif;
 
-}
+  }
+
+  Link:hover {
+    font-family: "sadagaat", sans-serif;
+
+  }
+
   button {
     background-color: #f9f9f9;
     font-family: "sadagaat", serif;

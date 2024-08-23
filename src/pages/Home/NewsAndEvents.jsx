@@ -37,7 +37,7 @@ function NewsAndEvents() {
 
     var newsSettings = {
         dots: false,
-        arrows: false,
+        arrows: true,
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -59,7 +59,7 @@ function NewsAndEvents() {
 
     var eventsSettings = {
         dots: false,
-        arrows: false,
+        arrows: true,
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,

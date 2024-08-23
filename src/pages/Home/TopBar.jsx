@@ -48,9 +48,18 @@ function TopBar() {
       case "NEWS":
         return `/news/${id}`;
       case "PROGRAM":
-        return `${id}`;
+        return `/single-project/${id}`;
       case "HUB":
-        return `${id}`;
+        switch (id) {
+          case (8775):
+            return `/feeding`;
+          case (1102):
+            return `/wash`;
+          case (1738):
+            return `education`;
+          case (1695):
+            return `health`;
+        };
       case "SUBHUB":
         return `/single-subhub/${id}`;
       case "EVENT":
@@ -69,7 +78,7 @@ function TopBar() {
       <main>
         {/* Top bar */}
         <section className="px-4 top">
-          <div className="block  grid xl:grid-cols-3 md:grid-cols-3 sm:grid-cols-1 justify-center">
+          <div className="block  grid xl:grid-cols-3 md:grid-cols-3 sm:grid-cols-1 justify-center px-16">
             <div className="flex justify-center px-10 grid lg:grid-cols-9 grid-cols-9 sm:grid-cols-3 gap-5 pt-8">
               <a
                 className="text-center hover:text-gray-500"
@@ -80,11 +89,11 @@ function TopBar() {
                 target="blank"
               >
                 <svg
-                  className="w-5 h-5  text-white"
+                  className="w-4 h-4  text-white"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
+                  width="6"
+                  height="6"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -104,8 +113,8 @@ function TopBar() {
                   className="w-5 h-5  text-white"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
+                  width="6"
+                  height="6"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -125,11 +134,11 @@ function TopBar() {
                 target="blank"
               >
                 <svg
-                  className="w-5 h-5  text-white"
+                  className="w-4 h-4  text-white"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
+                  width="6"
+                  height="6"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -150,11 +159,11 @@ function TopBar() {
                 target="blank"
               >
                 <svg
-                  className="w-5 h-5  text-white"
+                  className="w-4 h-4  text-white"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
+                  width="6"
+                  height="6"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -174,11 +183,11 @@ function TopBar() {
                 target="blank"
               >
                 <svg
-                  className="w-5 h-5 text-white   dark:text-white"
+                  className="w-4 h-4 text-white   dark:text-white"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
+                  width="6"
+                  height="6"
                   fill="none"
                   viewBox="0 0 24 24"
                 >
@@ -196,7 +205,7 @@ function TopBar() {
                 target="blank"
               >
                 <svg
-                  className="w-5 h-5  text-white"
+                  className="w-4 h-4  text-white"
                   fill="currentColor"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"
@@ -214,7 +223,7 @@ function TopBar() {
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6  text-white"
+                  className="w-4 h-4  text-white"
                   viewBox="0 0 48 48"
                 >
                   <path d="M8,36.018c0.596,0,1.265,0,2,0V18.041c-1.11,1.001-1.699,2.212-2,3.121V36.018z"></path>
@@ -234,11 +243,11 @@ function TopBar() {
             <div className="flex justify-center pt-8 gap-4">
               <h6 className="text-md text-white flex gap-2 text-center">
                 <svg
-                  className="w-5 h-5  text-white"
+                  className="w-6 h-6  text-white"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
+                  width="6"
+                  height="6"
                   fill="none"
                   viewBox="0 0 24 24"
                 >
@@ -250,15 +259,15 @@ function TopBar() {
                     d="M18.427 14.768 17.2 13.542a1.733 1.733 0 0 0-2.45 0l-.613.613a1.732 1.732 0 0 1-2.45 0l-1.838-1.84a1.735 1.735 0 0 1 0-2.452l.612-.613a1.735 1.735 0 0 0 0-2.452L9.237 5.572a1.6 1.6 0 0 0-2.45 0c-3.223 3.2-1.702 6.896 1.519 10.117 3.22 3.221 6.914 4.745 10.12 1.535a1.601 1.601 0 0 0 0-2.456Z"
                   />
                 </svg>
-                {`+${contact.phone ?? "44884060063"}`}{" "}
+                <span className="text-sm font">{`+${contact.phone ?? "44884060063"}`}{" "}</span>
               </h6>
               <h6 className="text-md text-white flex gap-2 text-center  ">
                 <svg
                   className="w-5 h-5  text-white"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
+                  width="6"
+                  height="6"
                   fill="none"
                   viewBox="0 0 24 24"
                 >
@@ -269,7 +278,7 @@ function TopBar() {
                     d="m3.5 5.5 7.893 6.036a1 1 0 0 0 1.214 0L20.5 5.5M4 19h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z"
                   />
                 </svg>
-                {contact.email ?? "info@sadagaat-uk.org"}
+                <span className="text-sm font">{contact.email ?? "info@sadagaat-uk.org"}</span>
               </h6>
             </div>
             <div className="grid  grid-cols-2 py-2 justify-center">
@@ -280,7 +289,7 @@ function TopBar() {
                     name="search"
                     id="searchQuery"
                     className="block p-2 w-full text-sm text-gray-900 bg-gray-50 rounded-full  border border-gray-300 "
-                    placeholder={t("Search in Projects")}
+                    placeholder={t("Search in website")}
                     onKeyUp={(e) => handleSearch(e)}
                   />
                   {searchResult?.length > 0 && (

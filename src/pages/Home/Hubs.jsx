@@ -18,7 +18,7 @@ function Hubs() {
         <>
             <main >
                 {/* Hubs cards */}
-                <section className=" pb-10 grid grid-cols-12 bg-white">
+                <section className=" pb-10 grid grid-cols-12 bg-white px-10">
                     <div></div>
                         {i18n.language === "en" ? (
                     <div className="col-span-10 grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 gap-0 px-16">

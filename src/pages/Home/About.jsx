@@ -51,7 +51,7 @@ function Home() {
                 <section className="pt-1 pb-10 grid grid-cols-12 bg-white">
                     <div></div>
                     {i18n.language === "en" ? (
-                        <div className="col-span-10 grid xl:grid-cols-2 md:grid-cols-1 pt-2">
+                        <div className="col-span-10 grid xl:grid-cols-2 md:grid-cols-1 pt-2 px-16">
                             <div className="grid lg:grid-cols-2 md:grid-cols-2 gap-3">
                                 <div className={`${classParameter}`}>
                                     <div className="img-hover-border">
@@ -134,13 +134,13 @@ function Home() {
                                 </div>
                             </div>
                             <div className={`text-black px-4 xl:pt-0 md:pt-6 sm:pt-6 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
-                                <span className="text-xl font-bold  text-gray-900 ">{t("About Sadagaat")}</span>
+                                <span className="text-2xl font-bold  text-gray-900  uppercase">{t("About Sadagaat")}</span>
                                 <div className="pt-7 font-normal text-gray-700">
                                     {about !== null ?
-                                        <p className={`${i18n.language === "en" ? "text-left" : "text-right"}`}>
+                                        <p className={`${i18n.language === "en" ? "text-left about-mess" : "text-right about-mess"}`}>
                                             {about} <br />
                                         </p> :
-                                        <p>
+                                        <p className="about-mess">
                                             {t("about_message_1")} <br />
                                             {t("about_message_2")}
                                         </p>
@@ -160,15 +160,15 @@ function Home() {
                         </div>)
                         :
                         (
-                            <div className="col-span-10 grid xl:grid-cols-2 md:grid-cols-1 pt-2">
+                            <div className="col-span-10 grid xl:grid-cols-2 md:grid-cols-1 pt-2 px-16">
                                 <div className={`text-black px-4 xl:pt-0 md:pt-6 sm:pt-6 ${i18n.language === "en" ? "text-left" : "text-right"}`}>
                                     <span className="text-xl font-bold  text-gray-900 ">{t("About Sadagaat")}</span>
                                     <div className="pt-7 font-normal text-gray-700">
                                         {about !== null ?
-                                            <p className={`${i18n.language === "en" ? "text-left" : "text-right"}`}>
+                                            <p className={`${i18n.language === "en" ? "text-left about-mess" : "text-right about-mess"}`}>
                                                 {about} <br />
                                             </p> :
-                                            <p>
+                                            <p className="about-mess">
                                                 {t("about_message_1")} <br />
                                                 {t("about_message_2")}
                                             </p>
