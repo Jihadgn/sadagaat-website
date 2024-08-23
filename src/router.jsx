@@ -21,12 +21,12 @@ import SingleNews from "./pages/SubPages/SingleNews";
 import Gallery from "./pages/SubPages/Gallery";
 import Contact from "./pages/SubPages/Contact";
 import VolunteersPrograms from "./pages/SubPages/VolunteersPrograms";
-import Learning from "./pages/SubPages/Learning"
+import Learning from "./pages/SubPages/Learning";
 import CourseForm from "./pages/SubPages/CourseForm";
-import SearchResults from "./pages/Projects/SearchResults"
+import SearchResults from "./pages/Projects/SearchResults";
+import NotFound from "./pages/NotFound";
 
 const router = createBrowserRouter([
-  
   {
     path: "/",
     element: <Home />,
@@ -49,15 +49,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/volunteers-programs",
-    element: <VolunteersPrograms />
+    element: <VolunteersPrograms />,
   },
   {
     path: "/sudanese-learning-hub",
-    element: <Learning />
+    element: <Learning />,
   },
   {
     path: "/course-form",
-    element: <CourseForm />
+    element: <CourseForm />,
   },
   {
     path: "/careers",
@@ -101,11 +101,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/single-project/:project_id",
-    element: <SingleProject />
+    element: <SingleProject />,
   },
   {
     path: "/Search-Results",
-    element: <SearchResults />
+    element: <SearchResults />,
   },
   {
     path: "/wash",
@@ -126,6 +126,10 @@ const router = createBrowserRouter([
   {
     path: "/single-subhub/:subhub_id",
     element: <SinglSubHub />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 
