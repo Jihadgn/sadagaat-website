@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 @font-face {
   font-family: "sadagaat";
   src: url("../fonts/Sadagaat-English-Regular.otf") format("truetype");
@@ -65,7 +63,6 @@
   background-attachment: fixed;
   background-size: auto;
   background-color: #fff;
-
 }
 
 .fixedBackGround {
@@ -128,7 +125,7 @@
   font-family: "sadagaat", sans-serif !important;
   font-size: 14px;
   line-height: 23.8px;
-  color: rgb(102, 102, 102)
+  color: rgb(102, 102, 102);
 }
 
 .pagination {
@@ -153,7 +150,23 @@
 .pragraphe {
   font-family: "sadagaat", serif;
   font-size: 15px;
+}
 
+.nav-bar ul {
+  align-items: center;
+}
+
+.nav-bar button.flex.items-center:active,
+.nav-bar button.flex.items-center:hover,
+.nav-bar button.flex.items-center:focus,
+.nav-bar button.flex.items-center:focus-visible {
+  border: 0 !important;
+  outline: 0 !important;
+}
+
+.nav-bar button.flex.items-center {
+  font-weight: bold !important;
+  margin: 0 !important;
 }
 
 .footer {
@@ -161,9 +174,8 @@
   background-image: url("https://sadagaat-uk.org/images/footer-mask.svg");
   background-size: cover;
   opacity: 1;
-  background-blend-mode: overlay
+  background-blend-mode: overlay;
 }
-
 
 .top {
   font-family: "sadagaat", sans-serif;
@@ -257,7 +269,6 @@
   font-size: medium;
 }
 
-
 .project-discription {
   font-family: "sadagaat", serif;
   white-space: wrap;
@@ -272,7 +283,6 @@
   overflow: hidden;
   max-height: 270px !important;
 }
-
 
 .causes .thumb img {
   transition: all 500ms ease 0s;
@@ -291,7 +301,7 @@
   background-size: contain;
   background-position: center;
   opacity: 0.7;
-  background-blend-mode: overlay
+  background-blend-mode: overlay;
 }
 
 .gallery-item .thumb {
@@ -502,7 +512,6 @@ span {
 
 p {
   font-family: "sadagaat", sans-serif;
-
 }
 
 h6 {
@@ -546,12 +555,10 @@ button:focus-visible {
 
   Link {
     font-family: "sadagaat", sans-serif;
-
   }
 
   Link:hover {
     font-family: "sadagaat", sans-serif;
-
   }
 
   button {
