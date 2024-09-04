@@ -198,7 +198,7 @@ function SingleProject() {
                       <hr />
 
                       <h4 className="mt-6 mb-4 text-center">
-                        {t("Project Map")}{" "}
+                        {t("Project Map")}
                       </h4>
                       {!pageLoading &&
                       data?.locationLat &&
