@@ -99,9 +99,8 @@ function SingleProject() {
             <div className="text-gray-800">
               <div className="event-content pb-6">
                 <h2
-                  className={`font-bold text-3xl pb-3 ${
-                    i18n.language === "en" ? "text-left" : "text-right"
-                  }`}
+                  className={`font-bold text-3xl pb-3 ${i18n.language === "en" ? "text-left" : "text-right"
+                    }`}
                 >
                   {project.name}
                 </h2>
@@ -121,9 +120,8 @@ function SingleProject() {
                           />
                         </div>
                         <div
-                          className={`py-4 ${
-                            i18n.language === "en" ? "text-left" : "text-right"
-                          }`}
+                          className={`py-4 ${i18n.language === "en" ? "text-left" : "text-right"
+                            }`}
                         >
                           <span className="text-gray-600 text-lg font-bold px-4">
                             {project.locationName}
@@ -132,20 +130,18 @@ function SingleProject() {
                             {project.startAt}
                           </span>
                           <h2
-                            className={`project-discription text-left text-md font-normal pt-6 ${
-                              i18n.language === "en"
+                            className={`project-discription text-left text-md font-normal pt-6 ${i18n.language === "en"
                                 ? "text-left"
                                 : "text-right"
-                            }`}
+                              }`}
                           >
                             {parse(`${project.description} `)}
                           </h2>
                           <h2
-                            className={`text-left text-lg font-bold pt-1 ${
-                              i18n.language === "en"
+                            className={`text-left text-lg font-bold pt-1 ${i18n.language === "en"
                                 ? "text-left"
                                 : "text-right"
-                            }`}
+                              }`}
                           >
                             {t("Project Progress")}
                           </h2>
@@ -175,20 +171,18 @@ function SingleProject() {
                           </div>
                           <div className="grid grid-cols-2 pt-1">
                             <h3
-                              className={` text-lg font-bold ${
-                                i18n.language === "en"
+                              className={` text-lg font-bold ${i18n.language === "en"
                                   ? "text-left"
                                   : "text-right"
-                              }`}
+                                }`}
                             >
                               {t("Raised")} {getNumber(data.raised)}{" "}
                             </h3>
                             <h3
-                              className={`text-lg font-bold ${
-                                i18n.language === "en"
+                              className={`text-lg font-bold ${i18n.language === "en"
                                   ? "text-left"
                                   : "text-right"
-                              }`}
+                                }`}
                             >
                               {t("Goal")} {getNumber(data.goal)}{" "}
                             </h3>
@@ -232,9 +226,8 @@ function SingleProject() {
                                       {item.imageData?.map((image) => (
                                         <div key={image.id} className="p-2">
                                           <img
-                                            src={`${address()}projects/step/${
-                                              image.name
-                                            }/image`}
+                                            src={`${address()}projects/step/${image.name
+                                              }/image`}
                                           />
                                         </div>
                                       ))}
@@ -243,9 +236,8 @@ function SingleProject() {
                                           <video
                                             muted
                                             controls
-                                            src={`${address()}projects/step/${
-                                              video.name
-                                            }/video`}
+                                            src={`${address()}projects/step/${video.name
+                                              }/video`}
                                           ></video>
                                         </div>
                                       ))}
