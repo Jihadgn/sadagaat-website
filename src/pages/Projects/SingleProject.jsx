@@ -12,9 +12,10 @@ import parse from "html-react-parser";
 import { Precision, getNumber } from "../../services/getMonthName";
 import axios from "axios";
 import Slider from "react-slick";
-
+import Map from "../LocationPicker";
 function SingleProject() {
   const { t, i18n } = useTranslation();
+  const [pageLoading, setPageLoading] = useState(true);
 
   const [project, setProject] = useState([]);
   const [data, setData] = useState([]);
@@ -79,12 +80,10 @@ function SingleProject() {
     setImages(data2);
   }
 
-  let currentLocation = [project.locationLat, project.locationLng];
-  let zoom = 9;
-
   // get project on page load
   useEffect(() => {
     fetchData();
+    setPageLoading(false);
   }, [i18n.language]);
 
   return (
@@ -197,6 +196,22 @@ function SingleProject() {
                         </div>
                       </div>
                       <hr />
+
+                      <h4 className="mt-6 mb-4 text-center">
+                        {t("Project Map")}{" "}
+                      </h4>
+                      {!pageLoading &&
+                      data?.locationLat &&
+                      data?.locationLng ? (
+                        <Map
+                          initPosition={{
+                            lat: data?.locationLat,
+                            lng: data?.locationLng,
+                          }}
+                        />
+                      ) : (
+                        <h4>{t("Map not available")}</h4>
+                      )}
                     </Tabs.Item>
                     <Tabs.Item title={t("Project Timeline")}>
                       {steps?.length > 0 ? (
@@ -243,36 +258,6 @@ function SingleProject() {
                         </div>
                       ) : (
                         <h4>{t("No Project Timeline")}</h4>
-                      )}
-                    </Tabs.Item>
-                    <Tabs.Item title={t("Project Map")}>
-                      {project.locationLat != 0.0 &&
-                      project.locationLng != 0.0 ? (
-                        <div id="LocationMap">
-                          {/* {showMap ? (
-                                                        <Map center={currentLocation} zoom={zoom}>
-                                                            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                                                            <Marker
-                                                                position={currentLocation}
-                                                            // icon={VenueLocationIcon}
-                                                            >
-                                                                <Popup>
-                                                                    <div className="poup-text">
-                                                                        <h6>{project.name}</h6>
-                                                                        <p>{project.locationName}</p>
-                                                                    </div>
-                                                                </Popup>
-                                                            </Marker>
-                                                        </Map>
-
-                                                    ) : (
-                                                        <p className="text-center">
-                                                            {t("Loading Map")}
-                                                        </p>
-                                                    )} */}
-                        </div>
-                      ) : (
-                        <h4>{t("Map not available")}</h4>
                       )}
                     </Tabs.Item>
                   </Tabs>
