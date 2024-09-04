@@ -56,9 +56,9 @@ function TopBar() {
           case (1102):
             return `/wash`;
           case (1738):
-            return `education`;
+            return `/education`;
           case (1695):
-            return `health`;
+            return `/health`;
         };
       case "SUBHUB":
         return `/single-subhub/${id}`;
