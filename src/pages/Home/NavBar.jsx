@@ -223,7 +223,7 @@ function NavBar() {
                   </Dropdown.Item>
                   <Dropdown.Item
                     className="text-gray-700 flex font-bold text-md "
-                    href="careers"
+                    href="/careers"
                   >
                     {t("Careers")}
                   </Dropdown.Item>
@@ -393,7 +393,7 @@ function NavBar() {
                 </Dropdown.Item>
                 <Dropdown.Item
                   className="text-gray-700 flex font-bold text-md "
-                  href="careers"
+                  href="/careers"
                 >
                   {t("Careers")}
                 </Dropdown.Item>

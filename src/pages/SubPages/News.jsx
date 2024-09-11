@@ -74,7 +74,7 @@ function News() {
                                     <img
                                         src={`${address()}news/${newsData.id}/image`}
                                         alt="News"
-                                        height="350px"
+                                        height="250px"
                                         width="650px"
                                         className="m-0"
                                     />

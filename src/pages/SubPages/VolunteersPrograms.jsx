@@ -49,7 +49,7 @@ const VolunteerPrograms = (props) => {
         filterProjectsType(props.type);
         let prefix = address();
         let FilterUrl =
-            prefix + "programs?" + "page=" + currentPage + "&size=" + postsPerPage;
+            prefix + "programs";
         console.log(FilterUrl);
         const fetcher = await window.fetch(
             FilterUrl,
